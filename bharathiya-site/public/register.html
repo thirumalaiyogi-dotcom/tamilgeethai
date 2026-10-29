@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>பதிவுப் படிவம் | பாரதிய பண்பாட்டு வகுப்பு</title>
+<meta name="description" content="பாரதிய பண்பாட்டு வகுப்பு — இலவசச் சான்றிதழ் வகுப்பில் சேர பதிவுப் படிவம்.">
+<link rel="canonical" href="https://bharathiyaculturalclass-tamilgeethai.com/register.html">
+<meta name="theme-color" content="#7A1F12">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@600;700;800&family=Hind+Madurai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#7A1F12;--maroon-d:#5A140B;--saffron:#D9640F;--saffron-l:#F4B740;--cream:#FFF8EC;--cream-2:#FBEFD9;--ink:#2A1A12;--muted:#6B5444;--line:rgba(201,154,46,.45);--err:#B42318}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--cream),var(--cream-2));color:var(--ink);font-family:'Hind Madurai',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:var(--maroon)}
+:focus-visible{outline:3px solid var(--saffron-l);outline-offset:2px;border-radius:6px}
+.bar{position:sticky;top:0;z-index:10;background:rgba(90,20,11,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(244,183,64,.25)}
+.bar-in{max-width:720px;margin:0 auto;padding:0 16px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.back{display:inline-flex;align-items:center;gap:8px;color:#FFE7B8;text-decoration:none;font-weight:600;font-size:15.5px;min-height:44px}
+.bar-brand{color:#F7E3C3;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px 60px}
+.head{text-align:center;margin-bottom:22px}
+.emblem{width:96px;height:96px;margin:0 auto 12px;display:block;border-radius:50%;box-shadow:0 0 0 3px rgba(201,154,46,.5),0 14px 30px -14px rgba(122,31,18,.5)}
+h1{font-family:'Noto Serif Tamil',serif;color:var(--maroon);font-size:clamp(25px,6vw,34px);line-height:1.45;margin:0}
+.sub{margin:8px 0 0;color:var(--muted);font-size:15.5px;line-height:1.8}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13.5px;font-weight:600;color:var(--maroon)}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 18px;box-shadow:0 26px 50px -36px rgba(122,31,18,.55)}
+.sec-t{font-family:'Noto Serif Tamil',serif;font-weight:700;color:var(--maroon);font-size:17.5px;margin:6px 0 14px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.sec-t:not(:first-child){margin-top:26px}
+.f{margin-bottom:16px}
+.f label.l{display:block;font-weight:600;font-size:15.5px;margin-bottom:7px}
+.req{color:var(--saffron)}
+.opt{color:var(--muted);font-weight:400;font-size:13.5px}
+input[type=text],input[type=tel],input[type=number],select,textarea{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid #E6D3B3;border-radius:14px;background:#FFFDF8;font:inherit;font-size:16px;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 4px rgba(217,100,15,.15)}
+.row{display:grid;grid-template-columns:1fr;gap:0 14px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}.card{padding:30px 30px}}
+.radios{display:grid;gap:10px}
+.radios.two{grid-template-columns:1fr 1fr}
+.ro{display:flex;align-items:center;gap:10px;min-height:50px;padding:10px 14px;border:1.5px solid #E6D3B3;border-radius:14px;background:#FFFDF8;cursor:pointer;font-size:15.5px;line-height:1.5}
+.ro input{width:20px;height:20px;accent-color:var(--saffron);flex:none;margin:0}
+.ro:has(input:checked){border-color:var(--saffron);background:#FFF1E2}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.7;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:4px;accent-color:var(--saffron);flex:none}
+.e{display:none;color:var(--err);font-size:13.5px;margin-top:6px}
+.f.bad .e{display:block}
+.f.bad input,.f.bad select,.f.bad .ro{border-color:var(--err)}
+.hide{display:none !important}
+.submit{width:100%;min-height:58px;margin-top:10px;border:0;border-radius:999px;background:linear-gradient(180deg,#EE7A1E,var(--saffron));color:#fff;font:inherit;font-weight:700;font-size:18px;cursor:pointer;box-shadow:0 12px 28px -14px rgba(217,100,15,.85);display:flex;align-items:center;justify-content:center;gap:10px}
+.submit[disabled]{opacity:.7;cursor:wait}
+.note{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;margin-top:16px}
+.spin{width:20px;height:20px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp 0.8s linear infinite;display:none}
+.submit[disabled] .spin{display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+.modal{position:fixed;inset:0;background:rgba(42,26,18,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.on{display:flex}
+.mbox{background:#fff;border-radius:24px;max-width:420px;width:100%;padding:28px 22px;text-align:center;border:1px solid var(--line)}
+.tick{width:68px;height:68px;border-radius:50%;background:#1FAF5A;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.mbox h2{font-family:'Noto Serif Tamil',serif;color:var(--maroon);margin:0 0 8px;font-size:22px}
+.mbox p{margin:0 0 18px;color:#4a3426;line-height:1.8;font-size:15.5px}
+.mbtn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;text-decoration:none;font-weight:700;margin-top:10px}
+.mbtn.home{background:var(--maroon);color:#fff}
+.mbtn.wa{background:#1FAF5A;color:#fff}
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-in">
+  <a class="back" href="index.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>முகப்புக்குத் திரும்ப</a>
+  <span class="bar-brand">பாரதிய பண்பாட்டு வகுப்பு</span>
+</div></div>
+
+<main class="wrap">
+  <div class="head">
+    <img class="emblem" src="images/bcc-logo-160.webp" alt="பாரதிய பண்பாட்டு வகுப்பு லோகோ" width="96" height="96">
+    <h1>வகுப்பில் சேர பதிவுப் படிவம்</h1>
+    <p class="sub">பாரதிய பண்பாட்டு வகுப்பு — 20 வாரச் சான்றிதழ் வகுப்பு</p>
+    <div class="chips"><span class="chip">🪔 முற்றிலும் இலவசம்</span><span class="chip">வித்யா பாரதி பாடத்திட்டம்</span><span class="chip">ஒன்பது நிலைகள்</span></div>
+  </div>
+
+  <form id="reg" class="card" novalidate>
+    <h2 class="sec-t">மாணவர் விவரம்</h2>
+    <div class="f" data-req>
+      <label class="l" for="name">மாணவர் பெயர் <span class="req">*</span></label>
+      <input type="text" id="name" name="name" autocomplete="name">
+      <div class="e">மாணவர் பெயரை உள்ளிடவும்</div>
+    </div>
+    <div class="f" data-req data-radio="gender">
+      <label class="l">பாலினம் <span class="req">*</span></label>
+      <div class="radios two">
+        <label class="ro"><input type="radio" name="gender" value="ஆண்">ஆண்</label>
+        <label class="ro"><input type="radio" name="gender" value="பெண்">பெண்</label>
+      </div>
+      <div class="e">பாலினத்தைத் தேர்ந்தெடுக்கவும்</div>
+    </div>
+    <div class="row">
+      <div class="f" data-req>
+        <label class="l" for="age">வயது <span class="req">*</span></label>
+        <input type="number" id="age" name="age" inputmode="numeric" min="3" max="99">
+        <div class="e">வயதை உள்ளிடவும்</div>
+      </div>
+      <div class="f" data-req>
+        <label class="l" for="std">படிக்கும் வகுப்பு <span class="req">*</span></label>
+        <select id="std" name="std">
+          <option value="">தேர்ந்தெடுக்கவும்</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+          <option>கல்லூரி</option><option>மற்றவை</option>
+        </select>
+        <div class="e">வகுப்பைத் தேர்ந்தெடுக்கவும்</div>
+      </div>
+    </div>
+    <div class="f">
+      <label class="l" for="school">பள்ளி / கல்லூரி பெயர் <span class="opt">(விருப்பம்)</span></label>
+      <input type="text" id="school" name="school">
+    </div>
+
+    <h2 class="sec-t">பெற்றோர் / தொடர்பு விவரம்</h2>
+    <div class="f" data-req>
+      <label class="l" for="parent">பெற்றோர் / பாதுகாவலர் பெயர் <span class="req">*</span></label>
+      <input type="text" id="parent" name="parent">
+      <div class="e">பெற்றோர் பெயரை உள்ளிடவும்</div>
+    </div>
+    <div class="f" data-req data-phone>
+      <label class="l" for="whatsapp">WhatsApp எண் <span class="req">*</span></label>
+      <input type="tel" id="whatsapp" name="whatsapp" inputmode="numeric" maxlength="10" placeholder="10 இலக்க எண்" autocomplete="tel-national">
+      <div class="e">சரியான 10 இலக்க எண்ணை உள்ளிடவும்</div>
+    </div>
+    <div class="row">
+      <div class="f" data-req>
+        <label class="l" for="town">ஊர் <span class="req">*</span></label>
+        <input type="text" id="town" name="town">
+        <div class="e">ஊரை உள்ளிடவும்</div>
+      </div>
+      <div class="f" data-req>
+        <label class="l" for="district">மாவட்டம் <span class="req">*</span></label>
+        <input type="text" id="district" name="district">
+        <div class="e">மாவட்டத்தை உள்ளிடவும்</div>
+      </div>
+    </div>
+
+    <h2 class="sec-t">சேர்க்கை</h2>
+    <div class="f" data-req data-radio="type">
+      <label class="l">சேர்க்கை வகை <span class="req">*</span></label>
+      <div class="radios">
+        <label class="ro"><input type="radio" name="type" value="புதிய மாணவர் (நிலை 1)">புதிய மாணவர் — நிலை 1 முதல்</label>
+        <label class="ro"><input type="radio" name="type" value="ஏற்கனவே படித்தவர் — தொடர விரும்புகிறேன்">ஏற்கனவே படித்தவர் — அடுத்த நிலையைத் தொடர</label>
+      </div>
+      <div class="e">ஒன்றைத் தேர்ந்தெடுக்கவும்</div>
+    </div>
+    <div class="f hide" id="prevBox">
+      <label class="l" for="prev">முடித்த நிலை <span class="req">*</span></label>
+      <select id="prev" name="prev">
+        <option value="">தேர்ந்தெடுக்கவும்</option>
+        <option>நிலை 1</option><option>நிலை 2</option><option>நிலை 3</option><option>நிலை 4</option><option>நிலை 5</option><option>நிலை 6</option><option>நிலை 7</option><option>நிலை 8</option>
+      </select>
+      <div class="e">முடித்த நிலையைத் தேர்ந்தெடுக்கவும்</div>
+    </div>
+    <div class="f">
+      <label class="l" for="source">வகுப்பைப் பற்றி எப்படி அறிந்தீர்கள்? <span class="opt">(விருப்பம்)</span></label>
+      <select id="source" name="source">
+        <option value="">தேர்ந்தெடுக்கவும்</option>
+        <option>நண்பர்கள் / உறவினர்கள்</option><option>WhatsApp</option><option>தமிழ் கீதை</option><option>YouTube / Facebook</option><option>பள்ளி / ஆசிரியர்</option><option>மற்றவை</option>
+      </select>
+    </div>
+    <div class="f">
+      <label class="l" for="notes">குறிப்பு <span class="opt">(விருப்பம்)</span></label>
+      <textarea id="notes" name="notes"></textarea>
+    </div>
+    <div class="f" data-consent>
+      <label class="check"><input type="checkbox" id="consent"> பெற்றோர் / பாதுகாவலரின் சம்மதத்துடன் இந்தப் பதிவைச் செய்கிறேன். வகுப்பு விவரங்களை WhatsApp மூலம் பெற ஒப்புக்கொள்கிறேன்.</label>
+      <div class="e">தொடர இதைத் தேர்ந்தெடுக்கவும்</div>
+    </div>
+
+    <button class="submit" type="submit"><span class="spin" aria-hidden="true"></span><span class="st">பதிவு செய்</span></button>
+    <p class="note">சந்தேகங்களுக்கு: <a href="tel:+919489690577">+91 94896 90577</a> (R. S. Rambabu) · <a href="tel:+919487174771">+91 94871 74771</a> (P. Venkatraman)</p>
+  </form>
+</main>
+
+<div class="modal" id="done" role="dialog" aria-modal="true" aria-labelledby="dt">
+  <div class="mbox">
+    <div class="tick"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 id="dt">பதிவு வெற்றி! 🙏</h2>
+    <p id="dmsg">உங்கள் பதிவு பெறப்பட்டது. அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
+    <a class="mbtn wa" id="dwa" href="#" target="_blank" rel="noopener">ஒருங்கிணைப்பாளருக்கு WhatsApp-இல் தெரிவிக்க</a>
+    <a class="mbtn home" href="index.html">முகப்புக்குத் திரும்ப</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Google Sheet இணைப்பு: Apps Script Web App URL-ஐ இங்கே ஒட்டவும். காலியாக இருந்தால் WhatsApp மூலம் அனுப்பப்படும். */
+  var SHEET_URL = "";
+  var WA_NUMBER = "919489690577";
+
+  var form=document.getElementById('reg');
+  var prevBox=document.getElementById('prevBox');
+  form.querySelectorAll('input[name=type]').forEach(function(r){
+    r.addEventListener('change',function(){
+      var cont=form.querySelector('input[name=type]:checked').value.indexOf('தொடர')>-1;
+      prevBox.classList.toggle('hide',!cont);
+      if(cont){prevBox.setAttribute('data-req','')}else{prevBox.removeAttribute('data-req');prevBox.classList.remove('bad')}
+    });
+  });
+  var ph=document.getElementById('whatsapp');
+  ph.addEventListener('input',function(){ph.value=ph.value.replace(/\D/g,'').slice(0,10)});
+  form.addEventListener('input',function(e){var f=e.target.closest('.f');if(f)f.classList.remove('bad')});
+  form.addEventListener('change',function(e){var f=e.target.closest('.f');if(f)f.classList.remove('bad')});
+
+  function val(n){var el=form.querySelector('[name="'+n+'"]:checked')||form.querySelector('[name="'+n+'"]:not([type=radio])');return el?String(el.value).trim():''}
+  function validate(){
+    var ok=true,first=null;
+    form.querySelectorAll('.f[data-req]').forEach(function(f){
+      var good;
+      if(f.hasAttribute('data-radio')){good=!!f.querySelector('input:checked')}
+      else{var el=f.querySelector('input,select,textarea');good=el.value.trim()!=='';
+        if(f.hasAttribute('data-phone'))good=/^[6-9]\d{9}$/.test(el.value);
+        if(el.id==='age'){var a=+el.value;good=a>=3&&a<=99}}
+      f.classList.toggle('bad',!good);if(!good){ok=false;first=first||f}
+    });
+    var c=form.querySelector('[data-consent]');var cg=document.getElementById('consent').checked;
+    c.classList.toggle('bad',!cg);if(!cg){ok=false;first=first||c}
+    if(first)first.scrollIntoView({behavior:'smooth',block:'center'});
+    return ok;
+  }
+  function data(){return{
+    timestamp:new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),
+    name:val('name'),gender:val('gender'),age:val('age'),std:val('std'),school:val('school'),
+    parent:val('parent'),whatsapp:val('whatsapp'),town:val('town'),district:val('district'),
+    type:val('type'),prev:prevBox.classList.contains('hide')?'':val('prev'),source:val('source'),notes:val('notes')
+  }}
+  function waText(d){
+    var t='வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் சேர பதிவு செய்கிறேன்.\n\n'+
+      'மாணவர் பெயர்: '+d.name+'\nபாலினம்: '+d.gender+'\nவயது: '+d.age+'\nவகுப்பு: '+d.std+
+      (d.school?'\nபள்ளி: '+d.school:'')+'\nபெற்றோர்: '+d.parent+'\nWhatsApp: '+d.whatsapp+
+      '\nஊர்: '+d.town+', '+d.district+'\nசேர்க்கை: '+d.type+(d.prev?' ('+d.prev+' முடித்தவர்)':'')+
+      (d.source?'\nஅறிந்தது: '+d.source:'')+(d.notes?'\nகுறிப்பு: '+d.notes:'');
+    return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(t);
+  }
+  var btn=form.querySelector('.submit'),st=form.querySelector('.st');
+  var SB_URL="https://ytwundlllclnevjogunn.supabase.co";
+  var SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg";
+  function saveDb(d){
+    var row={source:'bcc',name:d.name,whatsapp:d.whatsapp,district:d.district,town:d.town,
+      details:{gender:d.gender,age:d.age,std:d.std,school:d.school,parent:d.parent,type:d.type,prev:d.prev,source:d.source,notes:d.notes}};
+    return fetch(SB_URL+'/rest/v1/registrations',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
+      .then(function(r){if(!r.ok)throw new Error('db '+r.status)});
+  }
+  function fail(){
+    document.getElementById('dmsg').textContent='இணைய இணைப்பில் சிக்கல். கீழே உள்ள பச்சை பட்டன் மூலம் WhatsApp-இல் அனுப்பவும் — அதுவும் பதிவாகக் கொள்ளப்படும்.';
+    document.getElementById('dt').textContent='மீண்டும் முயலவும்';
+    document.getElementById('dwa').classList.remove('hide');
+    document.getElementById('done').classList.add('on');
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!validate())return;
+    var d=data(),link=waText(d);
+    document.getElementById('dwa').href=link;
+    btn.disabled=true;st.textContent='அனுப்புகிறது…';
+    var jobs=[saveDb(d)];
+    if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
+    Promise.all(jobs)
+      .then(function(){
+        form.reset();prevBox.classList.add('hide');
+        document.getElementById('dt').textContent='பதிவு வெற்றி! 🙏';
+        document.getElementById('dmsg').textContent='உங்கள் பதிவு பெறப்பட்டது. அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.';
+        document.getElementById('dwa').classList.add('hide');
+        document.getElementById('done').classList.add('on');
+      })
+      .catch(fail)
+      .finally(function(){btn.disabled=false;st.textContent='பதிவு செய்'});
+  });
+})();
+</script>
+</body>
+</html>
