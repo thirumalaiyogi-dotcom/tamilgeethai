@@ -66,7 +66,7 @@ img{max-width:100%;display:block}
 .wa-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 14px;border-radius:999px;background:#1FAF5A;color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;box-shadow:0 12px 28px -10px rgba(0,0,0,.45),0 0 0 3px rgba(255,253,245,.9);transition:transform .3s ease,background .3s ease}
 .wa-fab:hover{color:#fff;background:#179a4d;transform:translateY(-2px)}
 .wa-fab svg{flex:none}
-.bcc-link{white-space:nowrap;display:inline-flex;align-items:center;margin-top:14px;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(244,214,138,.55);color:#F4D68A;text-decoration:none;font-weight:600;font-size:14.5px}
+.bcc-link{max-width:100%;display:inline-flex;align-items:center;margin-top:14px;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(244,214,138,.55);color:#F4D68A;text-decoration:none;font-weight:600;font-size:14.5px}
 .bcc-link:hover{background:rgba(244,214,138,.12);color:#FFE7B8}
 @media (max-width:640px){.wa-fab{width:56px;padding:0;justify-content:center}.wa-fab .wa-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 /* team */
@@ -429,6 +429,15 @@ a.jc:focus-visible{outline:3px solid #D4A017;outline-offset:3px}
 .final .inner{max-width:620px}
 .foot-in{flex-direction:row;justify-content:space-between;align-items:flex-start}
 }
+@media (max-width:599px){
+.grid6{grid-template-columns:minmax(0,1fr) !important;gap:12px}
+.grid6 .card{padding:20px 14px 22px;gap:8px}
+.grid6 .card .pic{width:84px;height:84px}
+.grid6 .card h3{font-size:clamp(15px,4.3vw,17px)}
+.grid6 .card p{font-size:15px}
+}
+}
+@media (min-width:960px){.bcc-link{white-space:nowrap}}
 @media (min-width:960px) and (max-width:1199px){
 .links{display:none}
 .card{flex-direction:column;align-items:center;text-align:center;padding:26px 20px}
