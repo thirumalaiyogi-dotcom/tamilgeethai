@@ -309,6 +309,56 @@ a{color:var(--maroon)}
 @media (min-width:640px){.gal{grid-template-columns:repeat(3,minmax(0,1fr))}.gal .g-wide{grid-column:span 2;aspect-ratio:auto}}
 @media (min-width:900px){.honor{grid-template-columns:1.15fr 1fr}.honor-img .lbx{height:100%;aspect-ratio:auto}.honor-body{padding:32px}}
 @media (min-width:1100px){.links{display:flex;gap:22px}.links a{white-space:nowrap}.brand b{overflow:visible}}
+
+/* ===== maroon page theme (like the top) ===== */
+body{background:#4E1108}
+.intro,.class,.levels,.journey,.lb,.goal,.join,.t23,.team,.adv{color:#FFF3DF}
+.class,.lb,.goal,.team{background:linear-gradient(180deg,#6A1A0E,#5A140B)}
+.join,.levels,.t23,.adv{background:linear-gradient(180deg,#5A140B,#4E1108)}
+.intro::before{background:linear-gradient(180deg,rgba(90,20,11,.94),rgba(78,17,8,.9))}
+.journey::before{background:linear-gradient(180deg,rgba(78,17,8,.97) 0%,rgba(90,20,11,.93) 60%,rgba(90,20,11,.85) 100%)}
+.goal::before{background:linear-gradient(180deg,rgba(106,26,14,.96) 0%,rgba(90,20,11,.88) 45%,rgba(90,20,11,.96) 100%)}
+@media (min-width:900px){.intro::before{background:linear-gradient(90deg,rgba(90,20,11,.95) 0%,rgba(90,20,11,.88) 55%,rgba(90,20,11,.7) 100%)}}
+.intro .h2,.class .h2,.levels .h2,.journey .h2,.lb .h2,.goal .h2,.join .h2,.t23 .h2,.team .h2,.adv .h2{color:#FFE7B8}
+.intro .eyebrow,.class .eyebrow,.levels .eyebrow,.journey .eyebrow,.lb .eyebrow,.goal .eyebrow,.join .eyebrow,.t23 .eyebrow,.team .eyebrow,.adv .eyebrow{color:var(--saffron-l)}
+.class .lead,.levels .lead,.journey .lead,.lb .lead,.goal .lead,.t23 .lead,.join .lead{color:rgba(255,243,223,.88)}
+.lead b{color:var(--saffron-l)}
+.levels-note{color:rgba(255,243,223,.9)}.levels-note b{color:var(--saffron-l)}
+.tl .when{color:var(--saffron-l)}.tl h3{color:#FFE7B8}.tl p{color:rgba(255,243,223,.88)}
+.tl .mk{background:#4E1108}
+.tl-link{display:inline-block;margin-top:8px;color:var(--saffron-l);font-weight:600;font-size:14.5px}
+.goal-num{color:#FFE7B8}.goal-sub{color:var(--saffron-l)}
+.media{border-color:rgba(244,183,64,.4)}
+/* teachers */
+.tc-grid{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:10px}
+.tc{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(244,183,64,.32);min-width:0}
+.tc-av{flex:none;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif Tamil',serif;font-weight:700;font-size:20px;color:var(--maroon);background:radial-gradient(circle at 35% 30%,#FFF4D6,#F4C76A)}
+.tc-t{min-width:0}
+.tc h3{margin:0;font-family:'Noto Serif Tamil',serif;font-size:17px;font-weight:700;color:#FFF3DF;line-height:1.45}
+.tc p{margin:2px 0 0;font-size:14.5px;color:var(--saffron-l);font-weight:600;line-height:1.5}
+.tc-t > span{display:inline-flex;align-items:center;gap:4px;margin-top:2px;font-size:13.5px;color:rgba(255,243,223,.75)}
+/* advisory */
+.ad-grid{list-style:none;margin:40px auto 0;padding:0;max-width:960px;display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:14px}
+.ad{padding:22px 20px;border-radius:20px;background:linear-gradient(135deg,rgba(244,183,64,.18),rgba(244,183,64,.05));border:1px solid rgba(244,183,64,.5);text-align:center}
+.ad h3{margin:0;font-family:'Noto Serif Tamil',serif;font-size:clamp(17px,4.4vw,19px);font-weight:700;color:#FFE7B8;line-height:1.5}
+.ad p{margin:6px 0 0;font-weight:600;color:var(--saffron-l);font-size:15px}
+.ad span{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:14px;color:rgba(255,243,223,.8)}
+@media (min-width:640px){.tc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ad-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.tc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* admission popup */
+.adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.adm[hidden]{display:none}
+.adm-box{position:relative;width:100%;max-width:400px;max-height:calc(100vh - 32px);overflow:auto;background:linear-gradient(180deg,#FFF8EC,#FBEFD9);border-radius:26px;padding:30px 22px 20px;text-align:center;border:2px solid var(--saffron-l);box-shadow:0 30px 70px -20px rgba(0,0,0,.7);animation:admIn .45s ease}
+@keyframes admIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.adm-box img{width:84px;height:84px;border-radius:50%;margin:0 auto;display:block;box-shadow:0 0 0 3px rgba(201,154,46,.5)}
+.adm-x{position:absolute;top:10px;right:10px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(122,31,18,.08);color:var(--maroon);font-size:18px;cursor:pointer}
+.adm-tag{display:inline-block;margin:14px 0 0;padding:5px 14px;border-radius:999px;background:var(--maroon);color:#FFE7B8;font-weight:700;font-size:14px}
+.adm-box h2{margin:12px 0 0;font-family:'Noto Serif Tamil',serif;font-weight:800;font-size:clamp(21px,5.6vw,25px);line-height:1.45;color:var(--maroon)}
+.adm-sub{margin:8px 0 0;font-size:15.5px;line-height:1.7;color:#4a3426}
+.adm-sub b{color:var(--saffron)}
+.adm-go{width:100%;margin-top:18px;font-size:17.5px}
+.adm-wa{display:inline-block;margin-top:12px;color:#178a47;font-weight:700;font-size:15px}
+.adm-later{display:block;margin:6px auto 0;min-height:40px;border:0;background:none;color:var(--muted);font:inherit;font-size:14px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}}
 </style>
 </head>
@@ -322,6 +372,7 @@ a{color:var(--maroon)}
     </a>
     <nav class="links" aria-label="முதன்மை வழிசெலுத்தல்">
       <a href="#class">வகுப்பு</a>
+      <a href="#teachers">ஆசிரியர்கள்</a>
       <a href="#lokbhavan">ஆளுநர் மாளிகை</a>
       <a href="#tamilgeethai">தமிழ் கீதை</a>
       <a href="register.html">பதிவு</a>
@@ -371,18 +422,33 @@ a{color:var(--maroon)}
   </div>
 </section>
 
-<!-- INTRO -->
-<section class="sec intro" aria-label="அறிமுகம்">
+<!-- JOIN / CONTACT -->
+<section id="join" class="sec join">
   <div class="wrap">
-    <div class="quote-card rv">
-      <p>நாம் கடந்து வந்த பாதையை நினைவுகூர்வது என்பது ஓர் இன்பமான தருணமாகும். அதிலும், அந்தப் பாதையில் வீட்டிற்கும் நாட்டிற்கும் பயனுள்ள செயல்களைச் செய்திருந்தால், அவற்றை நினைத்துப் பார்ப்பது இன்னும் சுவையான தருணமாகும்.</p>
-      <p>அந்த வகையில், நமது பாரதிய பண்பாட்டு வகுப்பின் வெற்றிப் பாதையை உங்களுடன் பகிர்ந்துகொள்ள விரும்புகிறோம்.</p>
-    </div>
-    <div class="stats">
-      <div class="stat rv"><b>20</b><span>வாரப் பயிற்சி</span></div>
-      <div class="stat rv"><b>9</b><span>நிலைகள்</span></div>
-      <div class="stat rv"><b>160</b><span>பட்டம் பெற்ற மாணவர்கள்</span></div>
-      <div class="stat rv"><b>100%</b><span>இலவசம்</span></div>
+    <p class="eyebrow">புதிய வகுப்பு சேர்க்கை</p>
+    <h2 class="h2">வகுப்பில் இணையுங்கள்</h2>
+    <div class="join-box rv">
+      <div class="join-img"><img src="images/join2-1536.webp" srcset="images/join2-800.webp 800w, images/join2-1536.webp 1536w" sizes="(min-width:900px) 820px, 100vw" alt="மரத்தடியில் வட்டமாக அமர்ந்து கற்கும் மாணவர்கள், ஆசிரியர், பெற்றோர்" loading="lazy"></div>
+      <div class="join-body">
+        <h3>பாரதிய பண்பாட்டு வகுப்பில் சேர</h3>
+        <p>கீழே உள்ள பதிவுப் படிவத்தை நிரப்புங்கள். அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
+        <a class="btn btn-saffron reg-btn" href="register.html">📝 பதிவுப் படிவம் <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="or-line">அல்லது நேரடியாகத் தொடர்பு கொள்ள</p>
+        <div class="cbtns">
+          <a class="cbtn" href="https://wa.me/919487174771?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/></svg>
+            <span><small>P. Venkatraman · தலைமை ஒருங்கிணைப்பாளர்</small>+91 94871 74771</span>
+          </a>
+          <a class="cbtn" href="https://wa.me/919489690577?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/></svg>
+            <span><small>R. S. Rambabu · இணை ஒருங்கிணைப்பாளர்</small>+91 94896 90577</span>
+          </a>
+          <a class="cbtn mail" href="mailto:lahi100000@gmail.com">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span><small>மின்னஞ்சல்</small>lahi100000@gmail.com</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -431,60 +497,6 @@ a{color:var(--maroon)}
     <p class="levels-note rv">2021-ஆம் ஆண்டு <b>முதல் நிலையில்</b> சேர்ந்த மாணவர்கள், தற்போது நமது வகுப்பின் உயர்ந்த நிலையான <b>ஒன்பதாம் நிலையில்</b> பயின்று வருகின்றனர்.</p>
   </div>
 </section>
-
-<!-- JOURNEY -->
-<section id="journey" class="sec journey">
-  <div class="wrap">
-    <p class="eyebrow">2021 — 2026</p>
-    <h2 class="h2">வெற்றிப் பாதை</h2>
-    <ol class="tl">
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2021</div><h3>10 நாள் இணையவழிப் பண்பாட்டு வகுப்பு</h3><p>கொரோனா ஊரடங்குக் காலத்தில் தொடங்கப்பட்டது. அதிகமான வரவேற்பும் ஆதரவும் கிடைத்தது.</p></li>
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">2021</div><h3>10 வார வகுப்பாக விரிவு</h3><p>கிடைத்த வரவேற்பால் தொடர்ந்து 10 வாரங்கள் நடைபெற்றது.</p></li>
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">15.10.2021 · விஜயதசமி</div><h3>சான்றிதழ் வகுப்பாகத் தொடக்கம்</h3><p>முறையான 20 வாரச் சான்றிதழ் வகுப்பு தொடங்கப்பட்டது.</p></li>
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2023 · திருச்சி</div><h3>முதல் பட்டமளிப்பு விழா</h3><p>பால வித்யாஸ்ரீ பட்டம்</p><span class="chip"><b>60</b> மாணவர்கள்</span></li>
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">11.12.2024</div><h3>தமிழ் கீதை தொடக்கம்</h3><p>இல்லம் தோறும் இனிய கீதை — புதிய பாடத்திட்டம்.</p></li>
-      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2026 · திருச்சி</div><h3>இரண்டாம் பட்டமளிப்பு விழா</h3><p>யுவ வித்யாஸ்ரீ பட்டம்</p><span class="chip"><b>100</b> மாணவர்கள்</span></li>
-      <li class="rv star"><span class="mk" aria-hidden="true"></span><div class="card"><div class="when">13.10.2026 · சென்னை</div><h3>ஆளுநர் மாளிகையில் தமிழ் கீதை அரங்கேற்றம்</h3><p>மக்கள் மாளிகை நவராத்திரி கொலு விழாவில் நமது வகுப்பு மாணவர்கள் தமிழ் கீதையைப் பாடி அரங்கேற்றம் செய்து சாதனை படைத்தனர்.</p><a class="star-link" href="#lokbhavan">புகைப்படங்கள் பார்க்க ↓</a></div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- LOK BHAVAN GALLERY -->
-<section id="lokbhavan" class="sec lb">
-  <div class="wrap">
-    <p class="eyebrow">13.10.2026 · சென்னை</p>
-    <h2 class="h2">ஆளுநர் மாளிகையில் தமிழ் கீதை</h2>
-    <p class="lead">மக்கள் மாளிகை, தமிழ்நாடு (Lok Bhavan) நவராத்திரி கொலு 2026 விழாவில், நமது வகுப்பு மாணவர்களும் தாய்மார்களும் இணைந்து தமிழ் கீதையைப் பாடினர்.</p>
-
-    <div class="honor rv">
-      <div class="honor-img"><button class="lbx" data-src="images/lb-governor-1600.webp" aria-label="பெரிதாகப் பார்க்க"><img src="images/lb-governor-800.webp" alt="மாண்புமிகு தமிழக ஆளுநர் அவர்களிடமிருந்து நினைவுப் பரிசு பெறும் நமது வகுப்புக் குழு" loading="lazy"></button></div>
-      <div class="honor-body">
-        <span class="honor-tag">🏆 பெருமைமிகு அங்கீகாரம்</span>
-        <h3>மாண்புமிகு தமிழக ஆளுநர் வழங்கிய நினைவுப் பரிசு</h3>
-        <p>நவராத்திரி கொலு விழாவில் தமிழ் கீதை பாடியதைப் பாராட்டி, மாண்புமிகு தமிழக ஆளுநர் திரு. ராஜேந்திர விஸ்வநாத் ஆர்லேகர் அவர்களால் நமது வகுப்பிற்கு நினைவுப் பரிசு வழங்கப்பட்டது.</p>
-        <button class="lbx memento" data-src="images/lb-memento-1200.webp" aria-label="நினைவுப் பரிசைப் பெரிதாகப் பார்க்க"><img src="images/lb-memento-800.webp" alt="ஆளுநர் வழங்கிய நினைவுப் பரிசு" loading="lazy"></button>
-      </div>
-    </div>
-
-    <div class="gal">
-      <button class="lbx g-wide rv" data-src="images/lb-stage1-1600.webp"><img src="images/lb-stage1-800.webp" alt="மேடையில் தமிழ் கீதை பாடும் மாணவர்கள், தாய்மார்கள்" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-group3-1600.webp"><img src="images/lb-group3-800.webp" alt="பாரதியார் மண்டபம் முன் மாணவர்கள்" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-stage2-1600.webp"><img src="images/lb-stage2-800.webp" alt="தமிழ் கீதை அரங்கேற்றம்" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-award1-1600.webp"><img src="images/lb-award1-800.webp" alt="நினைவுப் பரிசு வழங்குதல்" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-group2-1600.webp"><img src="images/lb-group2-800.webp" alt="வகுப்புக் குழு" loading="lazy"></button>
-      <button class="lbx g-wide rv" data-src="images/lb-stage3-1600.webp"><img src="images/lb-stage3-800.webp" alt="மேடையில் பாடும் மாணவர்கள்" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-award2-1600.webp"><img src="images/lb-award2-800.webp" alt="மாணவருக்குப் பரிசு" loading="lazy"></button>
-      <button class="lbx rv" data-src="images/lb-kolu-1600.webp"><img src="images/lb-kolu-800.webp" alt="மக்கள் மாளிகை நவராத்திரி கொலு" loading="lazy"></button>
-    </div>
-
-    <div class="xpost rv">
-      <button class="lbx" data-src="images/lb-xpost-720.webp"><img src="images/lb-xpost-720.webp" alt="மக்கள் மாளிகை, தமிழ்நாடு X பக்கப் பதிவு" loading="lazy"></button>
-      <div><b>அதிகாரப்பூர்வப் பதிவு</b><span>மக்கள் மாளிகை, தமிழ்நாடு (LOK BHAVAN, TAMIL NADU) அதிகாரப்பூர்வ X பக்கத்தில், நவராத்திரி கொலு மூன்றாம் நாள் நிகழ்வில் "Bharathiya Cultural and Value Education Centre, Tirunelveli District" மாணவர்களின் பகவத் கீதை தமிழ்ப் பாராயணம் குறிப்பிடப்பட்டது.</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="புகைப்படம்"><button class="lbox-x" aria-label="மூடு">✕</button><img alt=""></div>
 
 <!-- CO-CLASSES -->
 <section class="sec co" aria-label="இணை வகுப்புகள்">
@@ -542,34 +554,109 @@ a{color:var(--maroon)}
   </div>
 </section>
 
-<!-- JOIN / CONTACT -->
-<section id="join" class="sec join">
+<!-- INTRO -->
+<section class="sec intro" aria-label="அறிமுகம்">
   <div class="wrap">
-    <p class="eyebrow">சேர்க்கை · தொடர்பு</p>
-    <h2 class="h2">வகுப்பில் இணையுங்கள்</h2>
-    <div class="join-box rv">
-      <div class="join-img"><img src="images/join2-1536.webp" srcset="images/join2-800.webp 800w, images/join2-1536.webp 1536w" sizes="(min-width:900px) 820px, 100vw" alt="மரத்தடியில் வட்டமாக அமர்ந்து கற்கும் மாணவர்கள், ஆசிரியர், பெற்றோர்" loading="lazy"></div>
-      <div class="join-body">
-        <h3>பாரதிய பண்பாட்டு வகுப்பில் சேர</h3>
-        <p>கீழே உள்ள பதிவுப் படிவத்தை நிரப்புங்கள். அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
-        <a class="btn btn-saffron reg-btn" href="register.html">📝 பதிவுப் படிவம் <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="or-line">அல்லது நேரடியாகத் தொடர்பு கொள்ள</p>
-        <div class="cbtns">
-          <a class="cbtn" href="https://wa.me/919487174771?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/></svg>
-            <span><small>P. Venkatraman · தலைமை ஒருங்கிணைப்பாளர்</small>+91 94871 74771</span>
-          </a>
-          <a class="cbtn" href="https://wa.me/919489690577?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/></svg>
-            <span><small>R. S. Rambabu · முழுநேர ஒருங்கிணைப்பாளர்</small>+91 94896 90577</span>
-          </a>
-          <a class="cbtn mail" href="mailto:lahi100000@gmail.com">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <span><small>மின்னஞ்சல்</small>lahi100000@gmail.com</span>
-          </a>
-        </div>
+    <div class="quote-card rv">
+      <p>நாம் கடந்து வந்த பாதையை நினைவுகூர்வது என்பது ஓர் இன்பமான தருணமாகும். அதிலும், அந்தப் பாதையில் வீட்டிற்கும் நாட்டிற்கும் பயனுள்ள செயல்களைச் செய்திருந்தால், அவற்றை நினைத்துப் பார்ப்பது இன்னும் சுவையான தருணமாகும்.</p>
+      <p>அந்த வகையில், நமது பாரதிய பண்பாட்டு வகுப்பின் வெற்றிப் பாதையை உங்களுடன் பகிர்ந்துகொள்ள விரும்புகிறோம்.</p>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><b>20</b><span>வாரப் பயிற்சி</span></div>
+      <div class="stat rv"><b>9</b><span>நிலைகள்</span></div>
+      <div class="stat rv"><b>160</b><span>பட்டம் பெற்ற மாணவர்கள்</span></div>
+      <div class="stat rv"><b>100%</b><span>இலவசம்</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="sec journey">
+  <div class="wrap">
+    <p class="eyebrow">2021 — 2026</p>
+    <h2 class="h2">வெற்றிப் பாதை</h2>
+    <ol class="tl">
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2021</div><h3>10 நாள் இணையவழிப் பண்பாட்டு வகுப்பு</h3><p>கொரோனா ஊரடங்குக் காலத்தில் தொடங்கப்பட்டது. அதிகமான வரவேற்பும் ஆதரவும் கிடைத்தது.</p></li>
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">2021</div><h3>10 வார வகுப்பாக விரிவு</h3><p>கிடைத்த வரவேற்பால் தொடர்ந்து 10 வாரங்கள் நடைபெற்றது.</p></li>
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">15.10.2021 · விஜயதசமி</div><h3>சான்றிதழ் வகுப்பாகத் தொடக்கம்</h3><p>முறையான 20 வாரச் சான்றிதழ் வகுப்பு தொடங்கப்பட்டது.</p></li>
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2023 · திருச்சி</div><h3>முதல் பட்டமளிப்பு விழா</h3><p>பால வித்யாஸ்ரீ பட்டம்</p><span class="chip"><b>60</b> மாணவர்கள்</span><br><a class="tl-link" href="#trichy2023">புகைப்படங்கள் பார்க்க ↓</a></li>
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">11.12.2024</div><h3>தமிழ் கீதை தொடக்கம்</h3><p>இல்லம் தோறும் இனிய கீதை — புதிய பாடத்திட்டம்.</p></li>
+      <li class="rv"><span class="mk" aria-hidden="true"></span><div class="when">மே 2026 · திருச்சி</div><h3>இரண்டாம் பட்டமளிப்பு விழா</h3><p>யுவ வித்யாஸ்ரீ பட்டம்</p><span class="chip"><b>100</b> மாணவர்கள்</span></li>
+      <li class="rv star"><span class="mk" aria-hidden="true"></span><div class="card"><div class="when">13.10.2026 · சென்னை</div><h3>ஆளுநர் மாளிகையில் தமிழ் கீதை அரங்கேற்றம்</h3><p>மக்கள் மாளிகை நவராத்திரி கொலு விழாவில் நமது வகுப்பு மாணவர்கள் தமிழ் கீதையைப் பாடி அரங்கேற்றம் செய்து சாதனை படைத்தனர்.</p><a class="star-link" href="#lokbhavan">புகைப்படங்கள் பார்க்க ↓</a></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- TRICHY 2023 -->
+<section id="trichy2023" class="sec t23">
+  <div class="wrap">
+    <p class="eyebrow">07.05.2023 · திருச்சி</p>
+    <h2 class="h2">முதல் பட்டமளிப்பு விழா</h2>
+    <p class="lead">முதல் மூன்று நிலைகளை நிறைவு செய்த 60 மாணவர்களுக்கு <b>பால வித்யாஸ்ரீ</b> பட்டம் வழங்கப்பட்டது.</p>
+    <div class="gal">
+      <button class="lbx g-wide rv" data-src="images/t23-group1-1280.webp"><img src="images/t23-group1-800.webp" alt="பால வித்யாஸ்ரீ பட்டச் சான்றிதழுடன் மாணவர்கள்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/t23-cert1-1280.webp"><img src="images/t23-cert1-800.webp" alt="சான்றிதழ் பெறும் மாணவி" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/t23-cert2-1280.webp"><img src="images/t23-cert2-800.webp" alt="சான்றிதழ் பெறும் மாணவர்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/t23-group2-1280.webp"><img src="images/t23-group2-800.webp" alt="மாணவர்களும் ஆசிரியர்களும்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/t23-cert3-1280.webp"><img src="images/t23-cert3-800.webp" alt="சான்றிதழ் பெறும் மாணவர்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/t23-cert4-1280.webp"><img src="images/t23-cert4-800.webp" alt="சான்றிதழ் பெறும் மாணவர்" loading="lazy"></button>
+      <button class="lbx g-wide rv" data-src="images/t23-group3-1280.webp"><img src="images/t23-group3-800.webp" alt="பட்டமளிப்பு விழாக் குழுப் படம்" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<!-- LOK BHAVAN GALLERY -->
+<section id="lokbhavan" class="sec lb">
+  <div class="wrap">
+    <p class="eyebrow">13.10.2026 · சென்னை</p>
+    <h2 class="h2">ஆளுநர் மாளிகையில் தமிழ் கீதை</h2>
+    <p class="lead">மக்கள் மாளிகை, தமிழ்நாடு (Lok Bhavan) நவராத்திரி கொலு 2026 விழாவில், நமது வகுப்பு மாணவர்களும் தாய்மார்களும் இணைந்து தமிழ் கீதையைப் பாடினர்.</p>
+
+    <div class="honor rv">
+      <div class="honor-img"><button class="lbx" data-src="images/lb-governor-1600.webp" aria-label="பெரிதாகப் பார்க்க"><img src="images/lb-governor-800.webp" alt="மாண்புமிகு தமிழக ஆளுநர் அவர்களிடமிருந்து நினைவுப் பரிசு பெறும் நமது வகுப்புக் குழு" loading="lazy"></button></div>
+      <div class="honor-body">
+        <span class="honor-tag">🏆 பெருமைமிகு அங்கீகாரம்</span>
+        <h3>மாண்புமிகு தமிழக ஆளுநர் வழங்கிய நினைவுப் பரிசு</h3>
+        <p>நவராத்திரி கொலு விழாவில் தமிழ் கீதை பாடியதைப் பாராட்டி, மாண்புமிகு தமிழக ஆளுநர் திரு. ராஜேந்திர விஸ்வநாத் ஆர்லேகர் அவர்களால் நமது வகுப்பிற்கு நினைவுப் பரிசு வழங்கப்பட்டது.</p>
+        <button class="lbx memento" data-src="images/lb-memento-1200.webp" aria-label="நினைவுப் பரிசைப் பெரிதாகப் பார்க்க"><img src="images/lb-memento-800.webp" alt="ஆளுநர் வழங்கிய நினைவுப் பரிசு" loading="lazy"></button>
       </div>
     </div>
+
+    <div class="gal">
+      <button class="lbx g-wide rv" data-src="images/lb-stage1-1600.webp"><img src="images/lb-stage1-800.webp" alt="மேடையில் தமிழ் கீதை பாடும் மாணவர்கள், தாய்மார்கள்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-group3-1600.webp"><img src="images/lb-group3-800.webp" alt="பாரதியார் மண்டபம் முன் மாணவர்கள்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-stage2-1600.webp"><img src="images/lb-stage2-800.webp" alt="தமிழ் கீதை அரங்கேற்றம்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-award1-1600.webp"><img src="images/lb-award1-800.webp" alt="நினைவுப் பரிசு வழங்குதல்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-group2-1600.webp"><img src="images/lb-group2-800.webp" alt="வகுப்புக் குழு" loading="lazy"></button>
+      <button class="lbx g-wide rv" data-src="images/lb-stage3-1600.webp"><img src="images/lb-stage3-800.webp" alt="மேடையில் பாடும் மாணவர்கள்" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-award2-1600.webp"><img src="images/lb-award2-800.webp" alt="மாணவருக்குப் பரிசு" loading="lazy"></button>
+      <button class="lbx rv" data-src="images/lb-kolu-1600.webp"><img src="images/lb-kolu-800.webp" alt="மக்கள் மாளிகை நவராத்திரி கொலு" loading="lazy"></button>
+    </div>
+
+    <div class="xpost rv">
+      <button class="lbx" data-src="images/lb-xpost-720.webp"><img src="images/lb-xpost-720.webp" alt="மக்கள் மாளிகை, தமிழ்நாடு X பக்கப் பதிவு" loading="lazy"></button>
+      <div><b>அதிகாரப்பூர்வப் பதிவு</b><span>மக்கள் மாளிகை, தமிழ்நாடு (LOK BHAVAN, TAMIL NADU) அதிகாரப்பூர்வ X பக்கத்தில், நவராத்திரி கொலு மூன்றாம் நாள் நிகழ்வில் "Bharathiya Cultural and Value Education Centre, Tirunelveli District" மாணவர்களின் பகவத் கீதை தமிழ்ப் பாராயணம் குறிப்பிடப்பட்டது.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="புகைப்படம்"><button class="lbox-x" aria-label="மூடு">✕</button><img alt=""></div>
+
+<!-- TEACHERS -->
+<section id="teachers" class="sec team">
+  <div class="wrap">
+    <p class="eyebrow">எங்கள் ஆசிரியர்கள்</p>
+    <h2 class="h2">பாரதிய பண்பாட்டு வகுப்பு ஆசிரியர் குழு</h2>
+    <ul class="tc-grid"><li class="tc rv"><span class="tc-av" aria-hidden="true">வ</span><div class="tc-t"><h3>வெங்கட்ராமன்</h3><p>தலைமை ஒருங்கிணைப்பாளர்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ர</span><div class="tc-t"><h3>ராம்பாபு</h3><p>இணை ஒருங்கிணைப்பாளர்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கனிராஜன்</h3><p>ஆலோசகர்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ப</span><div class="tc-t"><h3>பாலசுப்பிரமணியன்</h3><p>கல்வியாளர்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">த</span><div class="tc-t"><h3>தீபப்பிரியா</h3><p>ஒருங்கிணைப்பாளர்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">அ</span><div class="tc-t"><h3>அகிலா</h3><p>சமஸ்கிருத பண்டிதர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>திருச்சி</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கலைச்செல்வி</h3><p>தமிழாசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>திருநெல்வேலி</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ம</span><div class="tc-t"><h3>மல்லிகா</h3><p>சமஸ்கிருத ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>ராஜபாளையம்</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ச</span><div class="tc-t"><h3>சிந்து</h3><p>ஒருங்கிணைப்பாளர் · தமிழ் கீதை ஆசிரியர்கள்</p></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கார்த்திக்</h3><p>வரலாற்று ஆய்வாளர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>குவைத்</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ப</span><div class="tc-t"><h3>பிரவீனா</h3><p>ஸ்லோகம் ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>கோயம்புத்தூர்</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ச</span><div class="tc-t"><h3>R. சுந்தரி</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>சென்னை</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கனகவல்லி</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>நெய்வேலி</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">அ</span><div class="tc-t"><h3>அர்ஜுன் சேதுராம்</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>கோயம்புத்தூர்</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கனிநிகா</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>தேனி</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">க</span><div class="tc-t"><h3>கிருஷ்ணவேணி</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>தர்மபுரி</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ப</span><div class="tc-t"><h3>S. பாவனா</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>சென்னை</span></div></li><li class="tc rv"><span class="tc-av" aria-hidden="true">ஜ</span><div class="tc-t"><h3>ஜெயப்ரதா</h3><p>ஆசிரியர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>மதுரை</span></div></li></ul>
+  </div>
+</section>
+
+<!-- ADVISORY -->
+<section id="advisory" class="sec adv">
+  <div class="wrap">
+    <p class="eyebrow">வழிகாட்டிகள்</p>
+    <h2 class="h2">பாரதிய பண்பாட்டு வகுப்பு மற்றும் தமிழ் கீதை ஆலோசனைக் குழு</h2>
+    <ul class="ad-grid"><li class="ad rv"><h3>R. ராஜேந்திரன் அவர்கள்</h3><p>மூத்த RSS காரியகர்த்தர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>ஓசூர்</span></li><li class="ad rv"><h3>M. முத்துக்குமார சுவாமி</h3><p>மூத்த RSS காரியகர்த்தர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>தூத்துக்குடி</span></li><li class="ad rv"><h3>A. இளங்குமார் சம்பத் அவர்கள்</h3><p>மூத்த RSS காரியகர்த்தர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>திருச்சி</span></li><li class="ad rv"><h3>திருமதி M. சுப்புலட்சுமி</h3><p>வித்யா பாரதி காரியகர்த்தர்</p><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>திருநெல்வேலி</span></li></ul>
   </div>
 </section>
 
@@ -622,6 +709,28 @@ a{color:var(--maroon)}
 document.querySelectorAll('.lbx').forEach(function(x){x.addEventListener('click',function(){im.src=x.dataset.src;im.alt=(x.querySelector('img')||{}).alt||'';b.classList.add('on')})});
 b.addEventListener('click',function(e){if(e.target!==im)b.classList.remove('on')});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('on')});})();
+</script>
+
+<div class="adm" id="adm" role="dialog" aria-modal="true" aria-labelledby="adm-t" hidden>
+  <div class="adm-box">
+    <button class="adm-x" type="button" aria-label="மூடு">✕</button>
+    <img src="images/bcc-logo-160.webp" alt="" width="84" height="84">
+    <p class="adm-tag">🪔 புதிய வகுப்பு சேர்க்கை</p>
+    <h2 id="adm-t">பாரதிய பண்பாட்டு வகுப்பில் சேருங்கள்</h2>
+    <p class="adm-sub">20 வாரச் சான்றிதழ் வகுப்பு · ஒன்பது நிலைகள் · <b>முற்றிலும் இலவசம்</b></p>
+    <a class="btn btn-saffron adm-go" href="register.html">📝 இப்போதே பதிவு செய்ய</a>
+    <a class="adm-wa" href="https://wa.me/919489690577?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">அல்லது WhatsApp-இல் கேட்க</a>
+    <button class="adm-later" type="button">பிறகு பார்க்கிறேன்</button>
+  </div>
+</div>
+<script>
+(function(){var m=document.getElementById('adm');if(!m)return;var seen=false;try{seen=sessionStorage.getItem('adm-seen')==='1'}catch(e){}
+function close(){m.hidden=true;document.body.style.overflow='';try{sessionStorage.setItem('adm-seen','1')}catch(e){}}
+if(!seen)setTimeout(function(){m.hidden=false;document.body.style.overflow='hidden'},1200);
+m.querySelector('.adm-x').onclick=close;m.querySelector('.adm-later').onclick=close;
+m.addEventListener('click',function(e){if(e.target===m)close()});
+m.querySelector('.adm-go').addEventListener('click',function(){try{sessionStorage.setItem('adm-seen','1')}catch(e){}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});})();
 </script>
 </body>
 </html>

@@ -71,6 +71,15 @@ img{max-width:100%;display:block}
 @media (max-width:640px){.wa-fab{width:56px;padding:0;justify-content:center}.wa-fab .wa-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 /* team */
 .team{background:#FFFDF5}
+.adv{background:linear-gradient(180deg,#FBF4E2,#FFFDF5)}
+.ad-grid{list-style:none;margin:40px auto 0;padding:0;max-width:960px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.ad{padding:22px 20px;border-radius:20px;background:#172554;border:1px solid rgba(212,160,23,.55);text-align:center;box-shadow:0 20px 40px -28px rgba(23,37,84,.7)}
+.ad h3{margin:0;font-family:'Noto Serif Tamil',serif;font-weight:700;font-size:clamp(17px,4.4vw,19px);line-height:1.5;color:#FFF6DD}
+.ad-r{margin:6px 0 0;font-weight:600;font-size:15px;color:#E9C766}
+.ad-l{margin:4px 0 0;display:inline-flex;align-items:center;gap:4px;font-size:14px;color:rgba(253,243,215,.8)}
+@media (min-width:640px){.ad-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.nav-cta{display:inline-flex !important;min-height:38px;padding:6px 12px;font-size:13px}.nav .brand > span{display:none}.nav .brand img{flex:none;min-width:40px}.lang button{min-width:38px;padding:0 9px}}
+
 .tm-chief{max-width:640px;margin:44px auto 0;display:flex;align-items:center;gap:20px;padding:24px 22px;border-radius:22px;background:#172554;color:#FDF3D7;border:1px solid rgba(212,160,23,.5);box-shadow:0 24px 48px -30px rgba(23,37,84,.6)}
 .tm-chief .tm-n{color:#FFF6DD;font-size:clamp(21px,5vw,26px)}
 .tm-chief .tm-d{color:rgba(253,243,215,.85)}
@@ -474,7 +483,7 @@ html{scroll-behavior:auto}
 <button type="button" class="on" aria-pressed="true" data-lang="ta" lang="ta">தமிழ்</button>
 <button type="button" aria-pressed="false" data-lang="en" lang="en">EN</button>
 </div>
-<a class="btn btn-gold nav-cta" href="#join"><span class="ta">இணைந்திடுங்கள்</span><span class="en" lang="en">Join Us</span></a>
+<a class="btn btn-gold nav-cta" href="register.html"><span class="ta">இணைந்திடுங்கள்</span><span class="en" lang="en">Join Us</span></a>
 </div>
 </div>
 </header>
@@ -735,6 +744,11 @@ html{scroll-behavior:auto}
 <span class="chip"><b>108</b> <span class="ta">தமிழ் கீதை பாடல்கள்</span><span class="en" lang="en">Tamil Geethai songs</span></span>
 </div>
 </li>
+<li class="st rv">
+<span class="mk" aria-hidden="true"></span>
+<div class="when"><span class="ta">பள்ளிகளில் தமிழ் கீதை</span><span class="en" lang="en">In Schools</span></div>
+<h3><span class="ta">வியாசா வித்யாலயா</span><span class="en" lang="en">Vyasa Vidyalaya</span></h3>
+</li>
 <li class="st future rv">
 <span class="mk" aria-hidden="true"></span>
 <div class="when"><span class="ta">அடுத்து</span><span class="en" lang="en">Next</span></div>
@@ -769,7 +783,7 @@ html{scroll-behavior:auto}
 <span class="tm-av" aria-hidden="true">R</span>
 <div class="tm-t">
 <h3 class="tm-n">R. S. Rambabu</h3>
-<p class="tm-r"><span class="ta">முழுநேர ஒருங்கிணைப்பாளர்</span><span class="en" lang="en">Full-time Coordinator</span></p>
+<p class="tm-r"><span class="ta">இணை ஒருங்கிணைப்பாளர்</span><span class="en" lang="en">Joint Coordinator</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">திருநெல்வேலி</span><span class="en" lang="en">Tirunelveli</span></p>
 </div>
 </li>
@@ -795,7 +809,7 @@ html{scroll-behavior:auto}
 <span class="tm-av" aria-hidden="true">S</span>
 <div class="tm-t">
 <h3 class="tm-n">S. Sindhu</h3>
-<p class="tm-r"><span class="ta">ஆசிரியர்கள் ஒருங்கிணைப்பாளர்</span><span class="en" lang="en">Teachers Coordinator</span></p>
+<p class="tm-r"><span class="ta">ஒருங்கிணைப்பாளர்</span><span class="en" lang="en">Coordinator</span></p>
 <p class="tm-d"><span class="ta">தமிழ் கீதை ஆசிரியர்கள்</span><span class="en" lang="en">Tamil Geethai Teachers</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">சென்னை</span><span class="en" lang="en">Chennai</span></p>
 </div>
@@ -805,7 +819,7 @@ html{scroll-behavior:auto}
 <div class="tm-t">
 <h3 class="tm-n">A. Balasubramanian</h3>
 <p class="tm-r"><span class="ta">கல்வியாளர்</span><span class="en" lang="en">Educator</span></p>
-<p class="tm-d"><span class="ta">இந்து அறநெறி வகுப்பு</span><span class="en" lang="en">Hindu Value Class</span></p>
+<p class="tm-d"><span class="ta">பாரதிய பண்பாட்டு வகுப்பு</span><span class="en" lang="en">Bharathiya Cultural Class</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">சென்னை</span><span class="en" lang="en">Chennai</span></p>
 </div>
 </li>
@@ -813,7 +827,8 @@ html{scroll-behavior:auto}
 <span class="tm-av" aria-hidden="true">K</span>
 <div class="tm-t">
 <h3 class="tm-n">R. Kalai Selvi</h3>
-<p class="tm-r"><span class="ta">தமிழ் ஆசிரியர்</span><span class="en" lang="en">Tamil Teacher</span></p>
+<p class="tm-r"><span class="ta">தமிழாசிரியர்</span><span class="en" lang="en">Tamil Teacher</span></p>
+<p class="tm-d"><span class="ta">பாரதிய பண்பாட்டு வகுப்பு</span><span class="en" lang="en">Bharathiya Cultural Class</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">திருநெல்வேலி</span><span class="en" lang="en">Tirunelveli</span></p>
 </div>
 </li>
@@ -821,7 +836,8 @@ html{scroll-behavior:auto}
 <span class="tm-av" aria-hidden="true">K</span>
 <div class="tm-t">
 <h3 class="tm-n">L. Karthik</h3>
-<p class="tm-r"><span class="ta">கல்வியாளர் · ஆலோசகர்</span><span class="en" lang="en">Educator & Advisor</span></p>
+<p class="tm-r"><span class="ta">வரலாற்று ஆய்வாளர்</span><span class="en" lang="en">Historical Researcher</span></p>
+<p class="tm-d"><span class="ta">பாரதிய பண்பாட்டு வகுப்பு</span><span class="en" lang="en">Bharathiya Cultural Class</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">குவைத்</span><span class="en" lang="en">Kuwait</span></p>
 </div>
 </li>
@@ -830,9 +846,25 @@ html{scroll-behavior:auto}
 <div class="tm-t">
 <h3 class="tm-n">S. Akila</h3>
 <p class="tm-r"><span class="ta">சமஸ்கிருத பண்டிதர்</span><span class="en" lang="en">Sanskrit Pandit</span></p>
+<p class="tm-d"><span class="ta">பாரதிய பண்பாட்டு வகுப்பு</span><span class="en" lang="en">Bharathiya Cultural Class</span></p>
 <p class="tm-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">திருச்சி</span><span class="en" lang="en">Trichy</span></p>
 </div>
 </li>
+</ul>
+</div>
+</section>
+
+<section id="advisory" class="sec adv">
+<div class="wrap">
+<div class="rv">
+<p class="eyebrow"><span class="ta">வழிகாட்டிகள்</span><span class="en" lang="en">Our Guides</span></p>
+<h2 class="h2"><span class="ta">பாரதிய பண்பாட்டு வகுப்பு மற்றும் தமிழ் கீதை ஆலோசனைக் குழு</span><span class="en" lang="en">Bharathiya Cultural Class &amp; Tamil Geethai Advisory Committee</span></h2>
+</div>
+<ul class="ad-grid">
+<li class="ad rv"><h3><span class="ta">R. ராஜேந்திரன் அவர்கள்</span><span class="en" lang="en">R. Rajendran</span></h3><p class="ad-r"><span class="ta">மூத்த RSS காரியகர்த்தர்</span><span class="en" lang="en">Senior RSS Karyakarta</span></p><p class="ad-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">ஓசூர்</span><span class="en" lang="en">Hosur</span></p></li>
+<li class="ad rv"><h3><span class="ta">M. முத்துக்குமார சுவாமி</span><span class="en" lang="en">M. Muthukumara Swamy</span></h3><p class="ad-r"><span class="ta">மூத்த RSS காரியகர்த்தர்</span><span class="en" lang="en">Senior RSS Karyakarta</span></p><p class="ad-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">தூத்துக்குடி</span><span class="en" lang="en">Thoothukudi</span></p></li>
+<li class="ad rv"><h3><span class="ta">A. இளங்குமார் சம்பத் அவர்கள்</span><span class="en" lang="en">A. Ilangumar Sampath</span></h3><p class="ad-r"><span class="ta">மூத்த RSS காரியகர்த்தர்</span><span class="en" lang="en">Senior RSS Karyakarta</span></p><p class="ad-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">திருச்சி</span><span class="en" lang="en">Trichy</span></p></li>
+<li class="ad rv"><h3><span class="ta">திருமதி M. சுப்புலட்சுமி</span><span class="en" lang="en">Smt. M. Subbulakshmi</span></h3><p class="ad-r"><span class="ta">வித்யா பாரதி காரியகர்த்தர்</span><span class="en" lang="en">Vidya Bharati Karyakarta</span></p><p class="ad-l"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg><span class="ta">திருநெல்வேலி</span><span class="en" lang="en">Tirunelveli</span></p></li>
 </ul>
 </div>
 </section>
