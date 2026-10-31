@@ -392,11 +392,8 @@ a{color:var(--maroon)}
 .jbar-t b{display:block;font-size:14.5px;font-weight:700;color:#FFE7B8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .jbar-t small{display:block;font-size:13px;color:#F4B740;font-weight:600}
 .jbar-go{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:8px 18px;border-radius:999px;background:linear-gradient(180deg,#EE7A1E,#D9640F);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(217,100,15,.9)}
-.jfab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:55;width:58px;height:58px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;background:linear-gradient(180deg,#EE7A1E,#D9640F);color:#fff;text-decoration:none;font-weight:700;font-size:12px;line-height:1.1;box-shadow:0 12px 28px -10px rgba(0,0,0,.5),0 0 0 3px rgba(255,253,245,.9);transition:bottom .35s ease}
-.jfab span:first-child{font-size:19px}
 body.jbar-up .wa-fab{bottom:calc(84px + env(safe-area-inset-bottom));transition:bottom .35s ease}
-body.jbar-up .jfab{bottom:calc(152px + env(safe-area-inset-bottom))}
-body.jbar-up{padding-bottom:72px}
+body.jbar-up body.jbar-up{padding-bottom:72px}
 /* admission popup */
 .adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .adm[hidden]{display:none}
@@ -731,11 +728,10 @@ body.jbar-up{padding-bottom:72px}
 
 <div class="jbar" id="jbar" role="region" aria-label="வகுப்பு சேர்க்கை">
   <div class="jbar-in">
-    <div class="jbar-t"><b>🪔 Level 1 · 9th batch சேர்க்கை</b><small id="jbar-cd">கடைசி நாள் 15.11.2026</small></div>
+    <div class="jbar-t"><b>🪔 Level 1 · 9th batch</b><small id="jbar-cd">கடைசி நாள் 15.11.2026</small></div>
     <a class="jbar-go" href="register.html">பதிவு செய்ய</a>
   </div>
 </div>
-<a class="jfab" href="register.html" aria-label="வகுப்பில் சேர பதிவு செய்ய"><span>📝</span><span>சேர</span></a>
 <a class="wa-fab" href="https://wa.me/919489690577" target="_blank" rel="noopener" aria-label="WhatsApp: +91 94896 90577"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8c-1-.4-2.3-1.7-2.7-2.7l.8-1-1-2z"/></svg></a>
 
 <script>
@@ -779,7 +775,7 @@ var DL=Date.UTC(2026,10,15,18,29,59);
 if(DL&&cd){var now=Date.now(),days=Math.ceil((DL-now)/864e5);
  if(now>DL){cd.textContent='சேர்க்கை நிறைவடைந்தது · அடுத்த batch பற்றி கேளுங்கள்';}
  else if(days<=1){cd.textContent='இன்றே கடைசி நாள்!';}
- else{cd.textContent='கடைசி நாள் 15.11 · இன்னும் '+days+' நாள்';}}
+ else{cd.textContent='இன்னும் '+days+' நாள் · 15.11.2026';}}
 var hv=true,jv=false;
 function upd(){var on=!hv&&!jv;bar.classList.toggle('on',on);document.body.classList.toggle('jbar-up',on)}
 if('IntersectionObserver' in window){
