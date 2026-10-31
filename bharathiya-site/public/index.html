@@ -221,6 +221,11 @@ a{color:var(--maroon)}
 .join-body{padding:26px 22px;display:flex;flex-direction:column;gap:14px}
 .join-body h3{margin:0;font-family:'Noto Serif Tamil',serif;font-size:clamp(20px,5vw,24px);color:var(--maroon);text-align:center}
 .join-body > p{margin:0;text-align:center;font-size:15.5px;line-height:1.8;color:#4a3426}
+.join-body .jn-sub{margin:-8px 0 0;color:var(--muted);font-size:15px}
+.jn-tag{align-self:center;padding:5px 14px;border-radius:999px;background:var(--maroon);color:#FFE7B8;font-weight:700;font-size:14px}
+.join-body .jn-msg{font-family:'Noto Serif Tamil',serif;font-weight:700;font-size:16.5px;line-height:1.65;color:#3b2619}
+.join-body .jn-last{align-self:stretch;max-width:420px;margin:0 auto;width:100%;padding:10px 12px;border-radius:14px;background:var(--cream);border:1.5px dashed var(--saffron);font-size:14.5px;font-weight:600;color:var(--maroon)}
+.jn-last b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.1;color:var(--saffron)}
 .cbtns{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:10px;margin-top:6px}
 .cbtn{display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 18px;border-radius:16px;text-decoration:none;background:#1FAF5A;color:#fff;box-shadow:0 10px 24px -14px rgba(0,0,0,.5);transition:transform .3s ease,background .3s ease}
 .cbtn:hover{color:#fff;background:#179a4d;transform:translateY(-2px)}
@@ -438,8 +443,11 @@ body{background:#4E1108}
     <div class="join-box rv">
       <div class="join-img"><img src="images/join2-1536.webp" srcset="images/join2-800.webp 800w, images/join2-1536.webp 1536w" sizes="(min-width:900px) 820px, 100vw" alt="மரத்தடியில் வட்டமாக அமர்ந்து கற்கும் மாணவர்கள், ஆசிரியர், பெற்றோர்" loading="lazy"></div>
       <div class="join-body">
-        <h3>பாரதிய பண்பாட்டு வகுப்பில் சேர</h3>
-        <p>கீழே உள்ள பதிவுப் படிவத்தை நிரப்புங்கள். அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
+        <h3>பாரதிய பண்பாட்டு வகுப்பு</h3>
+        <p class="jn-sub">(ஆன்லைன் சான்றிதழ் வகுப்பு)</p>
+        <span class="jn-tag">Level 1 · 9th batch</span>
+        <p class="jn-msg">மாணவர் சேர்க்கை இப்போது நடைபெற்றுக் கொண்டிருக்கிறது.</p>
+        <p class="jn-last">வகுப்பில் சேர கடைசி நாள்<b>15.11.2026</b></p>
         <a class="btn btn-saffron reg-btn" href="register.html">📝 பதிவுப் படிவம் <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <p class="or-line">அல்லது நேரடியாகத் தொடர்பு கொள்ள</p>
         <div class="cbtns">
