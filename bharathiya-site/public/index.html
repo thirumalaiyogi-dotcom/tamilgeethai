@@ -383,6 +383,20 @@ a{color:var(--maroon)}
 .vc-box video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
 .vc figcaption{margin-top:6px;font-size:13.5px;font-weight:600;color:var(--maroon);text-align:center;line-height:1.5}
 @media (min-width:900px){.vgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.vc.vw{grid-column:span 2}}
+
+/* sticky join bar + floating join button */
+.jbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(90,20,11,.97),rgba(62,12,5,.99));border-top:1px solid rgba(244,183,64,.45);box-shadow:0 -14px 30px -18px rgba(0,0,0,.7);transform:translateY(110%);transition:transform .35s ease}
+.jbar.on{transform:none}
+.jbar-in{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.jbar-t{flex:1;min-width:0;color:#FFF3DF;line-height:1.35}
+.jbar-t b{display:block;font-size:14.5px;font-weight:700;color:#FFE7B8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jbar-t small{display:block;font-size:13px;color:#F4B740;font-weight:600}
+.jbar-go{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:8px 18px;border-radius:999px;background:linear-gradient(180deg,#EE7A1E,#D9640F);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(217,100,15,.9)}
+.jfab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:55;width:58px;height:58px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;background:linear-gradient(180deg,#EE7A1E,#D9640F);color:#fff;text-decoration:none;font-weight:700;font-size:12px;line-height:1.1;box-shadow:0 12px 28px -10px rgba(0,0,0,.5),0 0 0 3px rgba(255,253,245,.9);transition:bottom .35s ease}
+.jfab span:first-child{font-size:19px}
+body.jbar-up .wa-fab{bottom:calc(84px + env(safe-area-inset-bottom));transition:bottom .35s ease}
+body.jbar-up .jfab{bottom:calc(152px + env(safe-area-inset-bottom))}
+body.jbar-up{padding-bottom:72px}
 /* admission popup */
 .adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .adm[hidden]{display:none}
@@ -715,6 +729,13 @@ a{color:var(--maroon)}
   </div>
 </footer>
 
+<div class="jbar" id="jbar" role="region" aria-label="வகுப்பு சேர்க்கை">
+  <div class="jbar-in">
+    <div class="jbar-t"><b>🪔 Level 1 · 9th batch சேர்க்கை</b><small id="jbar-cd">கடைசி நாள் 15.11.2026</small></div>
+    <a class="jbar-go" href="register.html">பதிவு செய்ய</a>
+  </div>
+</div>
+<a class="jfab" href="register.html" aria-label="வகுப்பில் சேர பதிவு செய்ய"><span>📝</span><span>சேர</span></a>
 <a class="wa-fab" href="https://wa.me/919489690577" target="_blank" rel="noopener" aria-label="WhatsApp: +91 94896 90577"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8c-1-.4-2.3-1.7-2.7-2.7l.8-1-1-2z"/></svg></a>
 
 <script>
@@ -751,6 +772,19 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
 (function(){var v=document.querySelector('.promo-v'),b=document.querySelector('.promo-snd');if(!v||!b)return;
 b.onclick=function(){v.muted=false;v.currentTime=0;v.play();b.hidden=true};
 v.addEventListener('volumechange',function(){if(!v.muted)b.hidden=true});})();
+</script>
+<script>
+(function(){var bar=document.getElementById('jbar');if(!bar)return;var hero=document.querySelector('.hero'),join=document.getElementById('join'),cd=document.getElementById('jbar-cd');
+var DL=Date.UTC(2026,10,15,18,29,59);
+if(DL&&cd){var now=Date.now(),days=Math.ceil((DL-now)/864e5);
+ if(now>DL){cd.textContent='சேர்க்கை நிறைவடைந்தது · அடுத்த batch பற்றி கேளுங்கள்';}
+ else if(days<=1){cd.textContent='இன்றே கடைசி நாள்!';}
+ else{cd.textContent='கடைசி நாள் 15.11 · இன்னும் '+days+' நாள்';}}
+var hv=true,jv=false;
+function upd(){var on=!hv&&!jv;bar.classList.toggle('on',on);document.body.classList.toggle('jbar-up',on)}
+if('IntersectionObserver' in window){
+ new IntersectionObserver(function(e){hv=e[0].isIntersecting;upd()},{threshold:0}).observe(hero);
+}else{hv=false;upd()}})();
 </script>
 </body>
 </html>
