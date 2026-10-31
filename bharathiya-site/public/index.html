@@ -80,10 +80,11 @@ a{color:var(--maroon)}
 .door:hover{transform:translateY(-4px);color:#fff;box-shadow:0 36px 70px -30px rgba(0,0,0,.7)}
 .door > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .door:hover > img{transform:scale(1.04)}
-.door-class::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(90,20,11,.05) 20%,rgba(70,15,8,.92) 78%)}
+.door-class{background:radial-gradient(90% 70% at 50% 20%,#A33A1C 0%,var(--maroon) 55%,#4A0F07 100%);justify-content:space-between}
+.door-class h2{color:#FFE7B8}
 .door-tg{background:radial-gradient(90% 70% at 50% 20%,#24357a 0%,var(--navy) 55%,#0d1538 100%)}
 .door-tg{justify-content:space-between}
-.door-tg .tg-logo{position:relative;display:block;margin:28px auto 0;width:132px;height:132px;flex:none;border-radius:50%;box-shadow:0 0 0 6px rgba(244,214,138,.18),0 20px 40px -16px rgba(0,0,0,.6)}
+.door-class .tg-logo,.door-tg .tg-logo{position:relative;display:block;margin:28px auto 0;width:132px;height:132px;flex:none;border-radius:50%;box-shadow:0 0 0 6px rgba(244,214,138,.18),0 20px 40px -16px rgba(0,0,0,.6)}
 .door-body{position:relative;z-index:1;padding:24px 22px 24px}
 .door-tag{display:inline-block;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:10px}
 .door-class .door-tag{background:var(--saffron);color:#fff}
@@ -271,7 +272,7 @@ a{color:var(--maroon)}
   .hero{padding:80px 0 90px}
   .doors{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:52px}
   .door,.door-tg{min-height:440px}
-  .door-tg .tg-logo{width:170px;height:170px;margin-top:40px}
+  .door-class .tg-logo,.door-tg .tg-logo{width:170px;height:170px;margin-top:40px}
   .door-body{padding:30px 30px 30px}
   .split{grid-template-columns:repeat(2,minmax(0,1fr));gap:60px}
   .tiers{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -408,7 +409,7 @@ body{background:#4E1108}
     </div>
     <div class="doors">
       <a class="door door-class" href="#class">
-        <img src="images/lb-group-1600.webp" srcset="images/lb-group-800.webp 800w, images/lb-group-1600.webp 1600w" sizes="(min-width:900px) 560px, 100vw" alt="சென்னை மக்கள் மாளிகை பாரதியார் மண்டபம் முன் நமது வகுப்பு மாணவர்கள், ஆசிரியர்கள், பெற்றோர்" fetchpriority="high" style="object-position:50% 30%">
+        <img class="tg-logo" src="images/bcc-logo-512.webp" alt="பாரதிய பண்பாட்டு வகுப்பு லோகோ" width="170" height="170">
         <div class="door-body">
           <span class="door-tag">வகுப்பு</span>
           <h2>பாரதிய பண்பாட்டு வகுப்பு</h2>
