@@ -356,11 +356,14 @@ body{background:#4E1108}
 @keyframes admIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
 .adm-box img{width:84px;height:84px;border-radius:50%;margin:0 auto;display:block;box-shadow:0 0 0 3px rgba(201,154,46,.5)}
 .adm-x{position:absolute;top:10px;right:10px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(122,31,18,.08);color:var(--maroon);font-size:18px;cursor:pointer}
-.adm-tag{display:inline-block;margin:14px 0 0;padding:5px 14px;border-radius:999px;background:var(--maroon);color:#FFE7B8;font-weight:700;font-size:14px}
+.adm-tag{display:inline-block;margin:12px 0 0;padding:5px 14px;border-radius:999px;background:var(--maroon);color:#FFE7B8;font-weight:700;font-size:14px}
 .adm-box h2{margin:12px 0 0;font-family:'Noto Serif Tamil',serif;font-weight:800;font-size:clamp(21px,5.6vw,25px);line-height:1.45;color:var(--maroon)}
 .adm-sub{margin:8px 0 0;font-size:15.5px;line-height:1.7;color:#4a3426}
 .adm-sub b{color:var(--saffron)}
 .adm-go{width:100%;margin-top:18px;font-size:17.5px}
+.adm-msg{margin:12px 0 0;font-family:'Noto Serif Tamil',serif;font-weight:700;font-size:16.5px;line-height:1.65;color:#3b2619}
+.adm-last{margin:12px 0 0;padding:10px 12px;border-radius:14px;background:#fff;border:1.5px dashed var(--saffron);font-size:14.5px;font-weight:600;color:var(--maroon)}
+.adm-last b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.1;color:var(--saffron)}
 .adm-wa{display:inline-block;margin-top:12px;color:#178a47;font-weight:700;font-size:15px}
 .adm-later{display:block;margin:6px auto 0;min-height:40px;border:0;background:none;color:var(--muted);font:inherit;font-size:14px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}}
@@ -401,7 +404,7 @@ body{background:#4E1108}
       <img class="hero-logo" src="images/bcc-logo-512.webp" alt="Bharathiya Cultural and Value Education Centre, Tirunelveli — லோகோ" width="150" height="150" fetchpriority="high">
       <span class="hero-label">🪔 2021 முதல் · இலவசச் சான்றிதழ் வகுப்பு</span>
       <h1>பாரதிய பண்பாட்டு வகுப்பு</h1>
-      <p class="hero-sub">வீட்டிற்கும் நாட்டிற்கும் பயனுள்ள பண்பாட்டுக் கல்விப் பயணம் — வித்யா பாரதி பாடத்திட்டத்தில், ஒன்பது நிலைகளில்.</p>
+      <p class="hero-sub">வளரும் மாணவர்களுக்கு பயனுள்ள ஹிந்து கலாச்சாரம் மற்றும் பண்பாட்டுக் கல்வி திட்டம்</p>
     </div>
     <div class="doors">
       <a class="door door-class" href="#class">
@@ -729,9 +732,11 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.
   <div class="adm-box">
     <button class="adm-x" type="button" aria-label="மூடு">✕</button>
     <img src="images/bcc-logo-160.webp" alt="" width="84" height="84">
-    <p class="adm-tag">🪔 புதிய வகுப்பு சேர்க்கை</p>
-    <h2 id="adm-t">பாரதிய பண்பாட்டு வகுப்பில் சேருங்கள்</h2>
-    <p class="adm-sub">20 வாரச் சான்றிதழ் வகுப்பு · ஒன்பது நிலைகள் · <b>முற்றிலும் இலவசம்</b></p>
+    <h2 id="adm-t">பாரதிய பண்பாட்டு வகுப்பு</h2>
+    <p class="adm-sub">(ஆன்லைன் சான்றிதழ் வகுப்பு)</p>
+    <p class="adm-tag">Level 1 · 9th batch</p>
+    <p class="adm-msg">மாணவர் சேர்க்கை இப்போது நடைபெற்றுக் கொண்டிருக்கிறது.</p>
+    <p class="adm-last">வகுப்பில் சேர கடைசி நாள்<b>15.11.2026</b></p>
     <a class="btn btn-saffron adm-go" href="register.html">📝 இப்போதே பதிவு செய்ய</a>
     <a class="adm-wa" href="https://wa.me/919489690577?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%9A%E0%AF%87%E0%AE%B0%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">அல்லது WhatsApp-இல் கேட்க</a>
     <button class="adm-later" type="button">பிறகு பார்க்கிறேன்</button>
