@@ -71,6 +71,33 @@ img{max-width:100%;display:block}
 @media (max-width:640px){.wa-fab{width:56px;padding:0;justify-content:center}.wa-fab .wa-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 /* team */
 .team{background:#FFFDF5}
+.lb{background:linear-gradient(180deg,#FBF4E2,#FFFDF5)}
+.lbx{display:block;padding:0;border:0;background:none;cursor:zoom-in;border-radius:18px;overflow:hidden;width:100%}
+.lbx img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.lbx:hover img{transform:scale(1.04)}
+.honor{display:grid;grid-template-columns:1fr;gap:0;margin:40px auto 0;max-width:1000px;background:#fff;border:1px solid rgba(212,160,23,.45);border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(122,31,18,.55)}
+.honor-img .lbx{border-radius:0;aspect-ratio:3/2}
+.honor-body{padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.honor-tag{align-self:flex-start;background:#FDE7C7;color:#9A3412;font-weight:700;font-size:13.5px;padding:4px 12px;border-radius:999px}
+.honor-body h3{margin:0;font-family:'Noto Serif Tamil',serif;color:#7F1D1D;font-size:clamp(20px,4.6vw,24px);line-height:1.5}
+.honor-body p{margin:0;line-height:1.9;color:#4a3426;font-size:15.5px}
+.honor-body .memento{max-width:300px;aspect-ratio:3/2;border:1px solid rgba(212,160,23,.45);background:#fff}
+.honor-body .memento img{object-fit:contain}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
+.gal .lbx{aspect-ratio:4/3}
+.gal .g-wide{grid-column:1 / -1;aspect-ratio:16/7}
+.xpost{display:flex;gap:16px;align-items:center;max-width:820px;margin:26px auto 0;background:#fff;border:1px solid rgba(212,160,23,.45);border-radius:20px;padding:14px}
+.xpost .lbx{width:110px;flex:none;aspect-ratio:1;border-radius:12px}
+.xpost .lbx img{object-position:top}
+.xpost b{display:block;color:#7F1D1D;font-family:'Noto Serif Tamil',serif;margin-bottom:4px}
+.xpost span{font-size:14.5px;line-height:1.8;color:#4a3426}
+.lbox{position:fixed;inset:0;z-index:80;background:rgba(20,10,6,.92);display:none;align-items:center;justify-content:center;padding:16px}
+.lbox.on{display:flex}
+.lbox img{max-width:100%;max-height:88vh;border-radius:12px}
+.lbox-x{position:absolute;top:14px;right:14px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer}
+@media (min-width:640px){.gal{grid-template-columns:repeat(3,minmax(0,1fr))}.gal .g-wide{grid-column:span 2;aspect-ratio:auto}}
+@media (min-width:900px){.honor{grid-template-columns:1.15fr 1fr}.honor-img .lbx{height:100%;aspect-ratio:auto}.honor-body{padding:32px}}
+.gal{margin-top:22px}
 .adv{background:linear-gradient(180deg,#FBF4E2,#FFFDF5)}
 .ad-grid{list-style:none;margin:40px auto 0;padding:0;max-width:960px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .ad{padding:22px 20px;border-radius:20px;background:#172554;border:1px solid rgba(212,160,23,.55);text-align:center;box-shadow:0 20px 40px -28px rgba(23,37,84,.7)}
@@ -744,6 +771,12 @@ html{scroll-behavior:auto}
 <span class="chip"><b>108</b> <span class="ta">தமிழ் கீதை பாடல்கள்</span><span class="en" lang="en">Tamil Geethai songs</span></span>
 </div>
 </li>
+<li class="st rv">
+<span class="mk" aria-hidden="true"></span>
+<div class="when"><span class="ta">13 அக்டோபர் 2026</span><span class="en" lang="en">13 October 2026</span></div>
+<h3><span class="ta">ஆளுநர் மாளிகையில் அரங்கேற்றம்</span><span class="en" lang="en">Performance at Lok Bhavan</span></h3>
+<p><span class="ta">மக்கள் மாளிகை, சென்னை · <a href="#lokbhavan">புகைப்படங்கள் ↓</a></span><span class="en" lang="en">Lok Bhavan, Chennai · <a href="#lokbhavan">Photos ↓</a></span></p>
+</li>
 <li class="st future rv">
 <span class="mk" aria-hidden="true"></span>
 <div class="when"><span class="ta">அடுத்து</span><span class="en" lang="en">Next</span></div>
@@ -757,6 +790,42 @@ html{scroll-behavior:auto}
 </div>
 </div>
 </section>
+
+<section id="lokbhavan" class="sec lb">
+<div class="wrap">
+<div class="rv">
+<p class="eyebrow"><span class="ta">13.10.2026 · சென்னை</span><span class="en" lang="en">13.10.2026 · Chennai</span></p>
+<h2 class="h2"><span class="ta">ஆளுநர் மாளிகையில் தமிழ் கீதை அரங்கேற்றம்</span><span class="en" lang="en">Tamil Geethai at Lok Bhavan</span></h2>
+<p class="lead"><span class="ta">மக்கள் மாளிகை, தமிழ்நாடு (Lok Bhavan) நவராத்திரி கொலு 2026 விழாவில், மாணவர்களும் தாய்மார்களும் இணைந்து தமிழ் கீதையைப் பாடி அரங்கேற்றம் செய்தனர்.</span><span class="en" lang="en">At the Navaratri Kolu 2026 celebrations at Lok Bhavan, Tamil Nadu, students and mothers together performed Tamil Geethai.</span></p>
+</div>
+<div class="honor rv">
+<div class="honor-img"><button class="lbx rv" type="button" data-src="images/lb-governor-1600.webp"><img src="images/lb-governor-800.webp" alt="மாண்புமிகு தமிழக ஆளுநர் அவர்களிடமிருந்து நினைவுப் பரிசு பெறும் குழு" loading="lazy"></button></div>
+<div class="honor-body">
+<span class="honor-tag"><span class="ta">🏆 பெருமைமிகு அங்கீகாரம்</span><span class="en" lang="en">🏆 A Proud Recognition</span></span>
+<h3><span class="ta">மாண்புமிகு தமிழக ஆளுநர் வழங்கிய நினைவுப் பரிசு</span><span class="en" lang="en">Memento from the Hon'ble Governor of Tamil Nadu</span></h3>
+<p><span class="ta">நவராத்திரி கொலு விழாவில் தமிழ் கீதை பாடியதைப் பாராட்டி, மாண்புமிகு தமிழக ஆளுநர் திரு. ராஜேந்திர விஸ்வநாத் ஆர்லேகர் அவர்களால் நினைவுப் பரிசு வழங்கப்பட்டது.</span><span class="en" lang="en">In appreciation of the Tamil Geethai performance at the Navaratri Kolu, a memento was presented by the Hon'ble Governor of Tamil Nadu, Thiru. Rajendra Vishwanath Arlekar.</span></p>
+<button class="lbx memento" type="button" data-src="images/lb-memento-1200.webp"><img src="images/lb-memento-800.webp" alt="நினைவுப் பரிசு" loading="lazy"></button>
+</div>
+</div>
+<div class="gal">
+<button class="lbx g-wide rv" type="button" data-src="images/lb-stage1-1600.webp"><img src="images/lb-stage1-800.webp" alt="மேடையில் தமிழ் கீதை பாடும் மாணவர்கள், தாய்மார்கள்" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-group3-1600.webp"><img src="images/lb-group3-800.webp" alt="பாரதியார் மண்டபம் முன் மாணவர்கள்" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-stage2-1600.webp"><img src="images/lb-stage2-800.webp" alt="தமிழ் கீதை அரங்கேற்றம்" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-award1-1600.webp"><img src="images/lb-award1-800.webp" alt="நினைவுப் பரிசு வழங்குதல்" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-group2-1600.webp"><img src="images/lb-group2-800.webp" alt="குழுப் படம்" loading="lazy"></button>
+<button class="lbx g-wide rv" type="button" data-src="images/lb-stage3-1600.webp"><img src="images/lb-stage3-800.webp" alt="மேடையில் பாடும் மாணவர்கள்" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-award2-1600.webp"><img src="images/lb-award2-800.webp" alt="மாணவருக்குப் பரிசு" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-kolu-1600.webp"><img src="images/lb-kolu-800.webp" alt="மக்கள் மாளிகை நவராத்திரி கொலு" loading="lazy"></button>
+<button class="lbx rv" type="button" data-src="images/lb-group-1600.webp"><img src="images/lb-group-800.webp" alt="பாரதியார் மண்டபம் முன் குழு" loading="lazy"></button>
+</div>
+<div class="xpost rv">
+<button class="lbx" type="button" data-src="images/lb-xpost-720.webp"><img src="images/lb-xpost-720.webp" alt="மக்கள் மாளிகை X பதிவு" loading="lazy"></button>
+<div><b><span class="ta">அதிகாரப்பூர்வப் பதிவு</span><span class="en" lang="en">Official Post</span></b><span><span class="ta">மக்கள் மாளிகை, தமிழ்நாடு அதிகாரப்பூர்வ X பக்கத்தில், நவராத்திரி கொலு மூன்றாம் நாள் நிகழ்வில் Bharathiya Cultural and Value Education Centre, Tirunelveli மாணவர்களின் பகவத் கீதை தமிழ்ப் பாராயணம் குறிப்பிடப்பட்டது.</span><span class="en" lang="en">The official X page of Lok Bhavan, Tamil Nadu mentioned the Bhagavad Gita recitation in Tamil by students of Bharathiya Cultural and Value Education Centre, Tirunelveli on Day 3 of the Navaratri Kolu.</span></span></div>
+</div>
+</div>
+</section>
+
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Photo"><button class="lbox-x" type="button" aria-label="Close">✕</button><img alt=""></div>
 
 <section id="team" class="sec team">
 <div class="wrap">
@@ -1117,6 +1186,12 @@ html{scroll-behavior:auto}
       .then(function(){ btn.disabled = false; });
   });
 })();
+</script>
+<script>
+(function(){var b=document.getElementById('lbox');if(!b)return;var im=b.querySelector('img');
+document.querySelectorAll('.lbx').forEach(function(x){x.addEventListener('click',function(){im.src=x.dataset.src;b.classList.add('on')})});
+b.addEventListener('click',function(e){if(e.target!==im)b.classList.remove('on')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')b.classList.remove('on')});})();
 </script>
 </body>
 </html>
