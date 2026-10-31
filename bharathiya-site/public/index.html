@@ -380,6 +380,13 @@ body{background:#4E1108}
 .hero-grid .door p{display:none}
 .hero-grid .door-go{margin-top:8px;min-height:38px;padding:6px 14px;font-size:14px}
 @media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:32px;max-width:980px;margin:48px auto 0}.promo{max-width:none}.hero-grid .door p{display:block;font-size:14px}.admit{padding:26px 24px}.admit h2{font-size:26px}}
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:32px}
+.vc{margin:0;min-width:0}
+.vc.vw{grid-column:1/-1}
+.vc-box{border-radius:16px;overflow:hidden;background:#000;border:1.5px solid rgba(244,183,64,.45);box-shadow:0 20px 40px -24px rgba(0,0,0,.7)}
+.vc-box video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.vc figcaption{margin-top:6px;font-size:13.5px;font-weight:600;color:rgba(255,243,223,.85);text-align:center;line-height:1.5}
+@media (min-width:900px){.vgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.vc.vw{grid-column:span 2}}
 /* admission popup */
 .adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .adm[hidden]{display:none}
@@ -618,13 +625,20 @@ body{background:#4E1108}
   </div>
 </section>
 
-<!-- VIDEO 2026 -->
+<!-- GRADUATION 2026 -->
 <section id="video2026" class="sec vid26">
   <div class="wrap">
-    <p class="eyebrow">2026</p>
-    <h2 class="h2">வகுப்பு நிகழ்வுக் காணொளி</h2>
-    <p class="lead">நமது மாணவர்கள் ஆசிரியர்களுடன் இணைந்து பங்கேற்ற நிகழ்வின் காணொளி (10 நிமிடம்).</p>
-    <div class="vbox rv"><video controls playsinline preload="none" poster="images/class-2026-poster.webp" src="videos/class-2026.mp4"></video></div>
+    <p class="eyebrow">2026 · திருச்சி</p>
+    <h2 class="h2">இரண்டாம் பட்டமளிப்பு விழா</h2>
+    <p class="lead">நான்காம் முதல் ஆறாம் நிலை வரை நிறைவு செய்த மாணவர்களுக்கு <b>யுவ வித்யாஸ்ரீ</b> பட்டம் வழங்கப்பட்டது. விழாக் காணொளிகள்:</p>
+    <div class="vgrid">
+      <figure class="vc vw rv"><div class="vc-box" style="aspect-ratio:848/480"><video controls playsinline preload="none" poster="images/g26-1-poster.webp" src="videos/g26-1.mp4"></video></div><figcaption>விழா மேடையில் கௌரவிப்பு</figcaption></figure>
+      <figure class="vc vw rv"><div class="vc-box" style="aspect-ratio:848/480"><video controls playsinline preload="none" poster="images/g26-2-poster.webp" src="videos/g26-2.mp4"></video></div><figcaption>மாணவர்களுக்குச் சான்றிதழ் வழங்குதல்</figcaption></figure>
+      <figure class="vc rv"><div class="vc-box" style="aspect-ratio:472/856"><video controls playsinline preload="none" poster="images/g26-3-poster.webp" src="videos/g26-3.mp4"></video></div><figcaption>பட்டமளிப்பு நிகழ்வு</figcaption></figure>
+      <figure class="vc rv"><div class="vc-box" style="aspect-ratio:472/856"><video controls playsinline preload="none" poster="images/g26-4-poster.webp" src="videos/g26-4.mp4"></video></div><figcaption>மேடையில் மாணவர்கள்</figcaption></figure>
+      <figure class="vc rv"><div class="vc-box" style="aspect-ratio:360/640"><video controls playsinline preload="none" poster="images/g26-5-poster.webp" src="videos/g26-5.mp4"></video></div><figcaption>விழா அரங்கம்</figcaption></figure>
+      <figure class="vc rv"><div class="vc-box" style="aspect-ratio:472/856"><video controls playsinline preload="none" poster="images/class-2026-poster.webp" src="videos/class-2026.mp4"></video></div><figcaption>மாணவர்களின் குழு விளையாட்டு</figcaption></figure>
+    </div>
   </div>
 </section>
 
