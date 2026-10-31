@@ -356,6 +356,30 @@ body{background:#4E1108}
 .vid26 .h2{color:#FFE7B8}.vid26 .eyebrow{color:var(--saffron-l)}.vid26 .lead{color:rgba(255,243,223,.88)}
 .vbox{margin:32px auto 0;width:min(100%,380px);aspect-ratio:472/856;border-radius:20px;overflow:hidden;border:2px solid rgba(244,183,64,.5);background:#000;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
 .vbox video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+
+/* hero: promo video + compact doors */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:36px;align-items:start}
+.promo{position:relative;width:100%;max-width:420px;margin:0 auto;border-radius:24px;overflow:hidden;border:2px solid rgba(244,183,64,.6);box-shadow:0 30px 60px -24px rgba(0,0,0,.7);background:#000;aspect-ratio:478/850}
+.promo-v{width:100%;height:100%;display:block;object-fit:cover}
+.promo-snd{position:absolute;left:50%;top:14px;transform:translateX(-50%);min-height:40px;padding:6px 16px;border-radius:999px;border:0;background:rgba(122,31,18,.92);color:#FFE7B8;font:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.6)}
+.promo-snd[hidden]{display:none}
+.hero-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.admit{padding:20px 18px;border-radius:22px;background:linear-gradient(180deg,#FFF8EC,#FBEFD9);border:2px solid var(--saffron-l);text-align:center;color:var(--ink)}
+.admit-tag{display:inline-block;padding:4px 14px;border-radius:999px;background:var(--maroon);color:#FFE7B8;font-weight:700;font-size:13.5px}
+.admit h2{margin:10px 0 0;font-family:'Noto Serif Tamil',serif;font-weight:800;font-size:22px;color:var(--maroon)}
+.admit p{margin:6px 0 0;font-size:15.5px;line-height:1.65;color:#3b2619;font-weight:600}
+.admit .admit-last{color:var(--maroon)}
+.admit-last b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.1;color:var(--saffron)}
+.admit-go{width:100%;margin-top:12px}
+.hero-grid .doors{margin-top:0;grid-template-columns:minmax(0,1fr) !important;gap:12px}
+.hero-grid .door{min-height:0 !important;flex-direction:row;align-items:center;gap:14px;padding:14px;border-radius:18px;justify-content:flex-start}
+.hero-grid .door .tg-logo{width:68px !important;height:68px !important;margin:0 !important;box-shadow:0 0 0 3px rgba(244,214,138,.25)}
+.hero-grid .door-body{padding:0 !important;min-width:0}
+.hero-grid .door-tag{display:none}
+.hero-grid .door h2{font-size:18px}
+.hero-grid .door p{display:none}
+.hero-grid .door-go{margin-top:8px;min-height:38px;padding:6px 14px;font-size:14px}
+@media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:32px;max-width:980px;margin:48px auto 0}.promo{max-width:none}.hero-grid .door p{display:block;font-size:14px}.admit{padding:26px 24px}.admit h2{font-size:26px}}
 /* admission popup */
 .adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .adm[hidden]{display:none}
@@ -413,7 +437,20 @@ body{background:#4E1108}
       <h1>பாரதிய பண்பாட்டு வகுப்பு</h1>
       <p class="hero-sub">வளரும் மாணவர்களுக்கு பயனுள்ள ஹிந்து கலாச்சாரம் மற்றும் பண்பாட்டுக் கல்வி திட்டம்</p>
     </div>
-    <div class="doors">
+    <div class="hero-grid">
+      <div class="promo">
+        <video class="promo-v" src="videos/admission-2026.mp4" poster="images/admission-2026-poster.webp" autoplay muted loop playsinline controls preload="metadata"></video>
+        <button class="promo-snd" type="button" aria-label="ஒலியுடன் பார்க்க">🔊 ஒலியுடன் பார்க்க</button>
+      </div>
+      <div class="hero-side">
+        <div class="admit">
+          <span class="admit-tag">புதிய வகுப்பு சேர்க்கை</span>
+          <h2>Level 1 · 9th batch</h2>
+          <p>மாணவர் சேர்க்கை இப்போது நடைபெற்றுக் கொண்டிருக்கிறது.</p>
+          <p class="admit-last">வகுப்பில் சேர கடைசி நாள் <b>15.11.2026</b></p>
+          <a class="btn btn-saffron admit-go" href="register.html">📝 இப்போதே பதிவு செய்ய</a>
+        </div>
+        <div class="doors">
       <a class="door door-class" href="#class">
         <img class="tg-logo" src="images/bcc-logo-512.webp?v=2" alt="பாரதிய பண்பாட்டு வகுப்பு லோகோ" width="170" height="170">
         <div class="door-body">
@@ -432,6 +469,8 @@ body{background:#4E1108}
           <span class="door-go">தமிழ் கீதைக்குச் செல்ல <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
       </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -735,6 +774,11 @@ m.querySelector('.adm-x').onclick=close;m.querySelector('.adm-later').onclick=cl
 m.addEventListener('click',function(e){if(e.target===m)close()});
 m.querySelector('.adm-go').addEventListener('click',function(){try{sessionStorage.setItem('adm-seen','1')}catch(e){}});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});})();
+</script>
+<script>
+(function(){var v=document.querySelector('.promo-v'),b=document.querySelector('.promo-snd');if(!v||!b)return;
+b.onclick=function(){v.muted=false;v.currentTime=0;v.play();b.hidden=true};
+v.addEventListener('volumechange',function(){if(!v.muted)b.hidden=true});})();
 </script>
 </body>
 </html>
