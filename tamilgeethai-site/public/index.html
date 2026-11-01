@@ -66,6 +66,25 @@ img{max-width:100%;display:block}
 .wa-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 14px;border-radius:999px;background:#1FAF5A;color:#fff;text-decoration:none;font-weight:600;font-size:15.5px;box-shadow:0 12px 28px -10px rgba(0,0,0,.45),0 0 0 3px rgba(255,253,245,.9);transition:transform .3s ease,background .3s ease}
 .wa-fab:hover{color:#fff;background:#179a4d;transform:translateY(-2px)}
 .wa-fab svg{flex:none}
+.degrees{background:linear-gradient(180deg,#172554,#0d1538);color:#FDF3D7}
+.degrees .h2{color:#F7DF9A}.degrees .eyebrow{color:#E9C766}
+.dg-grid{list-style:none;margin:40px auto 0;padding:0;max-width:1000px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.dg{position:relative;padding:22px 20px 22px 86px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(212,160,23,.5);min-width:0}
+.dg-n{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:28px;color:#1a1a2e;background:linear-gradient(180deg,#F4D68A,#D4A017)}
+.dg3 .dg-n{background:linear-gradient(180deg,#FFF6DD,#E9C766);box-shadow:0 0 0 4px rgba(244,214,138,.3)}
+.dg-l{margin:0;font-size:13.5px;font-weight:700;color:#E9C766;letter-spacing:.02em}
+.dg h3{margin:4px 0 0;font-family:'Noto Serif Tamil',serif;font-weight:800;font-size:clamp(19px,5vw,23px);line-height:1.45;color:#FFF6DD}
+.dg-s{margin:4px 0 0;font-size:15px;color:rgba(253,243,215,.85)}
+.dg-feat{list-style:none;margin:28px auto 0;padding:0;max-width:760px;display:grid;gap:10px}
+.dg-feat li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.7;color:rgba(253,243,215,.92)}
+.dg-feat svg{flex:none;margin-top:4px;color:#E9C766}
+.dg-fee{margin:28px auto 0;max-width:340px;padding:16px 20px;border-radius:20px;text-align:center;background:linear-gradient(180deg,#FFF6DD,#F4D68A);color:#7F1D1D}
+.dg-fee span{display:block;font-family:'Noto Serif Tamil',serif;font-weight:700;font-size:16px}
+.dg-fee b{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1.1}
+.dg-fee small{margin-left:6px;font-weight:700;font-size:15px}
+.dg-cta{text-align:center;margin-top:22px}
+@media (min-width:860px){.dg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.dg{padding:28px 22px;text-align:center}.dg-n{position:static;transform:none;margin:0 auto 12px}}
+
 /* sticky join bar + floating join button */
 .jbar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(23,37,84,.97),rgba(11,18,51,.99));border-top:1px solid rgba(244,183,64,.45);box-shadow:0 -14px 30px -18px rgba(0,0,0,.7);transform:translateY(110%);transition:transform .35s ease}
 .jbar.on{transform:none}
@@ -655,6 +674,23 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
+<section id="degrees" class="sec degrees">
+<div class="wrap">
+<div class="rv">
+<p class="eyebrow"><span class="ta">பட்டப் படிப்பு</span><span class="en" lang="en">Certificate Course</span></p>
+<h2 class="h2"><span class="ta">தமிழ் கீதை — மூன்று நிலை பட்டப் படிப்பு</span><span class="en" lang="en">Tamil Geethai — A Three-Level Course</span></h2>
+</div>
+<ol class="dg-grid"><li class="dg dg1 rv"><span class="dg-n">1</span><p class="dg-l"><span class="ta">முதல் நிலை பட்டம்</span><span class="en" lang="en">Level 1</span></p><h3><span class="ta">தமிழ் கீதை ஆர்வலர்</span><span class="en" lang="en">Tamil Geethai Aarvalar</span></h3><p class="dg-s"><span class="ta">1 முதல் 50 பாடல்கள்</span><span class="en" lang="en">Songs 1 to 50</span></p></li><li class="dg dg2 rv"><span class="dg-n">2</span><p class="dg-l"><span class="ta">இரண்டாம் நிலை பட்டம்</span><span class="en" lang="en">Level 2</span></p><h3><span class="ta">தமிழ் கீதை செம்மல்</span><span class="en" lang="en">Tamil Geethai Semmal</span></h3><p class="dg-s"><span class="ta">1 முதல் 100 பாடல்கள்</span><span class="en" lang="en">Songs 1 to 100</span></p></li><li class="dg dg3 rv"><span class="dg-n">3</span><p class="dg-l"><span class="ta">மூன்றாம் நிலை பட்டம்</span><span class="en" lang="en">Level 3</span></p><h3><span class="ta">தமிழ் கீதை ஆச்சார்யா</span><span class="en" lang="en">Tamil Geethai Acharya</span></h3><p class="dg-s"><span class="ta">1 முதல் 150 பாடல்கள்</span><span class="en" lang="en">Songs 1 to 150</span></p></li></ol>
+<ul class="dg-feat rv">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ta">முழுவதும் முன்பதிவு செய்யப்பட்ட (pre-recorded) பாடங்கள்</span><span class="en" lang="en">Fully pre-recorded course</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ta">உங்களுக்கு வசதியான நேரத்தில் படித்துக் கற்கலாம்</span><span class="en" lang="en">Read and learn at your convenient time</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="ta">பட்டச் சான்றிதழுக்கு இணையவழித் தேர்வு நடத்தப்படும்</span><span class="en" lang="en">An online exam is conducted for the graduation certificate</span></li>
+</ul>
+<div class="dg-fee rv"><span><span class="ta">குரு தட்சிணை</span><span class="en" lang="en">Guru Dakshina</span></span><b>₹200</b><small><span class="ta">மட்டும்</span><span class="en" lang="en">only</span></small></div>
+<div class="dg-cta rv"><a class="btn btn-gold" href="register.html"><span class="ta">பதிவு செய்ய</span><span class="en" lang="en">Register now</span></a></div>
+</div>
+</section>
+
 <section id="listen" class="sec listen">
 <div class="wrap">
 <div class="rv">
@@ -1134,7 +1170,7 @@ html{scroll-behavior:auto}
 
 <div class="jbar" id="jbar" role="region" aria-label="Join">
 <div class="jbar-in">
-<div class="jbar-t"><b><span class="ta">🪷 தமிழ் கீதை வகுப்பு</span><span class="en" lang="en">🪷 Tamil Geethai class</span></b><small><span class="ta">இலவசமாக இணையுங்கள்</span><span class="en" lang="en">Sweet Geethai in every home</span></small></div>
+<div class="jbar-t"><b><span class="ta">🪷 தமிழ் கீதை வகுப்பு</span><span class="en" lang="en">🪷 Tamil Geethai class</span></b><small><span class="ta">குரு தட்சிணை ₹200 மட்டும்</span><span class="en" lang="en">Guru Dakshina ₹200 only</span></small></div>
 <a class="jbar-go" href="register.html"><span class="ta">பதிவு செய்ய</span><span class="en" lang="en">Register</span></a>
 </div>
 </div>
