@@ -74,6 +74,7 @@ button,input,select,textarea{font:inherit}
 .fu label{font-size:13px;font-weight:600;color:var(--muted);display:block;margin-bottom:4px}
 .fu select,.fu input,.fu textarea{width:100%;min-height:44px;padding:8px 12px;border:1.5px solid var(--line);border-radius:12px;background:#FFFDF8;font-size:15px}
 .fu textarea{min-height:70px;resize:vertical}
+.del{min-height:44px;border:1.5px solid #FCA5A5;border-radius:999px;background:#FEF2F2;color:#B91C1C;font-weight:700;cursor:pointer}
 .save{min-height:44px;border:0;border-radius:999px;background:var(--maroon);color:#fff;font-weight:700;cursor:pointer}
 .shot{display:inline-block;margin-top:10px;color:var(--navy);font-weight:700;font-size:14px}
 .empty{text-align:center;color:var(--muted);padding:40px 10px}
@@ -215,12 +216,21 @@ button,input,select,textarea{font:inherit}
       '<div class="fu"><div><label>நிலை</label><select data-f="status">'+Object.keys(STATUS).map(function(k){return '<option value="'+k+'"'+(k===r.status?' selected':'')+'>'+STATUS[k]+'</option>'}).join('')+'</select></div>'+
       '<div><label>மீண்டும் அழைக்க</label><input type="date" data-f="followup_date" value="'+esc(r.followup_date||'')+'"></div>'+
       '<div class="full"><label>குறிப்பு</label><textarea data-f="followup_note">'+esc(r.followup_note||'')+'</textarea></div>'+
-      '<button class="save full" type="button" data-save="'+r.id+'">சேமி</button></div></div></article>';
+      '<button class="save full" type="button" data-save="'+r.id+'">சேமி</button>'+
+      '<button class="del full" type="button" data-del="'+r.id+'">🗑 இந்தப் பதிவை நீக்கு</button></div></div></article>';
   }
 
   $('list').addEventListener('click', async function(e){
     var o=e.target.closest('[data-open]'); if(o){ $('det-'+o.dataset.open).classList.toggle('hide'); return; }
     var sh=e.target.closest('[data-shot]'); if(sh){ e.preventDefault(); var w=window.open('','_blank'); var r=await sb.storage.from('payments').createSignedUrl(sh.dataset.shot,600); if(r.error){ if(w)w.close(); toast('Screenshot திறக்க முடியவில்லை'); return;} if(w) w.location=r.data.signedUrl; else location.href=r.data.signedUrl; return; }
+    var dl=e.target.closest('[data-del]'); if(dl){
+      var did=+dl.dataset.del, row=rows.filter(function(x){return x.id===did})[0];
+      if(!confirm('"'+(row?row.name:'')+'" பதிவை நிரந்தரமாக நீக்கவா? இதைத் திரும்பப் பெற முடியாது.')) return;
+      dl.disabled=true; var dr=await sb.from('registrations').delete().eq('id',did).select('id');
+      dl.disabled=false;
+      if(dr.error||!dr.data||!dr.data.length){ toast('நீக்க முடியவில்லை'); return; }
+      rows=rows.filter(function(x){return x.id!==did}); toast('நீக்கப்பட்டது ✓'); render(); return;
+    }
     var sv=e.target.closest('[data-save]'); if(sv){
       var id=+sv.dataset.save, box=$('det-'+id), patch={updated_at:new Date().toISOString()};
       box.querySelectorAll('[data-f]').forEach(function(f){ patch[f.dataset.f] = f.value===''?null:f.value; });
