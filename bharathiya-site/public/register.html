@@ -275,7 +275,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
   function idle(){btn.disabled=false;st.textContent=PAY_ON?'பதிவு செய்து ₹'+PAY_AMT+' செலுத்த':'பதிவு செய்'}
   function payUi(){document.querySelector('.fee-on').hidden=!PAY_ON;document.querySelector('.fee-off').hidden=PAY_ON;idle()}
   payUi();
-  fetch('/api/pay/config').then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled&&(c.mode==='production'||payTest);if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
+  fetch('/api/pay/config').then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled;if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
   function record(d){
     var jobs=[saveDb(d)];
     if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));

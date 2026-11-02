@@ -820,7 +820,7 @@
   }
   applyPayUi();
   fetch('/api/pay/config').then(function(r){ return r.json(); }).then(function(c){
-    PAY_ON = !!c.enabled && (c.mode === 'production' || payTest);
+    PAY_ON = !!c.enabled;
     applyPayUi();
   }).catch(function(){});
   function setBtn(t, dis){ submitBtn.textContent = t; submitBtn.disabled = !!dis; }
