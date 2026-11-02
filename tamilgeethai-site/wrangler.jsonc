@@ -10,8 +10,8 @@
     ]
   },
   "vars": {
-    "CF_APP_ID": "TEST11276567e52f1465aef5b0c0881676567211",
-    "CF_ENV": "sandbox",
+    "CF_APP_ID": "145409773864e6696cb56744b897904541",
+    "CF_ENV": "production",
     "PAY_AMOUNT": "200",
     "PAY_NOTE": "Tamil Geethai Guru Dakshina",
     "ORDER_PREFIX": "TG"

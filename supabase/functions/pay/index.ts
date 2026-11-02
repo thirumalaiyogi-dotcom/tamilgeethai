@@ -1,7 +1,7 @@
 // Supabase Edge Function "pay" — Cashfree payment for both sites
 // Secret needed (Supabase → Edge Functions → Secrets): CF_SECRET
-const APP_ID = "TEST11276567e52f1465aef5b0c0881676567211";
-const MODE = "sandbox"; // change to "production" when live keys are set
+const APP_ID = "145409773864e6696cb56744b897904541";
+const MODE = "production";
 const SITES: Record<string, { amount: number; prefix: string; note: string; ret: string }> = {
   bcc: { amount: 250, prefix: "BCC", note: "Bharathiya Cultural Class fee", ret: "https://bharathiyaculturalclass-tamilgeethai.com/register.html" },
   tg: { amount: 200, prefix: "TG", note: "Tamil Geethai Guru Dakshina", ret: "https://tamilgeethai.com/register.html" },
