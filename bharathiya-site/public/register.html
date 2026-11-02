@@ -186,7 +186,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
       <div class="fee-amt">₹250 <small>மட்டும்</small></div>
       <p class="fee-t">பாரதிய பண்பாட்டு வகுப்புக் கட்டணம்</p>
       <p class="fee-on">பதிவு செய்ததும் <b>UPI / Card / Net Banking</b> மூலம் online-ஆகச் செலுத்தலாம். 🔒 Cashfree பாதுகாப்பான payment.</p>
-      <p class="fee-off">கட்டணம் செலுத்தும் விவரம் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
+      <p class="fee-off">கட்டணம் செலுத்திய பின்பே உங்கள் சேர்க்கை உறுதி செய்யப்படும்.</p>
     </div>
 
     <button class="submit" type="submit"><span class="spin" aria-hidden="true"></span><span class="st">பதிவு செய்</span></button>
@@ -281,7 +281,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
     if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
     return Promise.all(jobs);
   }
-  function showDone(title,msg,showWa){
+  function showDone(title,msg,showWa,warn){
+    var tk=document.querySelector('.tick');if(tk)tk.style.background=warn?'#D9640F':'';
     document.getElementById('dt').textContent=title;
     document.getElementById('dmsg').textContent=msg;
     document.getElementById('dwa').classList.toggle('hide',!showWa);
@@ -293,13 +294,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
     if(!validate())return;
     var d=data(),link=waText(d);
     document.getElementById('dwa').href=link;
+    document.getElementById('dwa').textContent='WhatsApp-இல் தொடர்பு கொள்ள';
     btn.disabled=true;
     if(!PAY_ON){
       st.textContent='அனுப்புகிறது…';
-      d.payment='₹'+PAY_AMT+' — நிலுவை';
+      d.payment='❌ செலுத்தவில்லை — அனுமதி நிலுவை';
       record(d).then(function(){
-        form.reset();prevBox.classList.add('hide');
-        showDone('பதிவு வெற்றி! 🙏','உங்கள் பதிவு பெறப்பட்டது. ₹'+PAY_AMT+' கட்டணம் செலுத்துவது பற்றியும் அடுத்த தொகுப்பு பற்றியும் WhatsApp மூலம் தெரிவிக்கப்படும்.',false);
+        prevBox.classList.add('hide');
+        showDone('கட்டணம் நிலுவையில் உள்ளது','உங்கள் விவரங்கள் பெறப்பட்டன. ஆனால் ₹'+PAY_AMT+' கட்டணம் செலுத்திய பின்பே சேர்க்கை உறுதி செய்யப்படும். கட்டணம் செலுத்த கீழே உள்ள பட்டன் மூலம் WhatsApp-இல் தொடர்பு கொள்ளவும்.',true,true);
       }).catch(fail).finally(idle);
       return;
     }

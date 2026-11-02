@@ -55,6 +55,8 @@ button,input,select,textarea{font:inherit}
 .src.tamilgeethai{background:#DCE3F7;color:var(--navy)}
 .st{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
 .st-new{background:#FFF1C2;color:#8A5A00}
+.pay-ok{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#DCFCE7;color:#166534;white-space:nowrap}
+.pay-no{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#FEE2E2;color:#991B1B;white-space:nowrap}
 .st-contacted{background:#DBEAFE;color:#1E40AF}
 .st-joined{background:#DCFCE7;color:#166534}
 .st-not_interested{background:#F3F4F6;color:#4B5563}
@@ -193,6 +195,7 @@ button,input,select,textarea{font:inherit}
     var lm=$('loadMore'); if(lm) lm.onclick=function(){shown+=40;render()};
   }
 
+  function payB(r){return String((r.details||{}).payment||'').indexOf('செலுத்தப்பட்டது')>-1?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
   function card(r){
     var d = r.details||{}, wa = '91'+r.whatsapp;
     var msg = r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
@@ -202,7 +205,7 @@ button,input,select,textarea{font:inherit}
       '<div class="card-h"><div class="who"><div class="nm">'+esc(r.name)+'</div>'+
       '<div class="meta">'+esc(r.whatsapp)+' · '+esc([r.town,r.district].filter(Boolean).join(', '))+'</div>'+
       '<div class="meta">'+fmt(r.created_at)+(r.followup_date?' · <span class="'+(due?'due':'')+'">அழைக்க: '+esc(r.followup_date)+'</span>':'')+'</div></div>'+
-      '<div style="text-align:right;display:flex;flex-direction:column;gap:6px;align-items:flex-end"><span class="src '+r.source+'">'+SRC[r.source]+'</span><span class="st st-'+r.status+'">'+STATUS[r.status]+'</span></div></div>'+
+      '<div style="text-align:right;display:flex;flex-direction:column;gap:6px;align-items:flex-end"><span class="src '+r.source+'">'+SRC[r.source]+'</span>'+payB(r)+'<span class="st st-'+r.status+'">'+STATUS[r.status]+'</span></div></div>'+
       (r.followup_note?'<div class="meta" style="margin-top:8px;color:var(--ink)">📝 '+esc(r.followup_note)+'</div>':'')+
       '<div class="acts"><a class="act wa" href="https://wa.me/'+wa+'?text='+encodeURIComponent(msg)+'" target="_blank" rel="noopener">WhatsApp</a>'+
       '<a class="act call" href="tel:+'+wa+'">📞 அழைக்க</a>'+

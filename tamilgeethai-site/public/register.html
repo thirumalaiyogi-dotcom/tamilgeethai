@@ -533,7 +533,7 @@
       </div>
       <div class="pay-info pay-off" hidden>
         <div class="pay-amt">₹200 <small>மட்டும்</small></div>
-        <p>செலுத்தியிருந்தால், Payment Screenshot-ஐ <b>9489690577</b> என்ற WhatsApp எண்ணிற்கு அனுப்பவும்.</p>
+        <p>₹200 குரு தட்சிணை செலுத்திய பின்பே உங்கள் சேர்க்கை உறுதி செய்யப்படும். செலுத்தியிருந்தால் Payment Screenshot-ஐ <b>9489690577</b> WhatsApp எண்ணிற்கு அனுப்பவும்.</p>
       </div>
     </div>
 
@@ -795,10 +795,10 @@
     submitBtn.textContent = 'பதிவு செய்யப்படுகிறது...';
 
     if (!PAY_ON) {
-      formData.payment = '₹200 — WhatsApp screenshot மூலம்';
+      formData.payment = '❌ செலுத்தவில்லை — அனுமதி நிலுவை';
       setBtn('பதிவு செய்யப்படுகிறது…', true);
       recordRegistration(formData).then(function(res){
-        if (res[0].status==='fulfilled' || res[1].status==='fulfilled') { document.getElementById('okMsg').textContent='உங்கள் பதிவு வெற்றிகரமாகப் பெறப்பட்டது. ₹200 செலுத்திய screenshot-ஐ 9489690577 WhatsApp எண்ணிற்கு அனுப்பவும்.'; document.getElementById('successModal').classList.add('show'); }
+        if (res[0].status==='fulfilled' || res[1].status==='fulfilled') { document.getElementById('okMsg').textContent='உங்கள் விவரங்கள் பெறப்பட்டன. ₹200 குரு தட்சிணை செலுத்தி, screenshot-ஐ 9489690577 WhatsApp எண்ணிற்கு அனுப்பிய பின்பே சேர்க்கை உறுதி செய்யப்படும்.'; document.querySelector('#successModal h3').textContent='கட்டணம் நிலுவையில் உள்ளது'; document.getElementById('successModal').classList.add('show'); }
         else { resetBtn(); alert('இணைய இணைப்பில் சிக்கல் ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.'); }
       });
       return;
