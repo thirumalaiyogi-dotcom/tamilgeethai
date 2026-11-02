@@ -196,7 +196,7 @@ button,input,select,textarea{font:inherit}
     var lm=$('loadMore'); if(lm) lm.onclick=function(){shown+=40;render()};
   }
 
-  function payB(r){return String((r.details||{}).payment||'').indexOf('செலுத்தப்பட்டது')>-1?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
+  function payB(r){return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
   function card(r){
     var d = r.details||{}, wa = '91'+r.whatsapp;
     var msg = r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';

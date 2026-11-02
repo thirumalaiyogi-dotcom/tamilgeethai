@@ -835,7 +835,7 @@
   }
   function startPayment(formData){
     setBtn('Payment பக்கம் திறக்கிறது…', true);
-    payFn({action:'create', name: formData.name, phone: formData.whatsapp})
+    payFn({action:'create', name: formData.name, phone: formData.whatsapp, reg: formData})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw d; return d; }); })
       .then(function(d){
         formData.order_id = d.order_id;
@@ -877,9 +877,9 @@
             pending.payment = 'Online ₹' + (d.amount || 200) + ' செலுத்தப்பட்டது ✓';
             pending.cf_order_id = d.cf_order_id;
             pending.paidAt = new Date().toISOString();
-            recordRegistration(pending).then(function(){
-              try { localStorage.removeItem(PENDING_KEY); } catch(e){}
-            });
+            // Saved & marked paid on the server; only the Google Sheet copy is sent from here.
+            fetch(GOOGLE_SHEET_WEB_APP_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(pending)}).catch(function(){});
+            try { localStorage.removeItem(PENDING_KEY); } catch(e){}
           }
           history.replaceState(null, '', 'register.html');
           document.getElementById('successModal').classList.add('show');

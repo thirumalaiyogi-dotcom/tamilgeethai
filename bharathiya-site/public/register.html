@@ -307,7 +307,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
       return;
     }
     st.textContent='Payment பக்கம் திறக்கிறது…';
-    payFn({action:'create',name:d.name,phone:d.whatsapp})
+    payFn({action:'create',name:d.name,phone:d.whatsapp,reg:d})
       .then(function(r){return r.json().then(function(x){if(!r.ok)throw x;return x})})
       .then(function(x){
         d.order_id=x.order_id;
@@ -323,8 +323,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
     payFn({action:'status',order_id:oid}).then(function(r){return r.json()}).then(function(x){
       if(x.status==='PAID'){
         if(pending&&pending.order_id===oid){
-          pending.payment='Online ₹'+(x.amount||PAY_AMT)+' செலுத்தப்பட்டது ✓';pending.cf_order_id=x.cf_order_id;
-          record(pending).then(function(){try{localStorage.removeItem(PENDING)}catch(e){}});
+          try{localStorage.removeItem(PENDING)}catch(e){}
         }
         history.replaceState(null,'','register.html');
         showDone('பதிவு வெற்றி! 🙏','உங்கள் ₹'+(x.amount||PAY_AMT)+' கட்டணம் பெறப்பட்டது; பதிவு நிறைவடைந்தது. வகுப்பு விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.',false);
