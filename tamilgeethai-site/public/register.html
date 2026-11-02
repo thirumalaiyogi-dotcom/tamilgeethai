@@ -819,7 +819,8 @@
     if (!isSubmitting) setBtn(PAY_ON ? '🪷 பதிவு செய்து ₹200 செலுத்த' : '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்', false);
   }
   applyPayUi();
-  fetch('/api/pay/config').then(function(r){ return r.json(); }).then(function(c){
+  function payFn(body){body.site='tg';return fetch('https://ytwundlllclnevjogunn.supabase.co/functions/v1/pay',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg'},body:JSON.stringify(body)})}
+  payFn({action:'config'}).then(function(r){ return r.json(); }).then(function(c){
     PAY_ON = !!c.enabled;
     applyPayUi();
   }).catch(function(){});
@@ -834,7 +835,7 @@
   }
   function startPayment(formData){
     setBtn('Payment பக்கம் திறக்கிறது…', true);
-    fetch('/api/pay/create', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name: formData.name, phone: formData.whatsapp})})
+    payFn({action:'create', name: formData.name, phone: formData.whatsapp})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw d; return d; }); })
       .then(function(d){
         formData.order_id = d.order_id;
@@ -867,7 +868,7 @@
     var pending = null;
     try { pending = JSON.parse(localStorage.getItem(PENDING_KEY) || 'null'); } catch(e){}
     showPayMsg('Payment சரிபார்க்கப்படுகிறது…', 'சில வினாடிகள் காத்திருக்கவும்.', true);
-    fetch('/api/pay/status?order_id=' + encodeURIComponent(oid))
+    payFn({action:'status', order_id: oid})
       .then(function(r){ return r.json(); })
       .then(function(d){
         document.getElementById('payModal').classList.remove('show');

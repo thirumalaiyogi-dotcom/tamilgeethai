@@ -275,7 +275,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
   function idle(){btn.disabled=false;st.textContent=PAY_ON?'பதிவு செய்து ₹'+PAY_AMT+' செலுத்த':'பதிவு செய்'}
   function payUi(){document.querySelector('.fee-on').hidden=!PAY_ON;document.querySelector('.fee-off').hidden=PAY_ON;idle()}
   payUi();
-  fetch('/api/pay/config').then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled;if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
+  function payFn(body){body.site='bcc';return fetch('https://ytwundlllclnevjogunn.supabase.co/functions/v1/pay',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg'},body:JSON.stringify(body)})}
+  payFn({action:'config'}).then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled;if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
   function record(d){
     var jobs=[saveDb(d)];
     if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
@@ -306,7 +307,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
       return;
     }
     st.textContent='Payment பக்கம் திறக்கிறது…';
-    fetch('/api/pay/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,phone:d.whatsapp})})
+    payFn({action:'create',name:d.name,phone:d.whatsapp})
       .then(function(r){return r.json().then(function(x){if(!r.ok)throw x;return x})})
       .then(function(x){
         d.order_id=x.order_id;
@@ -319,7 +320,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
     var oid=new URLSearchParams(location.search).get('order_id');if(!oid)return;
     var pending=null;try{pending=JSON.parse(localStorage.getItem(PENDING)||'null')}catch(e){}
     showDone('Payment சரிபார்க்கப்படுகிறது…','சில வினாடிகள் காத்திருக்கவும்.',false);
-    fetch('/api/pay/status?order_id='+encodeURIComponent(oid)).then(function(r){return r.json()}).then(function(x){
+    payFn({action:'status',order_id:oid}).then(function(r){return r.json()}).then(function(x){
       if(x.status==='PAID'){
         if(pending&&pending.order_id===oid){
           pending.payment='Online ₹'+(x.amount||PAY_AMT)+' செலுத்தப்பட்டது ✓';pending.cf_order_id=x.cf_order_id;
