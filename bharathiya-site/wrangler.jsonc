@@ -1,5 +1,19 @@
 {
   "name": "bharathiyaculturalclass",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./public" }
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "vars": {
+    "CF_APP_ID": "TEST11276567e52f1465aef5b0c0881676567211",
+    "CF_ENV": "sandbox",
+    "PAY_AMOUNT": "250",
+    "PAY_NOTE": "Bharathiya Cultural Class fee",
+    "ORDER_PREFIX": "BCC"
+  }
 }

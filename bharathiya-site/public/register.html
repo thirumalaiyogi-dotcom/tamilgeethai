@@ -66,6 +66,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
 .mbtn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;text-decoration:none;font-weight:700;margin-top:10px}
 .mbtn.home{background:var(--maroon);color:#fff}
 .mbtn.wa{background:#1FAF5A;color:#fff}
+.fee{margin:6px 0 14px;padding:16px;border-radius:16px;text-align:center;background:linear-gradient(180deg,#FFF6E4,#FBE7C4);border:1.5px solid rgba(217,100,15,.45)}
+.fee-amt{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:40px;line-height:1.05;color:var(--maroon)}
+.fee-amt small{font-size:15px;font-weight:700}
+.fee p{margin:6px 0 0;font-size:14.5px;line-height:1.7;color:#3b2619}
+.fee .fee-t{font-family:'Noto Serif Tamil',serif;font-weight:700;color:var(--maroon);font-size:15.5px}
+.fee [hidden]{display:none}
+@media (max-width:480px){.bar-brand{display:none}}
 </style>
 </head>
 <body>
@@ -78,8 +85,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
   <div class="head">
     <img class="emblem" src="images/bcc-logo-160.webp?v=2" alt="பாரதிய பண்பாட்டு வகுப்பு லோகோ" width="96" height="96">
     <h1>வகுப்பில் சேர பதிவுப் படிவம்</h1>
-    <p class="sub">பாரதிய பண்பாட்டு வகுப்பு — 20 வாரச் சான்றிதழ் வகுப்பு</p>
-    <div class="chips"><span class="chip">🪔 முற்றிலும் இலவசம்</span><span class="chip">வித்யா பாரதி பாடத்திட்டம்</span><span class="chip">ஒன்பது நிலைகள்</span></div>
+    <p class="sub">பாரதிய பண்பாட்டு வகுப்பு — 20 வாரச் சான்றிதழ் வகுப்பு · கட்டணம் ₹250</p>
+    <div class="chips"><span class="chip">🪔 Level 1 · 9th batch</span><span class="chip">வித்யா பாரதி பாடத்திட்டம்</span><span class="chip">ஒன்பது நிலைகள்</span></div>
   </div>
 
   <form id="reg" class="card" novalidate>
@@ -175,6 +182,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
       <div class="e">தொடர இதைத் தேர்ந்தெடுக்கவும்</div>
     </div>
 
+    <div class="fee rv-0">
+      <div class="fee-amt">₹250 <small>மட்டும்</small></div>
+      <p class="fee-t">பாரதிய பண்பாட்டு வகுப்புக் கட்டணம்</p>
+      <p class="fee-on">பதிவு செய்ததும் <b>UPI / Card / Net Banking</b> மூலம் online-ஆகச் செலுத்தலாம். 🔒 Cashfree பாதுகாப்பான payment.</p>
+      <p class="fee-off">கட்டணம் செலுத்தும் விவரம் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
+    </div>
+
     <button class="submit" type="submit"><span class="spin" aria-hidden="true"></span><span class="st">பதிவு செய்</span></button>
     <p class="note">சந்தேகங்களுக்கு: <a href="tel:+919489690577">+91 94896 90577</a> (R. S. Rambabu) · <a href="tel:+919487174771">+91 94871 74771</a> (P. Venkatraman)</p>
   </form>
@@ -245,7 +259,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
   var SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg";
   function saveDb(d){
     var row={source:'bcc',name:d.name,whatsapp:d.whatsapp,district:d.district,town:d.town,
-      details:{gender:d.gender,age:d.age,std:d.std,school:d.school,parent:d.parent,type:d.type,prev:d.prev,source:d.source,notes:d.notes}};
+      details:{gender:d.gender,age:d.age,std:d.std,school:d.school,parent:d.parent,type:d.type,prev:d.prev,source:d.source,notes:d.notes,payment:d.payment||'',order_id:d.order_id||'',cf_order_id:d.cf_order_id||''}};
     return fetch(SB_URL+'/rest/v1/registrations',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
       .then(function(r){if(!r.ok)throw new Error('db '+r.status)});
   }
@@ -255,25 +269,69 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
     document.getElementById('dwa').classList.remove('hide');
     document.getElementById('done').classList.add('on');
   }
+  var PAY_ON=false,PAY_AMT=250,PENDING='bcc-pending-reg';
+  var payTest=/[?&]paytest=1/.test(location.search);
+  try{if(payTest)sessionStorage.setItem('bcc-paytest','1');payTest=payTest||sessionStorage.getItem('bcc-paytest')==='1'}catch(e){}
+  function idle(){btn.disabled=false;st.textContent=PAY_ON?'பதிவு செய்து ₹'+PAY_AMT+' செலுத்த':'பதிவு செய்'}
+  function payUi(){document.querySelector('.fee-on').hidden=!PAY_ON;document.querySelector('.fee-off').hidden=PAY_ON;idle()}
+  payUi();
+  fetch('/api/pay/config').then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled&&(c.mode==='production'||payTest);if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
+  function record(d){
+    var jobs=[saveDb(d)];
+    if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
+    return Promise.all(jobs);
+  }
+  function showDone(title,msg,showWa){
+    document.getElementById('dt').textContent=title;
+    document.getElementById('dmsg').textContent=msg;
+    document.getElementById('dwa').classList.toggle('hide',!showWa);
+    document.getElementById('done').classList.add('on');
+  }
+  function loadSdk(){return new Promise(function(res,rej){if(window.Cashfree)return res();var sc=document.createElement('script');sc.src='https://sdk.cashfree.com/js/v3/cashfree.js';sc.onload=function(){res()};sc.onerror=rej;document.head.appendChild(sc)})}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     if(!validate())return;
     var d=data(),link=waText(d);
     document.getElementById('dwa').href=link;
-    btn.disabled=true;st.textContent='அனுப்புகிறது…';
-    var jobs=[saveDb(d)];
-    if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
-    Promise.all(jobs)
-      .then(function(){
+    btn.disabled=true;
+    if(!PAY_ON){
+      st.textContent='அனுப்புகிறது…';
+      d.payment='₹'+PAY_AMT+' — நிலுவை';
+      record(d).then(function(){
         form.reset();prevBox.classList.add('hide');
-        document.getElementById('dt').textContent='பதிவு வெற்றி! 🙏';
-        document.getElementById('dmsg').textContent='உங்கள் பதிவு பெறப்பட்டது. அடுத்த தொகுப்பு பற்றிய விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.';
-        document.getElementById('dwa').classList.add('hide');
-        document.getElementById('done').classList.add('on');
+        showDone('பதிவு வெற்றி! 🙏','உங்கள் பதிவு பெறப்பட்டது. ₹'+PAY_AMT+' கட்டணம் செலுத்துவது பற்றியும் அடுத்த தொகுப்பு பற்றியும் WhatsApp மூலம் தெரிவிக்கப்படும்.',false);
+      }).catch(fail).finally(idle);
+      return;
+    }
+    st.textContent='Payment பக்கம் திறக்கிறது…';
+    fetch('/api/pay/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,phone:d.whatsapp})})
+      .then(function(r){return r.json().then(function(x){if(!r.ok)throw x;return x})})
+      .then(function(x){
+        d.order_id=x.order_id;
+        try{localStorage.setItem(PENDING,JSON.stringify(d))}catch(err){}
+        return loadSdk().then(function(){return window.Cashfree({mode:x.mode}).checkout({paymentSessionId:x.payment_session_id,redirectTarget:'_self'})});
       })
-      .catch(fail)
-      .finally(function(){btn.disabled=false;st.textContent='பதிவு செய்'});
+      .catch(function(err){console.error(err);idle();showDone('Payment தொடங்க முடியவில்லை','சிறிது நேரம் கழித்து மீண்டும் முயலவும். அல்லது கீழே உள்ள பட்டன் மூலம் WhatsApp-இல் தொடர்பு கொள்ளவும்.',true)});
   });
+  (function(){
+    var oid=new URLSearchParams(location.search).get('order_id');if(!oid)return;
+    var pending=null;try{pending=JSON.parse(localStorage.getItem(PENDING)||'null')}catch(e){}
+    showDone('Payment சரிபார்க்கப்படுகிறது…','சில வினாடிகள் காத்திருக்கவும்.',false);
+    fetch('/api/pay/status?order_id='+encodeURIComponent(oid)).then(function(r){return r.json()}).then(function(x){
+      if(x.status==='PAID'){
+        if(pending&&pending.order_id===oid){
+          pending.payment='Online ₹'+(x.amount||PAY_AMT)+' செலுத்தப்பட்டது ✓';pending.cf_order_id=x.cf_order_id;
+          record(pending).then(function(){try{localStorage.removeItem(PENDING)}catch(e){}});
+        }
+        history.replaceState(null,'','register.html');
+        showDone('பதிவு வெற்றி! 🙏','உங்கள் ₹'+(x.amount||PAY_AMT)+' கட்டணம் பெறப்பட்டது; பதிவு நிறைவடைந்தது. வகுப்பு விவரங்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.',false);
+      }else{
+        if(pending){document.getElementById('dwa').href=waText(pending)}
+        history.replaceState(null,'','register.html');
+        showDone('Payment நிறைவடையவில்லை','உங்கள் கட்டணம் இன்னும் பெறப்படவில்லை. படிவத்தை மீண்டும் நிரப்பி முயலலாம், அல்லது WhatsApp-இல் தொடர்பு கொள்ளலாம்.',true);
+      }
+    }).catch(function(){showDone('சரிபார்க்க முடியவில்லை','இணைய இணைப்பைச் சரிபார்த்து பக்கத்தை refresh செய்யவும்.',false)});
+  })();
 })();
 </script>
 </body>
