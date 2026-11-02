@@ -415,6 +415,11 @@
     .wrap{padding-top:36px;}
     header h1{font-size:24px;}
   }
+.pay-info{padding:16px;border-radius:14px;background:linear-gradient(180deg,#FFF8E6,#FCEFCB);border:1px solid rgba(212,160,23,.5);text-align:center}
+.pay-amt{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:42px;line-height:1.05;color:#7F1D1D}
+.pay-amt small{font-family:inherit;font-size:16px;font-weight:600}
+.pay-info p{margin:8px 0 0;font-size:15px;line-height:1.7;color:#3b2a1a}
+.pay-info .pay-sub{font-size:13.5px;color:#6b5444}
 </style>
 <style>
 .tg-back{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(23,37,84,.96);color:#FDF3D7;text-decoration:none;font-weight:600;font-size:15px;min-height:48px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -520,25 +525,15 @@
 
     <!-- SECTION 4 -->
     <div class="card">
-      <h4>தக்ஷிணை</h4>
-      <div class="field" id="field-payment">
-        <label>₹200 தக்ஷிணை செலுத்தியுள்ளீர்களா?<span class="req">*</span></label>
-        <div class="radio-group" data-name="payment">
-          <label class="radio-option"><input type="radio" name="payment" value="ஆம், செலுத்தியுள்ளேன்"><span>ஆம், செலுத்தியுள்ளேன்</span></label>
-        </div>
-        <div class="error-msg">ஒரு தேர்வை செய்யவும்.</div>
+      <h4>குரு தட்சிணை</h4>
+      <div class="pay-info pay-on">
+        <div class="pay-amt">₹200 <small>மட்டும்</small></div>
+        <p>பதிவு செய்ததும் <b>UPI / Card / Net Banking</b> மூலம் பாதுகாப்பாக online-ஆகச் செலுத்தலாம்.</p>
+        <p class="pay-sub">🔒 Cashfree பாதுகாப்பான payment · Screenshot அனுப்பத் தேவையில்லை</p>
       </div>
-
-      <p class="note-text">செலுத்தியிருந்தால், Payment Screenshot-ஐ 9489690577 என்ற WhatsApp எண்ணிற்கு அனுப்பவும்.</p>
-
-      <div class="field" id="screenshotField">
-        <label for="screenshot">Payment Screenshot</label>
-        <div class="file-upload" id="fileUploadBox">
-          <input type="file" id="screenshot" name="screenshot" accept=".jpg,.jpeg,.png,image/jpeg,image/png">
-          <span class="file-upload-label" id="fileUploadLabel">📎 படத்தை தேர்வு செய்யவும்</span>
-        </div>
-        <div class="file-name" id="fileNameDisplay"></div>
-        <div class="error-msg" id="fileError">JPG அல்லது PNG படத்தை மட்டும் தேர்வு செய்யவும்.</div>
+      <div class="pay-info pay-off" hidden>
+        <div class="pay-amt">₹200 <small>மட்டும்</small></div>
+        <p>செலுத்தியிருந்தால், Payment Screenshot-ஐ <b>9489690577</b> என்ற WhatsApp எண்ணிற்கு அனுப்பவும்.</p>
       </div>
     </div>
 
@@ -568,7 +563,7 @@
       </div>
     </div>
 
-    <button type="submit" class="submit-btn" id="submitBtn">🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்</button>
+    <button type="submit" class="submit-btn" id="submitBtn">🪷 பதிவு செய்து ₹200 செலுத்த</button>
 
     <footer class="form-footer">உங்கள் தகவல்கள் பாதுகாப்பாக பராமரிக்கப்படும்.</footer>
   </form>
@@ -576,11 +571,22 @@
 </div>
 
 <!-- SUCCESS MODAL -->
+<div hidden aria-hidden="true"><div id="screenshotField"><div id="fileUploadBox"><input type="file" id="screenshot"></div><div id="fileNameDisplay"></div></div></div>
+<div class="modal-overlay" id="payModal">
+  <div class="modal-card">
+    <span class="lotus-big">⏳</span>
+    <h3></h3>
+    <p></p>
+    <button type="button" class="again-btn" id="payRetry" hidden>மீண்டும் முயல</button>
+    <button type="button" class="tg-home" style="border:0;background:none;cursor:pointer;font:inherit" onclick="document.getElementById('payModal').classList.remove('show')">மூடு</button>
+  </div>
+</div>
+
 <div class="modal-overlay" id="successModal">
   <div class="modal-card">
     <span class="lotus-big">🙏</span>
     <h3>நன்றி!</h3>
-    <p>உங்கள் பதிவு வெற்றிகரமாக பெறப்பட்டது.</p>
+    <p id="okMsg">உங்கள் ₹200 குரு தட்சிணை பெறப்பட்டது; பதிவு வெற்றிகரமாக நிறைவடைந்தது.</p>
     <p>தமிழ் கீதை வகுப்பில் இணைவதற்கான அடுத்த தகவல்கள் WhatsApp மூலம் தெரிவிக்கப்படும்.</p>
     <button type="button" class="again-btn" id="resetBtn">மீண்டும் பதிவு செய்யவும்</button>
     <a class="tg-home" href="/">முகப்புக்குத் திரும்ப</a>
@@ -733,7 +739,7 @@
     }
     return up.then(function(path){
       var row = {source:'tamilgeethai', name:d.name, whatsapp:d.whatsapp, district:d.district, town:d.taluk,
-        details:{category:d.category, role:d.role, level:d.level, payment:d.payment, practice:d.practice, refer:d.refer},
+        details:{category:d.category, role:d.role, level:d.level, payment:d.payment, order_id:d.order_id||'', cf_order_id:d.cf_order_id||'', practice:d.practice, refer:d.refer},
         screenshot_path: path};
       return fetch(SB_URL+'/rest/v1/registrations', {method:'POST', headers:sbHeaders({'Content-Type':'application/json','Prefer':'return=minimal'}), body:JSON.stringify(row)});
     }).then(function(r){ if(!r.ok) throw new Error('db '+r.status); });
@@ -753,7 +759,6 @@
       validateSelect(),
       validateRadio('role', 'field-role'),
       validateRadio('level', 'field-level'),
-      validateRadio('payment', 'field-payment'),
       validateRadio('practice', 'field-practice'),
       validateRadio('refer', 'field-refer')
     ];
@@ -778,10 +783,9 @@
       category: document.getElementById('category').value,
       role: document.querySelector('input[name="role"]:checked').value,
       level: document.querySelector('input[name="level"]:checked').value,
-      payment: document.querySelector('input[name="payment"]:checked').value,
+      payment: 'Online ₹200 (நிலுவை)',
       practice: document.querySelector('input[name="practice"]:checked').value,
       refer: document.querySelector('input[name="refer"]:checked').value,
-      hasScreenshot: fileInput.files.length > 0,
       submittedAt: new Date().toISOString()
     };
 
@@ -790,27 +794,102 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'பதிவு செய்யப்படுகிறது...';
 
-    // Send data to the connected Google Sheet via Apps Script Web App.
-    // mode:'no-cors' is required for Apps Script web apps; the response
-    // cannot be read back, but the row still gets written to the sheet.
-    var sheetJob = fetch(GOOGLE_SHEET_WEB_APP_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(formData)
-    });
-    var dbJob = saveToAdmin(formData, fileInput.files[0]);
-    Promise.allSettled([sheetJob, dbJob]).then(function(res){
-      if(res[0].status==='fulfilled' || res[1].status==='fulfilled'){
-        document.getElementById('successModal').classList.add('show');
-      } else { throw new Error('both failed'); }
-    }).catch(function(){
-      isSubmitting = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்';
-      alert('இணைய இணைப்பில் சிக்கல் ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.');
-    });
+    if (!PAY_ON) {
+      formData.payment = '₹200 — WhatsApp screenshot மூலம்';
+      setBtn('பதிவு செய்யப்படுகிறது…', true);
+      recordRegistration(formData).then(function(res){
+        if (res[0].status==='fulfilled' || res[1].status==='fulfilled') { document.getElementById('okMsg').textContent='உங்கள் பதிவு வெற்றிகரமாகப் பெறப்பட்டது. ₹200 செலுத்திய screenshot-ஐ 9489690577 WhatsApp எண்ணிற்கு அனுப்பவும்.'; document.getElementById('successModal').classList.add('show'); }
+        else { resetBtn(); alert('இணைய இணைப்பில் சிக்கல் ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.'); }
+      });
+      return;
+    }
+    startPayment(formData);
   });
+
+  // ---- Cashfree payment (Guru Dakshina ₹200) ----
+  var PENDING_KEY = 'tg-pending-reg';
+  // Online payment is shown only when live keys are set (production),
+  // or for testing with ?paytest=1 while in sandbox mode.
+  var PAY_ON = false;
+  var payTest = /[?&]paytest=1/.test(location.search);
+  try { if (payTest) sessionStorage.setItem('tg-paytest','1'); payTest = payTest || sessionStorage.getItem('tg-paytest')==='1'; } catch(e){}
+  function applyPayUi(){
+    document.querySelector('.pay-on').hidden = !PAY_ON;
+    document.querySelector('.pay-off').hidden = PAY_ON;
+    if (!isSubmitting) setBtn(PAY_ON ? '🪷 பதிவு செய்து ₹200 செலுத்த' : '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்', false);
+  }
+  applyPayUi();
+  fetch('/api/pay/config').then(function(r){ return r.json(); }).then(function(c){
+    PAY_ON = !!c.enabled && (c.mode === 'production' || payTest);
+    applyPayUi();
+  }).catch(function(){});
+  function setBtn(t, dis){ submitBtn.textContent = t; submitBtn.disabled = !!dis; }
+  function resetBtn(){ isSubmitting = false; setBtn(PAY_ON ? '🪷 பதிவு செய்து ₹200 செலுத்த' : '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்', false); }
+  function loadSdk(){
+    return new Promise(function(res, rej){
+      if (window.Cashfree) return res();
+      var sc = document.createElement('script'); sc.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+      sc.onload = function(){ res(); }; sc.onerror = rej; document.head.appendChild(sc);
+    });
+  }
+  function startPayment(formData){
+    setBtn('Payment பக்கம் திறக்கிறது…', true);
+    fetch('/api/pay/create', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name: formData.name, phone: formData.whatsapp})})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw d; return d; }); })
+      .then(function(d){
+        formData.order_id = d.order_id;
+        try { localStorage.setItem(PENDING_KEY, JSON.stringify(formData)); } catch(e){}
+        return loadSdk().then(function(){
+          var cf = window.Cashfree({ mode: d.mode });
+          return cf.checkout({ paymentSessionId: d.payment_session_id, redirectTarget: '_self' });
+        });
+      })
+      .catch(function(err){
+        console.error(err); resetBtn();
+        showPayMsg('Payment தொடங்க முடியவில்லை', 'சிறிது நேரம் கழித்து மீண்டும் முயலவும். தொடர்ந்து சிக்கல் இருந்தால் 9489690577 என்ற WhatsApp எண்ணில் தொடர்பு கொள்ளவும்.', false);
+      });
+  }
+  function showPayMsg(title, text, ok){
+    var m = document.getElementById('payModal');
+    m.querySelector('h3').textContent = title;
+    m.querySelector('p').textContent = text;
+    m.querySelector('.lotus-big').textContent = ok ? '⏳' : '⚠️';
+    m.classList.add('show');
+  }
+  function recordRegistration(formData){
+    var sheetJob = fetch(GOOGLE_SHEET_WEB_APP_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(formData)});
+    var dbJob = saveToAdmin(formData, null);
+    return Promise.allSettled([sheetJob, dbJob]);
+  }
+  (function handleReturn(){
+    var oid = new URLSearchParams(location.search).get('order_id');
+    if (!oid) return;
+    var pending = null;
+    try { pending = JSON.parse(localStorage.getItem(PENDING_KEY) || 'null'); } catch(e){}
+    showPayMsg('Payment சரிபார்க்கப்படுகிறது…', 'சில வினாடிகள் காத்திருக்கவும்.', true);
+    fetch('/api/pay/status?order_id=' + encodeURIComponent(oid))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        document.getElementById('payModal').classList.remove('show');
+        if (d.status === 'PAID') {
+          if (pending && pending.order_id === oid) {
+            pending.payment = 'Online ₹' + (d.amount || 200) + ' செலுத்தப்பட்டது ✓';
+            pending.cf_order_id = d.cf_order_id;
+            pending.paidAt = new Date().toISOString();
+            recordRegistration(pending).then(function(){
+              try { localStorage.removeItem(PENDING_KEY); } catch(e){}
+            });
+          }
+          history.replaceState(null, '', 'register.html');
+          document.getElementById('successModal').classList.add('show');
+        } else {
+          showPayMsg('Payment நிறைவடையவில்லை', 'உங்கள் ₹200 payment இன்னும் பெறப்படவில்லை. கீழே "மீண்டும் முயல" அழுத்தி மீண்டும் செலுத்தலாம்.', false);
+          var retry = document.getElementById('payRetry'); retry.hidden = false;
+          retry.onclick = function(){ document.getElementById('payModal').classList.remove('show'); if (pending) { pending.order_id = null; startPayment(pending); } };
+        }
+      })
+      .catch(function(){ showPayMsg('சரிபார்க்க முடியவில்லை', 'இணைய இணைப்பைச் சரிபார்த்து பக்கத்தை refresh செய்யவும்.', false); });
+  })();
 
   // ---- Reset form ----
   document.getElementById('resetBtn').addEventListener('click', function(){
@@ -826,7 +905,7 @@
     document.getElementById('successModal').classList.remove('show');
     isSubmitting = false;
     submitBtn.disabled = false;
-    submitBtn.textContent = '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்';
+    submitBtn.textContent = '🪷 பதிவு செய்து ₹200 செலுத்த';
     window.scrollTo({top:0, behavior:'smooth'});
   });
 })();
