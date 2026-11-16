@@ -397,6 +397,14 @@ body.jbar-up .wa-fab{bottom:calc(84px + env(safe-area-inset-bottom));transition:
 body.jbar-up body.jbar-up{padding-bottom:72px}
 .admit .admit-fee{color:var(--maroon)}
 .admit-fee b{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--saffron)}
+.tgp{background:linear-gradient(180deg,#172554,#0d1538);color:#FDF3D7}
+.tgp .h2{color:#F7DF9A}.tgp .eyebrow{color:#E9C766}.tgp .lead{color:rgba(253,243,215,.9)}.tgp .lead b{color:#F4D68A}
+.tgp-in{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:center;max-width:900px}
+.tgp-txt{text-align:center}
+.tgp-btn{margin-top:18px;background:linear-gradient(180deg,#E3B33A,#D4A017);color:#1a1a2e}
+.tgp-v{margin:0 auto;width:min(100%,320px)}
+.tgp-v video{display:block;width:100%;aspect-ratio:478/850;border-radius:22px;background:#000;border:3px solid #D4A017;object-fit:cover}
+@media (min-width:860px){.tgp-in{grid-template-columns:1fr 320px;gap:48px;margin:0 auto}.tgp-txt{text-align:left}.tgp .eyebrow,.tgp .h2{text-align:left;justify-content:flex-start}}
 /* admission popup */
 .adm{position:fixed;inset:0;z-index:90;background:rgba(30,8,4,.72);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .adm[hidden]{display:none}
@@ -670,6 +678,19 @@ body.jbar-up body.jbar-up{padding-bottom:72px}
 </section>
 
 <div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="புகைப்படம்"><button class="lbox-x" aria-label="மூடு">✕</button><img alt=""></div>
+
+<!-- TAMIL GEETHAI PROMO -->
+<section class="sec tgp" aria-label="தமிழ் கீதை">
+  <div class="wrap tgp-in">
+    <div class="tgp-txt rv">
+      <p class="eyebrow">எங்கள் மற்றொரு முயற்சி</p>
+      <h2 class="h2">இல்லம் தோறும் இனிய கீதை</h2>
+      <p class="lead">பகவத் கீதையை எளிய தமிழில், இனிய ராகத்தில் பாடிக் கற்கும் <b>தமிழ் கீதை</b> இயக்கம்.</p>
+      <a class="btn tgp-btn" href="https://tamilgeethai.com/">தமிழ் கீதை இணையதளம் ↗</a>
+    </div>
+    <figure class="tgp-v rv"><video src="videos/tg-promo.mp4" poster="images/tg-promo-poster.webp" controls playsinline preload="none"></video></figure>
+  </div>
+</section>
 
 <!-- TEACHERS -->
 <section id="teachers" class="sec team">
