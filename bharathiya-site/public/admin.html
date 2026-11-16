@@ -33,7 +33,7 @@ button,input,select,textarea{font:inherit}
 .top b{font-family:'Noto Serif Tamil',serif;font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ibtn{min-height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(244,183,64,.5);background:transparent;color:#FFE7B8;font-weight:600;font-size:13.5px;cursor:pointer;white-space:nowrap}
 .main{max-width:960px;margin:0 auto;padding:14px 12px 80px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px}
 .tab{min-height:44px;border:0;border-radius:10px;background:transparent;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer;line-height:1.25}
 .tab.on{background:var(--maroon);color:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
@@ -53,6 +53,13 @@ button,input,select,textarea{font:inherit}
 .src{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
 .src.bcc{background:#FDE7C7;color:#9A3412}
 .src.tamilgeethai{background:#DCE3F7;color:var(--navy)}
+.src.sangamam{background:#FCE7F3;color:#9D174D}
+.sgsum{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.sgsum>div{background:linear-gradient(135deg,#FDF2F8,#FFF7E6);border:1px solid #F5C2D8;border-radius:14px;padding:10px;text-align:center}
+.sgsum b{display:block;font-size:22px;color:#9D174D;line-height:1.2}
+.sgsum span{font-size:12.5px;color:var(--muted);font-weight:600}
+.sgsum i{font-style:normal}
+@media (min-width:700px){.sgsum{grid-template-columns:repeat(4,1fr)}}
 .st{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
 .st-new{background:#FFF1C2;color:#8A5A00}
 .pay-ok{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#DCFCE7;color:#166534;white-space:nowrap}
@@ -113,12 +120,19 @@ button,input,select,textarea{font:inherit}
       <button class="tab on" data-src="all" type="button">அனைத்தும்</button>
       <button class="tab" data-src="bcc" type="button">பண்பாட்டு வகுப்பு</button>
       <button class="tab" data-src="tamilgeethai" type="button">தமிழ் கீதை</button>
+      <button class="tab" data-src="sangamam" type="button">🪔 சங்கமம் 2026</button>
     </div>
     <div class="stats">
       <div class="stat on" data-st="all"><div class="n" id="c-all">0</div><div class="l">மொத்தம்</div></div>
       <div class="stat" data-st="new"><div class="n" id="c-new">0</div><div class="l">புதியது</div></div>
       <div class="stat" data-st="contacted"><div class="n" id="c-contacted">0</div><div class="l">பேசியாச்சு</div></div>
       <div class="stat" data-st="joined"><div class="n" id="c-joined">0</div><div class="l">சேர்ந்தார்</div></div>
+    </div>
+    <div class="sgsum hide" id="sgSum">
+      <div><b id="sg-n">0</b><span>/ 1008 பதிவு</span></div>
+      <div><b id="sg-tr">0</b><span>பயிற்சி வேண்டும்</span></div>
+      <div><b id="sg-sv">0</b><span>சமுதாயப் பணி விருப்பம்</span></div>
+      <div><b id="sg-don">₹0</b><span>நன்கொடை (<i id="sg-dc">0</i> பேர்)</span></div>
     </div>
     <div class="tools">
       <input class="in" id="q" type="search" placeholder="பெயர் / எண் / ஊர் தேட…">
@@ -138,8 +152,8 @@ button,input,select,textarea{font:inherit}
   var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
   var STATUS = {new:'புதியது',contacted:'பேசியாச்சு',joined:'சேர்ந்தார்',not_interested:'வேண்டாம்'};
-  var SRC = {bcc:'பண்பாட்டு வகுப்பு',tamilgeethai:'தமிழ் கீதை'};
-  var LABELS = {gender:'பாலினம்',age:'வயது',std:'படிக்கும் வகுப்பு',school:'பள்ளி',parent:'பெற்றோர்',type:'சேர்க்கை வகை',prev:'முடித்த நிலை',source:'அறிந்தது',notes:'குறிப்பு',
+  var SRC = {bcc:'பண்பாட்டு வகுப்பு',tamilgeethai:'தமிழ் கீதை',sangamam:'🪔 சங்கமம்'};
+  var LABELS = {reg_no:'பதிவு எண்',seva:'சமுதாயப் பணி விருப்பம்',training:'ஆன்லைன் பயிற்சி',donate:'நன்கொடை விருப்பம்',donation:'நன்கொடைத் தொகை',taluk:'தாலுகா',gender:'பாலினம்',age:'வயது',std:'படிக்கும் வகுப்பு',school:'பள்ளி',parent:'பெற்றோர்',type:'சேர்க்கை வகை',prev:'முடித்த நிலை',source:'அறிந்தது',notes:'குறிப்பு',
     category:'வகை',role:'பங்கு',level:'பாடல் நிலை',payment:'கட்டணம்',practice:'பயிற்சி',refer:'அறிமுகம்'};
   var rows = [], src = 'all', st = 'all', q = '', shown = 40;
   var $ = function(id){return document.getElementById(id)};
@@ -190,16 +204,23 @@ button,input,select,textarea{font:inherit}
     var base = filtered(true);
     $('c-all').textContent = base.length;
     ['new','contacted','joined'].forEach(function(k){ $('c-'+k).textContent = base.filter(function(r){return r.status===k}).length; });
+    var sg = rows.filter(function(r){return r.source==='sangamam'}), dn = sg.filter(function(r){return r.paid===true});
+    $('sgSum').classList.toggle('hide', src!=='sangamam');
+    $('sg-n').textContent = sg.length;
+    $('sg-tr').textContent = sg.filter(function(r){return (r.details||{}).training==='ஆம்'}).length;
+    $('sg-sv').textContent = sg.filter(function(r){return (r.details||{}).seva==='ஆம்'}).length;
+    $('sg-don').textContent = '₹'+dn.reduce(function(t,r){return t+(+r.amount||0)},0).toLocaleString('en-IN');
+    $('sg-dc').textContent = dn.length;
     var list = filtered(false), el = $('list');
     $('empty').classList.toggle('hide', list.length>0);
     el.innerHTML = list.slice(0,shown).map(card).join('') + (list.length>shown?'<button class="act more more-btn" id="loadMore" type="button" style="grid-column:1/-1">மேலும் '+(list.length-shown)+' பதிவுகள்</button>':'');
     var lm=$('loadMore'); if(lm) lm.onclick=function(){shown+=40;render()};
   }
 
-  function payB(r){return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
+  function payB(r){if(r.source==='sangamam'){if(!r.order_id)return '';return r.paid===true?'<span class="pay-ok">நன்கொடை ✓</span>':'<span class="pay-no">நன்கொடை நிலுவை</span>'}return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
   function card(r){
     var d = r.details||{}, wa = '91'+r.whatsapp;
-    var msg = r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
+    var msg = r.source==='sangamam' ? 'வணக்கம்! தமிழ் கீதை சங்கமத்தில் (24.12.2026) முன்பதிவு செய்ததற்கு நன்றி. உங்கள் பதிவு எண்: '+((r.details||{}).reg_no||'')+'. 151 பாடல்கள் PDF இத்துடன் அனுப்பப்படுகிறது. ' : r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
     var kv = Object.keys(d).filter(function(k){return d[k]!==''&&d[k]!=null&&k!=='timestamp'&&k!=='submittedAt'&&k!=='hasScreenshot'}).map(function(k){return '<dt>'+esc(LABELS[k]||k)+'</dt><dd>'+esc(d[k])+'</dd>'}).join('');
     var due = r.followup_date && r.followup_date<=today() && r.status!=='joined' && r.status!=='not_interested';
     return '<article class="card" data-id="'+r.id+'">'+

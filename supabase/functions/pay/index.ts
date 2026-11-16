@@ -35,10 +35,11 @@ async function markPaid(id: string) {
   const o = await getOrder(id);
   if (!o) return { status: "UNKNOWN" };
   if (o.order_status === "PAID") {
-    const q = `${SB_URL}/rest/v1/registrations?order_id=eq.${encodeURIComponent(id)}&paid=eq.false&select=id,details`;
+    const q = `${SB_URL}/rest/v1/registrations?order_id=eq.${encodeURIComponent(id)}&paid=eq.false&select=id,source,details`;
     const rows = await (await fetch(q, { headers: sbH() })).json().catch(() => []);
     for (const row of Array.isArray(rows) ? rows : []) {
-      const details = { ...(row.details || {}), payment: `Online ₹${o.order_amount} செலுத்தப்பட்டது ✓`, cf_order_id: o.cf_order_id };
+      const label = row.source === "sangamam" ? `நன்கொடை ₹${o.order_amount} செலுத்தப்பட்டது ✓` : `Online ₹${o.order_amount} செலுத்தப்பட்டது ✓`;
+      const details = { ...(row.details || {}), payment: label, cf_order_id: o.cf_order_id };
       await fetch(`${SB_URL}/rest/v1/registrations?id=eq.${row.id}`, {
         method: "PATCH",
         headers: sbH({ Prefer: "return=minimal" }),
@@ -47,6 +48,64 @@ async function markPaid(id: string) {
     }
   }
   return { status: o.order_status, amount: o.order_amount, cf_order_id: o.cf_order_id };
+}
+
+// ---------- Tamil Geethai Sangamam (24.12.2026): free registration + optional donation ----------
+const SG = { prefix: "TGS", ret: "https://tamilgeethai.com/", note: "Tamil Geethai Sangamam donation", min: 51, max: 100000 };
+
+async function sangamamCount(): Promise<number> {
+  const r = await fetch(`${SB_URL}/rest/v1/registrations?source=eq.sangamam&select=id`, {
+    headers: sbH({ Prefer: "count=exact", Range: "0-0" }),
+  });
+  const cr = r.headers.get("content-range") || "";
+  const n = parseInt(cr.split("/")[1] || "0", 10);
+  return Number.isFinite(n) ? n : 0;
+}
+
+async function sangamamRegister(b: any) {
+  const reg = b.reg && typeof b.reg === "object" ? b.reg : {};
+  const phone = String(reg.whatsapp || "").replace(/\D/g, "").slice(-10);
+  const name = clip(reg.name, 120);
+  if (!/^[6-9]\d{9}$/.test(phone)) return json({ error: "bad_phone" }, 400);
+  if (!name) return json({ error: "bad_name" }, 400);
+  const wantDonate = reg.donate === "ஆம்";
+  let amount = 0;
+  if (wantDonate) {
+    amount = Math.round(Number(reg.amount || 0));
+    if (!(amount >= SG.min && amount <= SG.max)) return json({ error: "bad_amount", min: SG.min }, 400);
+    if (!SECRET) return json({ error: "payment_not_configured" }, 503);
+  }
+  const regNo = "TGS-" + String((await sangamamCount()) + 1).padStart(4, "0");
+  const orderId = wantDonate ? SG.prefix + Date.now().toString(36).toUpperCase() + crypto.randomUUID().slice(0, 6).toUpperCase() : null;
+  const details: Record<string, string> = { reg_no: regNo };
+  for (const k of ["gender", "age", "category", "seva", "training", "donate"]) if (reg[k] != null) details[k] = clip(reg[k], 120);
+  if (wantDonate) { details.donation = `₹${amount}`; details.payment = `⏳ நன்கொடை ₹${amount} நிலுவை`; details.order_id = orderId!; }
+  const ins = await fetch(`${SB_URL}/rest/v1/registrations`, {
+    method: "POST",
+    headers: sbH({ Prefer: "return=minimal" }),
+    body: JSON.stringify({
+      source: "sangamam", name, whatsapp: phone,
+      district: clip(reg.district, 80) || null, town: clip(reg.taluk, 80) || null,
+      details, order_id: orderId, amount: wantDonate ? amount : null,
+    }),
+  });
+  if (!ins.ok) return json({ error: "save_failed", detail: await ins.text() }, 500);
+  if (!wantDonate) return json({ reg_no: regNo });
+
+  const r = await fetch(`${CF}/orders`, {
+    method: "POST",
+    headers: { ...cfH(), "x-idempotency-key": crypto.randomUUID() },
+    body: JSON.stringify({
+      order_id: orderId, order_amount: amount, order_currency: "INR",
+      customer_details: { customer_id: "C" + phone, customer_phone: phone, ...(name.length >= 3 ? { customer_name: name.slice(0, 100) } : {}) },
+      order_meta: { return_url: `${SG.ret}?sg_order=${orderId}#sangamam`, notify_url: `${FN_URL}?webhook=1` },
+      order_note: SG.note,
+    }),
+  });
+  const d = await r.json().catch(() => ({}));
+  // Registration is already saved; if the donation can't start, the person is still registered.
+  if (!r.ok || !d.payment_session_id) return json({ reg_no: regNo, pay_error: d.message || r.status });
+  return json({ reg_no: regNo, order_id: d.order_id, payment_session_id: d.payment_session_id, mode: MODE });
 }
 
 Deno.serve(async (req) => {
@@ -61,6 +120,14 @@ Deno.serve(async (req) => {
     const id = clip(b?.data?.order?.order_id, 45);
     if (/^[A-Za-z0-9_-]{3,45}$/.test(id) && SECRET) await markPaid(id);
     return json({ ok: true });
+  }
+
+  if (b.action === "sangamam_count") return json({ count: await sangamamCount(), target: 1008 });
+  if (b.action === "sangamam") return sangamamRegister(b);
+  if (b.action === "sangamam_status") {
+    const id = clip(b.order_id, 45);
+    if (!/^TGS[A-Za-z0-9_-]{3,42}$/.test(id) || !SECRET) return json({ error: "bad_order_id" }, 400);
+    return json({ order_id: id, ...(await markPaid(id)) });
   }
 
   const site = SITES[b.site] ? b.site : "tg";
