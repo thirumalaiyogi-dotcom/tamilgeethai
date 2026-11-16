@@ -73,6 +73,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
 .fee .fee-t{font-family:'Noto Serif Tamil',serif;font-weight:700;color:var(--maroon);font-size:15.5px}
 .fee [hidden]{display:none}
 @media (max-width:480px){.bar-brand{display:none}}
+#reg[hidden]{display:none !important}
+.closed{text-align:center}
+.closed-ic{font-size:44px;line-height:1}
+.closed h2{margin:8px 0 0;font-family:'Noto Serif Tamil',serif;color:var(--maroon);font-size:24px;line-height:1.5}
+.closed p{margin:10px 0 0;font-size:16px;line-height:1.8;color:#3b2619}
+.closed p b{color:var(--saffron)}
+.closed-wa{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:18px;border-radius:999px;background:#1FAF5A;color:#fff;font-weight:700;font-size:16.5px;text-decoration:none;padding:10px 18px}
+.closed-home{display:inline-block;margin-top:12px;color:var(--maroon);font-weight:600}
 </style>
 </head>
 <body>
@@ -84,12 +92,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
 <main class="wrap">
   <div class="head">
     <img class="emblem" src="images/bcc-logo-160.webp?v=2" alt="பாரதிய பண்பாட்டு வகுப்பு லோகோ" width="96" height="96">
-    <h1>வகுப்பில் சேர பதிவுப் படிவம்</h1>
-    <p class="sub">பாரதிய பண்பாட்டு வகுப்பு — 20 வாரச் சான்றிதழ் வகுப்பு · கட்டணம் ₹250</p>
+    <h1>வகுப்புச் சேர்க்கை</h1>
+    <p class="sub">பாரதிய பண்பாட்டு வகுப்பு — 20 வாரச் சான்றிதழ் வகுப்பு</p>
     <div class="chips"><span class="chip">🪔 Level 1 · 9th batch</span><span class="chip">வித்யா பாரதி பாடத்திட்டம்</span><span class="chip">ஒன்பது நிலைகள்</span></div>
   </div>
 
-  <form id="reg" class="card" novalidate>
+  <div class="card closed">
+    <div class="closed-ic">🪔</div>
+    <h2>சேர்க்கை நிறைவடைந்தது</h2>
+    <p>Level 1 · 9th batch-க்கான மாணவர் சேர்க்கை <b>15.11.2026</b> அன்று நிறைவடைந்தது. பதிவு செய்த அனைவருக்கும் நன்றி 🙏</p>
+    <p>அடுத்த batch பற்றி அறிய WhatsApp-இல் கேளுங்கள்.</p>
+    <a class="closed-wa" href="https://wa.me/919489690577?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AE%A4%E0%AE%BF%E0%AE%AF%20%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%20%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%BF%E0%AE%A9%E0%AF%8D%20%E0%AE%85%E0%AE%9F%E0%AF%81%E0%AE%A4%E0%AF%8D%E0%AE%A4%20batch%20%E0%AE%AA%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF%20%E0%AE%A4%E0%AF%86%E0%AE%B0%E0%AE%BF%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%81%E0%AE%95%E0%AF%8A%E0%AE%B3%E0%AF%8D%E0%AE%B3%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." target="_blank" rel="noopener">💬 அடுத்த batch பற்றி WhatsApp-இல் கேட்க</a>
+    <a class="closed-home" href="index.html">முகப்புக்குத் திரும்ப</a>
+  </div>
+
+  <form id="reg" class="card" novalidate hidden>
     <h2 class="sec-t">மாணவர் விவரம்</h2>
     <div class="f" data-req>
       <label class="l" for="name">மாணவர் பெயர் <span class="req">*</span></label>
@@ -276,7 +293,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--saffron)
   function payUi(){document.querySelector('.fee-on').hidden=!PAY_ON;document.querySelector('.fee-off').hidden=PAY_ON;idle()}
   payUi();
   function payFn(body){body.site='bcc';return fetch('https://ytwundlllclnevjogunn.supabase.co/functions/v1/pay',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg'},body:JSON.stringify(body)})}
-  payFn({action:'config'}).then(function(r){return r.json()}).then(function(c){PAY_ON=!!c.enabled;if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
+  payFn({action:'config'}).then(function(r){return r.json()}).then(function(c){PAY_ON=false;if(c.amount)PAY_AMT=c.amount;payUi()}).catch(function(){});
   function record(d){
     var jobs=[saveDb(d)];
     if(SHEET_URL)jobs.push(fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){}));
