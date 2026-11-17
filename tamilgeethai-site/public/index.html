@@ -725,6 +725,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="sg-f" data-req data-phone><label for="sgWa">WhatsApp எண் *</label><input id="sgWa" name="whatsapp" type="tel" inputmode="numeric" maxlength="10" placeholder="10 இலக்க எண்"><em>சரியான 10 இலக்க எண்ணை உள்ளிடவும்</em></div>
 <div class="sg-f" data-req data-radio><label>ஆன்மீக மற்றும் சமுதாயப் பணியில் விருப்பம் உள்ளவரா? *</label><div class="sg-opts"><label class="sg-ro"><input type="radio" name="seva" value="ஆம்">ஆம்</label><label class="sg-ro"><input type="radio" name="seva" value="இல்லை">இல்லை</label></div><em>தேர்ந்தெடுக்கவும்</em></div>
+<div class="sg-f" data-req data-radio><label>இந்த சாதனை நிகழ்ச்சிக்கு தன்னார்வலராக சேவை செய்ய நிறைய தொண்டர்கள் தேவைப்படுகிறார்கள். தன்னார்வலராக சேவை செய்ய விரும்புகிறீர்களா? *</label><div class="sg-opts"><label class="sg-ro"><input type="radio" name="volunteer" value="ஆம்">ஆம்</label><label class="sg-ro"><input type="radio" name="volunteer" value="இல்லை">இல்லை</label></div><em>தேர்ந்தெடுக்கவும்</em></div>
 <div class="sg-f" data-req data-radio><label>ஆன்லைனில் உங்களுக்குப் பயிற்சி அளிக்க ஏற்பாடு உள்ளது. ஆன்லைன் பயிற்சி வேண்டுமா? *</label><div class="sg-opts"><label class="sg-ro"><input type="radio" name="training" value="ஆம்">ஆம்</label><label class="sg-ro"><input type="radio" name="training" value="இல்லை">இல்லை</label></div><em>தேர்ந்தெடுக்கவும்</em></div>
 <div class="sg-f" data-req data-radio><label>பகவான் கிருஷ்ணரின் பகவத் கீதையை இல்லம் தோறும் கொண்டு செல்வதற்கு நன்கொடை / காணிக்கை செலுத்த விரும்புகிறீர்களா? நீங்கள் விரும்பும் தொகையைச் செலுத்தலாம். *</label><div class="sg-opts"><label class="sg-ro"><input type="radio" name="donate" value="ஆம்">ஆம்</label><label class="sg-ro"><input type="radio" name="donate" value="இல்லை">இல்லை</label></div><em>தேர்ந்தெடுக்கவும்</em></div>
 <div class="sg-don" id="sgDon" hidden>
@@ -1500,7 +1501,7 @@ if('IntersectionObserver' in window){
   function loadSdk(){return new Promise(function(res,rej){if(window.Cashfree)return res();var sc=document.createElement('script');sc.src='https://sdk.cashfree.com/js/v3/cashfree.js';sc.onload=function(){res()};sc.onerror=rej;document.head.appendChild(sc)})}
   f.addEventListener('submit',function(e){
     e.preventDefault();if(!validate())return;
-    var reg={name:val('name'),gender:val('gender'),age:val('age'),category:val('category'),district:val('district'),taluk:val('taluk'),whatsapp:val('whatsapp'),seva:val('seva'),training:val('training'),donate:val('donate')};
+    var reg={name:val('name'),gender:val('gender'),age:val('age'),category:val('category'),district:val('district'),taluk:val('taluk'),whatsapp:val('whatsapp'),seva:val('seva'),volunteer:val('volunteer'),training:val('training'),donate:val('donate')};
     if(wantDon())reg.amount=amt;
     btn.disabled=true;btn.textContent=wantDon()?'Payment பக்கம் திறக்கிறது…':'பதிவு செய்யப்படுகிறது…';
     call({action:'sangamam',reg:reg}).then(function(d){

@@ -132,6 +132,7 @@ button,input,select,textarea{font:inherit}
       <div><b id="sg-n">0</b><span>/ 1008 பதிவு</span></div>
       <div><b id="sg-tr">0</b><span>பயிற்சி வேண்டும்</span></div>
       <div><b id="sg-sv">0</b><span>சமுதாயப் பணி விருப்பம்</span></div>
+      <div><b id="sg-vol">0</b><span>🙋 தன்னார்வலர்கள்</span></div>
       <div><b id="sg-don">₹0</b><span>நன்கொடை (<i id="sg-dc">0</i> பேர்)</span></div>
     </div>
     <div class="tools">
@@ -153,7 +154,7 @@ button,input,select,textarea{font:inherit}
 
   var STATUS = {new:'புதியது',contacted:'பேசியாச்சு',joined:'சேர்ந்தார்',not_interested:'வேண்டாம்'};
   var SRC = {bcc:'பண்பாட்டு வகுப்பு',tamilgeethai:'தமிழ் கீதை',sangamam:'🪔 சங்கமம்'};
-  var LABELS = {reg_no:'பதிவு எண்',seva:'சமுதாயப் பணி விருப்பம்',training:'ஆன்லைன் பயிற்சி',donate:'நன்கொடை விருப்பம்',donation:'நன்கொடைத் தொகை',taluk:'தாலுகா',gender:'பாலினம்',age:'வயது',std:'படிக்கும் வகுப்பு',school:'பள்ளி',parent:'பெற்றோர்',type:'சேர்க்கை வகை',prev:'முடித்த நிலை',source:'அறிந்தது',notes:'குறிப்பு',
+  var LABELS = {reg_no:'பதிவு எண்',volunteer:'தன்னார்வலர் சேவை',seva:'சமுதாயப் பணி விருப்பம்',training:'ஆன்லைன் பயிற்சி',donate:'நன்கொடை விருப்பம்',donation:'நன்கொடைத் தொகை',taluk:'தாலுகா',gender:'பாலினம்',age:'வயது',std:'படிக்கும் வகுப்பு',school:'பள்ளி',parent:'பெற்றோர்',type:'சேர்க்கை வகை',prev:'முடித்த நிலை',source:'அறிந்தது',notes:'குறிப்பு',
     category:'வகை',role:'பங்கு',level:'பாடல் நிலை',payment:'கட்டணம்',practice:'பயிற்சி',refer:'அறிமுகம்'};
   var rows = [], src = 'all', st = 'all', q = '', shown = 40;
   var $ = function(id){return document.getElementById(id)};
@@ -208,6 +209,7 @@ button,input,select,textarea{font:inherit}
     $('sgSum').classList.toggle('hide', src!=='sangamam');
     $('sg-n').textContent = sg.length;
     $('sg-tr').textContent = sg.filter(function(r){return (r.details||{}).training==='ஆம்'}).length;
+    $('sg-vol').textContent = sg.filter(function(r){return (r.details||{}).volunteer==='ஆம்'}).length;
     $('sg-sv').textContent = sg.filter(function(r){return (r.details||{}).seva==='ஆம்'}).length;
     $('sg-don').textContent = '₹'+dn.reduce(function(t,r){return t+(+r.amount||0)},0).toLocaleString('en-IN');
     $('sg-dc').textContent = dn.length;

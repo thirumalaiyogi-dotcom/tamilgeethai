@@ -78,7 +78,7 @@ async function sangamamRegister(b: any) {
   const regNo = "TGS-" + String((await sangamamCount()) + 1).padStart(4, "0");
   const orderId = wantDonate ? SG.prefix + Date.now().toString(36).toUpperCase() + crypto.randomUUID().slice(0, 6).toUpperCase() : null;
   const details: Record<string, string> = { reg_no: regNo };
-  for (const k of ["gender", "age", "category", "seva", "training", "donate"]) if (reg[k] != null) details[k] = clip(reg[k], 120);
+  for (const k of ["gender", "age", "category", "seva", "volunteer", "training", "donate"]) if (reg[k] != null) details[k] = clip(reg[k], 120);
   if (wantDonate) { details.donation = `₹${amount}`; details.payment = `⏳ நன்கொடை ₹${amount} நிலுவை`; details.order_id = orderId!; }
   const ins = await fetch(`${SB_URL}/rest/v1/registrations`, {
     method: "POST",
