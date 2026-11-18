@@ -756,8 +756,8 @@ html{scroll-behavior:auto}
 <p id="sgDM">151 பாடல்கள் PDF உங்கள் WhatsApp எண்ணிற்கு அனுப்பப்படும். 20 நாட்கள் பயிற்சி செய்து 24.12.2026 அன்று கலந்து கொள்ளுங்கள்.</p>
 <div class="sg-upi" id="sgUpi" hidden>
 <p class="sg-upi-t">🙏 நன்கொடை <b id="sgUpiAmt">₹0</b> செலுத்த</p>
-<img src="images/upi-qr.png" alt="UPI QR — 9489690577@upi" width="190" height="190" loading="lazy">
-<p class="sg-upi-id">UPI ID: <b>9489690577@upi</b></p>
+<img src="images/upi-qr.png?v=2" alt="UPI QR — bram18008-5@oksbi" width="190" height="190" loading="lazy">
+<p class="sg-upi-id">UPI ID: <b>bram18008-5@oksbi</b></p>
 <a class="sg-upi-pay" id="sgUpiPay" href="#">📱 UPI App-இல் செலுத்த</a>
 <a class="sg-upi-wa" id="sgUpiWa" target="_blank" rel="noopener" href="#">✅ செலுத்திய screenshot-ஐ WhatsApp-இல் அனுப்ப</a>
 </div>
@@ -1445,7 +1445,7 @@ if('IntersectionObserver' in window){
   var modal=document.getElementById('sgDone');
   function show(title,no,msg,ok,don){
     var up=document.getElementById('sgUpi');up.hidden=!don;
-    if(don){document.getElementById('sgUpiAmt').textContent='₹'+don;document.getElementById('sgUpiPay').href='upi://pay?pa=9489690577@upi&pn=SRAMBABU&am='+don+'&cu=INR&tn='+encodeURIComponent('Tamil Geethai Sangamam '+(no||''));document.getElementById('sgUpiWa').href='https://wa.me/919489690577?text='+encodeURIComponent('வணக்கம். தமிழ் கீதை சங்கமம் நன்கொடை ₹'+don+' செலுத்தியுள்ளேன். பதிவு எண்: '+(no||'')+'. Screenshot இணைத்துள்ளேன்.');}
+    if(don){document.getElementById('sgUpiAmt').textContent='₹'+don;document.getElementById('sgUpiPay').href='upi://pay?pa=bram18008-5@oksbi&pn=Tamil%20Geethai&am='+don+'&cu=INR&tn='+encodeURIComponent('Tamil Geethai Sangamam '+(no||''));document.getElementById('sgUpiWa').href='https://wa.me/919489690577?text='+encodeURIComponent('வணக்கம். தமிழ் கீதை சங்கமம் நன்கொடை ₹'+don+' செலுத்தியுள்ளேன். பதிவு எண்: '+(no||'')+'. Screenshot இணைத்துள்ளேன்.');}
     document.getElementById('sgDT').textContent=title;document.getElementById('sgNo').textContent=no||'—';
     document.querySelector('.sg-no').hidden=!no;
     if(msg)document.getElementById('sgDM').textContent=msg;
