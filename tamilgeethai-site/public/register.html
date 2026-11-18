@@ -420,6 +420,19 @@
 .pay-amt small{font-family:inherit;font-size:16px;font-weight:600}
 .pay-info p{margin:8px 0 0;font-size:15px;line-height:1.7;color:#3b2a1a}
 .pay-info .pay-sub{font-size:13.5px;color:#6b5444}
+
+  .upi{text-align:center}
+  .upi-step{margin:6px 0 10px;font-size:15px;line-height:1.7}
+  .upi-qr{display:block;margin:6px auto;width:228px;height:228px;border-radius:14px;border:2px solid #E9C766;background:#fff}
+  .upi-id{margin:10px 0 6px;font-size:15px}
+  .upi-copy{margin-left:6px;padding:4px 12px;border-radius:999px;border:1.5px solid #7F1D1D;background:#fff;color:#7F1D1D;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .upi-pay{display:block;margin:10px auto 6px;max-width:320px;padding:13px 16px;border-radius:14px;background:#15803D;color:#fff;font-weight:800;text-decoration:none;font-size:16px}
+  .upi-sub{margin:4px 0 14px;font-size:13px;color:#6b5444;line-height:1.6}
+  .upi-sub a{color:#7F1D1D;font-weight:700}
+  .upi #field-upishot{text-align:left;margin-top:8px}
+  .upi-file{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:8px;border:2px dashed #E0B963;border-radius:14px;background:#FFFBF0;cursor:pointer;font-weight:700;color:#7F1D1D;padding:10px;text-align:center}
+  .upi-file input{position:absolute;width:1px;height:1px;opacity:0}
+  .upi-file.has{border-style:solid;border-color:#15803D;color:#15803D;background:#F0FDF4}
 </style>
 <style>
 .tg-back{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(23,37,84,.96);color:#FDF3D7;text-decoration:none;font-weight:600;font-size:15px;min-height:48px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -526,15 +539,22 @@
     <!-- SECTION 4 -->
     <div class="card">
       <h4>குரு தட்சிணை</h4>
-      <div class="pay-info pay-on">
+      <div class="pay-info pay-on" hidden style="display:none"></div>
+      <div class="pay-info pay-off" hidden style="display:none"></div>
+      <div class="upi">
         <div class="pay-amt">₹200 <small>மட்டும்</small></div>
-        <p>பதிவு செய்ததும் <b>UPI / Card / Net Banking</b> மூலம் பாதுகாப்பாக online-ஆகச் செலுத்தலாம்.</p>
-        <p class="pay-sub">🔒 Cashfree பாதுகாப்பான payment · Screenshot அனுப்பத் தேவையில்லை</p>
+        <p class="upi-step"><b>1.</b> கீழே உள்ள QR-ஐ scan செய்து அல்லது UPI ID-க்கு <b>₹200</b> செலுத்துங்கள்.</p>
+        <img class="upi-qr" src="images/upi-qr.png" alt="UPI QR — 9489690577@upi" width="228" height="228">
+        <p class="upi-id">UPI ID: <b>9489690577@upi</b> <button type="button" class="upi-copy" data-copy="9489690577@upi">நகலெடு</button></p>
+        <a class="upi-pay" href="upi://pay?pa=9489690577@upi&amp;pn=SRAMBABU&amp;am=200&amp;cu=INR&amp;tn=Tamil%20Geethai%20Guru%20Dakshina">📱 UPI App-இல் ₹200 செலுத்த</a>
+        <p class="upi-sub">GPay · PhonePe · Paytm · BHIM — எந்த UPI app-ம் போதும். <a href="images/upi-qr.png" download="tamilgeethai-upi-qr.png">QR படத்தை save செய்ய</a></p>
+        <div class="field" id="field-upishot">
+          <label><b>2.</b> பணம் செலுத்திய Screenshot-ஐ upload செய்யவும்<span class="req">*</span></label>
+          <label class="upi-file"><input type="file" id="upiShot" accept="image/*"><span id="upiShotName">📷 Screenshot தேர்ந்தெடுக்க</span></label>
+          <div class="error-msg">Payment screenshot-ஐ upload செய்யவும்.</div>
+        </div>
       </div>
-      <div class="pay-info pay-off" hidden>
-        <div class="pay-amt">₹200 <small>மட்டும்</small></div>
-        <p>₹200 குரு தட்சிணை செலுத்திய பின்பே உங்கள் சேர்க்கை உறுதி செய்யப்படும். செலுத்தியிருந்தால் Payment Screenshot-ஐ <b>9489690577</b> WhatsApp எண்ணிற்கு அனுப்பவும்.</p>
-      </div>
+</div>
     </div>
 
     <!-- SECTION 5 -->
@@ -563,7 +583,7 @@
       </div>
     </div>
 
-    <button type="submit" class="submit-btn" id="submitBtn">🪷 பதிவு செய்து ₹200 செலுத்த</button>
+    <button type="submit" class="submit-btn" id="submitBtn">🪷 பதிவு செய்யவும்</button>
 
     <footer class="form-footer">உங்கள் தகவல்கள் பாதுகாப்பாக பராமரிக்கப்படும்.</footer>
   </form>
@@ -740,9 +760,36 @@
     return up.then(function(path){
       var row = {source:'tamilgeethai', name:d.name, whatsapp:d.whatsapp, district:d.district, town:d.taluk,
         details:{category:d.category, role:d.role, level:d.level, payment:d.payment, order_id:d.order_id||'', cf_order_id:d.cf_order_id||'', practice:d.practice, refer:d.refer},
-        screenshot_path: path};
+        screenshot_path: path, amount: 200};
       return fetch(SB_URL+'/rest/v1/registrations', {method:'POST', headers:sbHeaders({'Content-Type':'application/json','Prefer':'return=minimal'}), body:JSON.stringify(row)});
     }).then(function(r){ if(!r.ok) throw new Error('db '+r.status); });
+  }
+
+  // ---- UPI screenshot ----
+  var upiShot = document.getElementById('upiShot'), upiName = document.getElementById('upiShotName');
+  upiShot.addEventListener('change', function(){
+    var f = this.files[0];
+    upiName.textContent = f ? '✓ ' + f.name : '📷 Screenshot தேர்ந்தெடுக்க';
+    upiName.parentNode.classList.toggle('has', !!f);
+    if (f) clearError(document.getElementById('field-upishot'));
+  });
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click', function(){
+    var t=b.dataset.copy; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='✓ நகலெடுக்கப்பட்டது'},function(){prompt('UPI ID',t)});
+  }); });
+  function validateShot(){
+    var field=document.getElementById('field-upishot');
+    var f=upiShot.files[0];
+    if(!f || !/^image\//.test(f.type)){ showError(field); return false; }
+    clearError(field); return true;
+  }
+  // Shrink any phone image to a small JPEG (saves data; storage accepts jpeg/png only).
+  function toJpeg(file){
+    return new Promise(function(res){
+      var img=new Image(), url=URL.createObjectURL(file);
+      img.onload=function(){ var s=Math.min(1,1400/Math.max(img.width,img.height)); var c=document.createElement('canvas'); c.width=Math.round(img.width*s); c.height=Math.round(img.height*s); c.getContext('2d').drawImage(img,0,0,c.width,c.height); URL.revokeObjectURL(url); c.toBlob(function(b){ res(b?new File([b],'shot.jpg',{type:'image/jpeg'}):file); },'image/jpeg',0.82); };
+      img.onerror=function(){ URL.revokeObjectURL(url); res(file); };
+      img.src=url;
+    });
   }
 
   // ---- Form submission ----
@@ -760,7 +807,8 @@
       validateRadio('role', 'field-role'),
       validateRadio('level', 'field-level'),
       validateRadio('practice', 'field-practice'),
-      validateRadio('refer', 'field-refer')
+      validateRadio('refer', 'field-refer'),
+      validateShot()
     ];
 
     var allValid = validations.every(function(v){ return v; });
@@ -794,38 +842,38 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'பதிவு செய்யப்படுகிறது...';
 
-    if (!PAY_ON) {
-      formData.payment = '❌ செலுத்தவில்லை — அனுமதி நிலுவை';
-      setBtn('பதிவு செய்யப்படுகிறது…', true);
-      recordRegistration(formData).then(function(res){
-        if (res[0].status==='fulfilled' || res[1].status==='fulfilled') { document.getElementById('okMsg').textContent='உங்கள் விவரங்கள் பெறப்பட்டன. ₹200 குரு தட்சிணை செலுத்தி, screenshot-ஐ 9489690577 WhatsApp எண்ணிற்கு அனுப்பிய பின்பே சேர்க்கை உறுதி செய்யப்படும்.'; document.querySelector('#successModal h3').textContent='கட்டணம் நிலுவையில் உள்ளது'; document.getElementById('successModal').classList.add('show'); }
-        else { resetBtn(); alert('இணைய இணைப்பில் சிக்கல் ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.'); }
-      });
-      return;
-    }
-    startPayment(formData);
+    formData.payment = '📷 UPI ₹200 — screenshot சரிபார்க்க வேண்டும்';
+    setBtn('பதிவு செய்யப்படுகிறது…', true);
+    toJpeg(upiShot.files[0]).then(function(shot){
+      var sheetJob = fetch(GOOGLE_SHEET_WEB_APP_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(formData)});
+      return Promise.allSettled([sheetJob, saveToAdmin(formData, shot)]);
+    }).then(function(res){
+      if (res[1].status==='fulfilled') {
+        document.querySelector('#successModal h3').textContent='நன்றி! 🙏';
+        document.getElementById('okMsg').textContent='உங்கள் பதிவும் ₹200 payment screenshot-உம் பெறப்பட்டன. சரிபார்த்த பின் உங்கள் சேர்க்கை WhatsApp மூலம் உறுதி செய்யப்படும்.';
+        document.getElementById('successModal').classList.add('show');
+      } else { resetBtn(); alert('பதிவு சேமிக்க முடியவில்லை. இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.'); }
+    });
+    return;
   });
 
   // ---- Cashfree payment (Guru Dakshina ₹200) ----
   var PENDING_KEY = 'tg-pending-reg';
   // Online payment is shown only when live keys are set (production),
   // or for testing with ?paytest=1 while in sandbox mode.
-  var PAY_ON = false;
+  var PAY_ON = false; // Cashfree off — UPI QR + screenshot mode
   var payTest = /[?&]paytest=1/.test(location.search);
   try { if (payTest) sessionStorage.setItem('tg-paytest','1'); payTest = payTest || sessionStorage.getItem('tg-paytest')==='1'; } catch(e){}
   function applyPayUi(){
     document.querySelector('.pay-on').hidden = !PAY_ON;
     document.querySelector('.pay-off').hidden = PAY_ON;
-    if (!isSubmitting) setBtn(PAY_ON ? '🪷 பதிவு செய்து ₹200 செலுத்த' : '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்', false);
+    if (!isSubmitting) setBtn('🪷 பதிவு செய்யவும்', false);
   }
   applyPayUi();
   function payFn(body){body.site='tg';return fetch('https://ytwundlllclnevjogunn.supabase.co/functions/v1/pay',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg'},body:JSON.stringify(body)})}
-  payFn({action:'config'}).then(function(r){ return r.json(); }).then(function(c){
-    PAY_ON = !!c.enabled;
-    applyPayUi();
-  }).catch(function(){});
+
   function setBtn(t, dis){ submitBtn.textContent = t; submitBtn.disabled = !!dis; }
-  function resetBtn(){ isSubmitting = false; setBtn(PAY_ON ? '🪷 பதிவு செய்து ₹200 செலுத்த' : '🪷 கீதை வகுப்பில் இணைய பதிவு செய்யவும்', false); }
+  function resetBtn(){ isSubmitting = false; setBtn('🪷 பதிவு செய்யவும்', false); }
   function loadSdk(){
     return new Promise(function(res, rej){
       if (window.Cashfree) return res();
@@ -906,7 +954,7 @@
     document.getElementById('successModal').classList.remove('show');
     isSubmitting = false;
     submitBtn.disabled = false;
-    submitBtn.textContent = '🪷 பதிவு செய்து ₹200 செலுத்த';
+    submitBtn.textContent = '🪷 பதிவு செய்யவும்'; upiShot.value=''; upiName.textContent='📷 Screenshot தேர்ந்தெடுக்க'; upiName.parentNode.classList.remove('has');
     window.scrollTo({top:0, behavior:'smooth'});
   });
 })();

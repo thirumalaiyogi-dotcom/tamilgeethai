@@ -51,6 +51,8 @@ async function markPaid(id: string) {
 }
 
 // ---------- Tamil Geethai Sangamam (24.12.2026): free registration + optional donation ----------
+// Cashfree account was not approved — donations are collected by UPI QR on the site and confirmed in the admin panel.
+const SG_CASHFREE = false;
 const SG = { prefix: "TGS", ret: "https://tamilgeethai.com/", note: "Tamil Geethai Sangamam donation", min: 51, max: 100000 };
 
 async function sangamamCount(): Promise<number> {
@@ -73,13 +75,12 @@ async function sangamamRegister(b: any) {
   if (wantDonate) {
     amount = Math.round(Number(reg.amount || 0));
     if (!(amount >= SG.min && amount <= SG.max)) return json({ error: "bad_amount", min: SG.min }, 400);
-    if (!SECRET) return json({ error: "payment_not_configured" }, 503);
   }
   const regNo = "TGS-" + String((await sangamamCount()) + 1).padStart(4, "0");
-  const orderId = wantDonate ? SG.prefix + Date.now().toString(36).toUpperCase() + crypto.randomUUID().slice(0, 6).toUpperCase() : null;
+  const orderId = wantDonate && SG_CASHFREE ? SG.prefix + Date.now().toString(36).toUpperCase() + crypto.randomUUID().slice(0, 6).toUpperCase() : null;
   const details: Record<string, string> = { reg_no: regNo };
   for (const k of ["gender", "age", "category", "seva", "volunteer", "training", "donate"]) if (reg[k] != null) details[k] = clip(reg[k], 120);
-  if (wantDonate) { details.donation = `₹${amount}`; details.payment = `⏳ நன்கொடை ₹${amount} நிலுவை`; details.order_id = orderId!; }
+  if (wantDonate) { details.donation = `₹${amount}`; details.payment = SG_CASHFREE ? `⏳ நன்கொடை ₹${amount} நிலுவை` : `⏳ UPI நன்கொடை ₹${amount} — உறுதி செய்ய வேண்டும்`; if (orderId) details.order_id = orderId; }
   const ins = await fetch(`${SB_URL}/rest/v1/registrations`, {
     method: "POST",
     headers: sbH({ Prefer: "return=minimal" }),
@@ -91,6 +92,7 @@ async function sangamamRegister(b: any) {
   });
   if (!ins.ok) return json({ error: "save_failed", detail: await ins.text() }, 500);
   if (!wantDonate) return json({ reg_no: regNo });
+  if (!SG_CASHFREE || !SECRET) return json({ reg_no: regNo, upi: true, amount });
 
   const r = await fetch(`${CF}/orders`, {
     method: "POST",

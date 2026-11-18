@@ -90,6 +90,7 @@ button,input,select,textarea{font:inherit}
 .toast.on{opacity:1}
 .due{color:#B42318;font-weight:700}
 @media (min-width:700px){.main{padding:20px 20px 80px}.list{display:grid;grid-template-columns:1fr 1fr}}
+.paid-btn{min-height:46px;border-radius:12px;border:0;background:#15803D;color:#fff;font:inherit;font-weight:800;cursor:pointer}.paid-btn.undo{background:#fff;color:#6b7280;border:1.5px solid #d1d5db;font-weight:600}
 </style>
 </head>
 <body>
@@ -219,7 +220,7 @@ button,input,select,textarea{font:inherit}
     var lm=$('loadMore'); if(lm) lm.onclick=function(){shown+=40;render()};
   }
 
-  function payB(r){if(r.source==='sangamam'){if(!r.order_id)return '';return r.paid===true?'<span class="pay-ok">நன்கொடை ✓</span>':'<span class="pay-no">நன்கொடை நிலுவை</span>'}return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
+  function payB(r){if(r.source==='sangamam'){if(!r.order_id&&!r.amount)return '';return r.paid===true?'<span class="pay-ok">நன்கொடை ✓</span>':'<span class="pay-no">நன்கொடை நிலுவை</span>'}return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
   function card(r){
     var d = r.details||{}, wa = '91'+r.whatsapp;
     var msg = r.source==='sangamam' ? 'வணக்கம்! தமிழ் கீதை சங்கமத்தில் (24.12.2026) முன்பதிவு செய்ததற்கு நன்றி. உங்கள் பதிவு எண்: '+((r.details||{}).reg_no||'')+'. 151 பாடல்கள் PDF இத்துடன் அனுப்பப்படுகிறது. ' : r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
@@ -240,6 +241,7 @@ button,input,select,textarea{font:inherit}
       '<div><label>மீண்டும் அழைக்க</label><input type="date" data-f="followup_date" value="'+esc(r.followup_date||'')+'"></div>'+
       '<div class="full"><label>குறிப்பு</label><textarea data-f="followup_note">'+esc(r.followup_note||'')+'</textarea></div>'+
       '<button class="save full" type="button" data-save="'+r.id+'">சேமி</button>'+
+      ((r.amount||r.source!=='sangamam')?(r.paid===true?'<button class="paid-btn full undo" type="button" data-paid="'+r.id+'" data-v="0">↩ பணம் பெறவில்லை என மாற்று</button>':'<button class="paid-btn full" type="button" data-paid="'+r.id+'" data-v="1">✅ பணம் பெறப்பட்டது'+(r.amount?' (₹'+r.amount+')':'')+'</button>'):'')+
       '<button class="del full" type="button" data-del="'+r.id+'">🗑 இந்தப் பதிவை நீக்கு</button></div></div></article>';
   }
 
@@ -253,6 +255,15 @@ button,input,select,textarea{font:inherit}
       dl.disabled=false;
       if(dr.error||!dr.data||!dr.data.length){ toast('நீக்க முடியவில்லை'); return; }
       rows=rows.filter(function(x){return x.id!==did}); toast('நீக்கப்பட்டது ✓'); render(); return;
+    }
+    var pb=e.target.closest('[data-paid]'); if(pb){
+      var pid=+pb.dataset.paid, on=pb.dataset.v==='1', prow=rows.filter(function(x){return x.id===pid})[0]||{};
+      if(on && !confirm('"'+(prow.name||'')+'" — பணம் உங்கள் UPI கணக்கில் வந்ததை சரிபார்த்தீர்களா?')) return;
+      var pd=Object.assign({},prow.details||{});
+      pd.payment = on ? ((prow.source==='sangamam'?'நன்கொடை':'UPI')+' ₹'+(prow.amount||'')+' பெறப்பட்டது ✓ (admin)') : '⏳ UPI ₹'+(prow.amount||'')+' — உறுதி செய்ய வேண்டும்';
+      pb.disabled=true; var pr=await sb.from('registrations').update({paid:on, paid_at:on?new Date().toISOString():null, details:pd, updated_at:new Date().toISOString()}).eq('id',pid).select().single(); pb.disabled=false;
+      if(pr.error){ toast('மாற்ற முடியவில்லை'); return; }
+      rows=rows.map(function(x){return x.id===pid?pr.data:x}); toast(on?'பணம் பெறப்பட்டது ✓':'மாற்றப்பட்டது'); render(); var dd=$('det-'+pid); if(dd) dd.classList.remove('hide'); return;
     }
     var sv=e.target.closest('[data-save]'); if(sv){
       var id=+sv.dataset.save, box=$('det-'+id), patch={updated_at:new Date().toISOString()};
