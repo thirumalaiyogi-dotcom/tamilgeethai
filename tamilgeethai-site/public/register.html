@@ -548,8 +548,14 @@
         <p class="upi-id">UPI ID: <b>bram18008-5@oksbi</b> <button type="button" class="upi-copy" data-copy="bram18008-5@oksbi">நகலெடு</button></p>
         <a class="upi-pay" href="upi://pay?pa=bram18008-5@oksbi&amp;pn=Tamil%20Geethai&amp;am=200&amp;cu=INR&amp;tn=Tamil%20Geethai%20Guru%20Dakshina">📱 UPI App-இல் ₹200 செலுத்த</a>
         <p class="upi-sub">GPay · PhonePe · Paytm · BHIM — எந்த UPI app-ம் போதும். <a href="images/upi-qr.png?v=2" download="tamilgeethai-upi-qr.png">QR படத்தை save செய்ய</a></p>
+        <div class="field" id="field-utr">
+          <label><b>2.</b> UPI Transaction ID / UTR எண் (12 இலக்கம்)<span class="req">*</span></label>
+          <input type="text" id="utr" inputmode="numeric" maxlength="12" placeholder="உதா: 432112345678" autocomplete="off">
+          <p class="note-text" style="margin:6px 0 0">GPay / PhonePe-இல் பணம் அனுப்பியதும் வரும் "UPI Ref No / UTR" எண்.</p>
+          <div class="error-msg">பணம் செலுத்திய 12 இலக்க UTR எண்ணை உள்ளிடவும்.</div>
+        </div>
         <div class="field" id="field-upishot">
-          <label><b>2.</b> பணம் செலுத்திய Screenshot-ஐ upload செய்யவும்<span class="req">*</span></label>
+          <label><b>3.</b> பணம் செலுத்திய Screenshot-ஐ upload செய்யவும்<span class="req">*</span></label>
           <label class="upi-file"><input type="file" id="upiShot" accept="image/*"><span id="upiShotName">📷 Screenshot தேர்ந்தெடுக்க</span></label>
           <div class="error-msg">Payment screenshot-ஐ upload செய்யவும்.</div>
         </div>
@@ -759,7 +765,7 @@
     }
     return up.then(function(path){
       var row = {source:'tamilgeethai', name:d.name, whatsapp:d.whatsapp, district:d.district, town:d.taluk,
-        details:{category:d.category, role:d.role, level:d.level, payment:d.payment, order_id:d.order_id||'', cf_order_id:d.cf_order_id||'', practice:d.practice, refer:d.refer},
+        details:{category:d.category, role:d.role, level:d.level, payment:d.payment, utr:d.utr||'', order_id:d.order_id||'', cf_order_id:d.cf_order_id||'', practice:d.practice, refer:d.refer},
         screenshot_path: path, amount: 200};
       return fetch(SB_URL+'/rest/v1/registrations', {method:'POST', headers:sbHeaders({'Content-Type':'application/json','Prefer':'return=minimal'}), body:JSON.stringify(row)});
     }).then(function(r){ if(!r.ok) throw new Error('db '+r.status); });
@@ -776,6 +782,13 @@
   document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click', function(){
     var t=b.dataset.copy; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='✓ நகலெடுக்கப்பட்டது'},function(){prompt('UPI ID',t)});
   }); });
+  var utrIn=document.getElementById('utr');
+  utrIn.addEventListener('input',function(){this.value=this.value.replace(/[^0-9]/g,'').slice(0,12);});
+  function validateUtr(){
+    var field=document.getElementById('field-utr');
+    if(!/^[0-9]{12}$/.test(utrIn.value.trim())){ showError(field); return false; }
+    clearError(field); return true;
+  }
   function validateShot(){
     var field=document.getElementById('field-upishot');
     var f=upiShot.files[0];
@@ -808,6 +821,7 @@
       validateRadio('level', 'field-level'),
       validateRadio('practice', 'field-practice'),
       validateRadio('refer', 'field-refer'),
+      validateUtr(),
       validateShot()
     ];
 
@@ -842,15 +856,16 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'பதிவு செய்யப்படுகிறது...';
 
-    formData.payment = '📷 UPI ₹200 — screenshot சரிபார்க்க வேண்டும்';
+    formData.utr = utrIn.value.trim();
+    formData.payment = '📷 UPI ₹200 (UTR '+formData.utr+') — சரிபார்க்க வேண்டும்';
     setBtn('பதிவு செய்யப்படுகிறது…', true);
     toJpeg(upiShot.files[0]).then(function(shot){
       var sheetJob = fetch(GOOGLE_SHEET_WEB_APP_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(formData)});
       return Promise.allSettled([sheetJob, saveToAdmin(formData, shot)]);
     }).then(function(res){
       if (res[1].status==='fulfilled') {
-        document.querySelector('#successModal h3').textContent='நன்றி! 🙏';
-        document.getElementById('okMsg').textContent='உங்கள் பதிவும் ₹200 payment screenshot-உம் பெறப்பட்டன. சரிபார்த்த பின் உங்கள் சேர்க்கை WhatsApp மூலம் உறுதி செய்யப்படும்.';
+        document.querySelector('#successModal h3').textContent='பதிவு பெறப்பட்டது ⏳'; document.querySelector('#successModal .lotus-big').textContent='📝';
+        document.getElementById('okMsg').textContent='உங்கள் விவரங்களும் payment விவரங்களும் பெறப்பட்டன. ₹200 எங்கள் கணக்கில் வந்ததைச் சரிபார்த்த பின்பே உங்கள் சேர்க்கை WhatsApp மூலம் உறுதி செய்யப்படும் (பொதுவாக 24 மணி நேரத்திற்குள்).';
         document.getElementById('successModal').classList.add('show');
       } else { resetBtn(); alert('பதிவு சேமிக்க முடியவில்லை. இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.'); }
     });
@@ -954,7 +969,7 @@
     document.getElementById('successModal').classList.remove('show');
     isSubmitting = false;
     submitBtn.disabled = false;
-    submitBtn.textContent = '🪷 பதிவு செய்யவும்'; upiShot.value=''; upiName.textContent='📷 Screenshot தேர்ந்தெடுக்க'; upiName.parentNode.classList.remove('has');
+    submitBtn.textContent = '🪷 பதிவு செய்யவும்'; utrIn.value=''; upiShot.value=''; upiName.textContent='📷 Screenshot தேர்ந்தெடுக்க'; upiName.parentNode.classList.remove('has');
     window.scrollTo({top:0, behavior:'smooth'});
   });
 })();

@@ -1464,7 +1464,7 @@ if('IntersectionObserver' in window){
     btn.disabled=true;btn.textContent='பதிவு செய்யப்படுகிறது…';var donAmt=wantDon()?amt:0;
     call({action:'sangamam',reg:reg}).then(function(d){
       f.reset();don.hidden=true;amt=0;btn.disabled=false;setBtn();loadCount();
-      if(donAmt)show('முன்பதிவு உறுதி! 🙏',d.reg_no,'உங்கள் முன்பதிவு உறுதியானது. விரும்பிய நன்கொடையை கீழே உள்ள UPI மூலம் செலுத்தி, screenshot-ஐ WhatsApp-இல் அனுப்பவும். 151 பாடல்கள் PDF உங்கள் WhatsApp-க்கு அனுப்பப்படும்.',true,donAmt);
+      if(donAmt)show('முன்பதிவு உறுதி! 🙏',d.reg_no,'நிகழ்ச்சிக்கான உங்கள் இலவச முன்பதிவு உறுதியானது. ⏳ நன்கொடை இன்னும் செலுத்தப்படவில்லை — கீழே உள்ள UPI மூலம் ₹'+donAmt+' செலுத்தி, screenshot-ஐ WhatsApp-இல் அனுப்பவும். பணம் வந்ததைச் சரிபார்த்த பின் நன்கொடை பெறப்பட்டதாகப் பதிவு செய்யப்படும்.',true,donAmt);
       else show('முன்பதிவு உறுதி! 🙏',d.reg_no,'151 பாடல்கள் PDF உங்கள் WhatsApp எண்ணிற்கு அனுப்பப்படும். 20 நாட்கள் பயிற்சி செய்து 24.12.2026 அன்று கலந்து கொள்ளுங்கள்.');
     }).catch(function(err){
       console.error(err);btn.disabled=false;setBtn();
