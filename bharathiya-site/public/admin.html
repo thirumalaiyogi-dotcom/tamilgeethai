@@ -148,6 +148,20 @@ button,input,select,textarea{font:inherit}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
+// ===== சங்கமம் WhatsApp செய்தி — links-ஐ இங்கே மாற்றலாம் =====
+var SG_GROUP = 'https://chat.whatsapp.com/KxhfLaNVYCPJHXoTBidYFj';
+var SG_YT    = 'https://youtu.be/gMikwSickr8';
+var SG_PDF   = ''; // 151 பாடல்கள் PDF — Google Drive link இங்கே
+function sgMsg(no){
+  return 'வணக்கம்! 🙏\n'+
+    'தமிழ் கீதை சங்கமத்தில் (24.12.2026) முன்பதிவு செய்ததற்கு நன்றி.\n\n'+
+    'உங்கள் பதிவு எண்: *'+no+'*\n\n'+
+    'இந்த WhatsApp குழுவில் உடனடியாக இணையவும்:\n'+SG_GROUP+'\n\n'+
+    'நீங்கள் பாடிப் பயிற்சி எடுப்பதற்கான பாடலின் YouTube link:\n'+SG_YT+'\n\n'+
+    (SG_PDF ? 'தமிழ் கீதை 151 பாடல்கள் கொண்ட PDF — Download செய்து print எடுத்துப் பயிற்சி எடுக்கவும்:\n'+SG_PDF+'\n\n' : '')+
+    'மேலும் விவரங்களுக்குத் தொடர்பு கொள்ளலாம்.\n\n'+
+    'S. Rambabu\nCoordinator\n9489690577';
+}
 (function(){
   var SUPABASE_URL = "https://ytwundlllclnevjogunn.supabase.co";
   var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0d3VuZGxsbGNsbmV2am9ndW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNjc3OTMsImV4cCI6MjEwODg0Mzc5M30.AiZq_BM8JjmB6RzdXJXGsyZxoxTFQ5l0u_uEc3E4CRg";
@@ -223,7 +237,7 @@ button,input,select,textarea{font:inherit}
   function payB(r){if(r.source==='sangamam'){if(!r.order_id&&!r.amount)return '';return r.paid===true?'<span class="pay-ok">நன்கொடை ✓</span>':'<span class="pay-no">நன்கொடை நிலுவை</span>'}return r.paid===true?'<span class="pay-ok">₹ செலுத்தப்பட்டது ✓</span>':'<span class="pay-no">₹ கட்டணம் நிலுவை</span>'}
   function card(r){
     var d = r.details||{}, wa = '91'+r.whatsapp;
-    var msg = r.source==='sangamam' ? 'வணக்கம்! தமிழ் கீதை சங்கமத்தில் (24.12.2026) முன்பதிவு செய்ததற்கு நன்றி. உங்கள் பதிவு எண்: '+((r.details||{}).reg_no||'')+'. 151 பாடல்கள் PDF இத்துடன் அனுப்பப்படுகிறது. ' : r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
+    var msg = r.source==='sangamam' ? sgMsg((r.details||{}).reg_no||'') : r.source==='bcc' ? 'வணக்கம்! பாரதிய பண்பாட்டு வகுப்பில் பதிவு செய்ததற்கு நன்றி. ' : 'வணக்கம்! தமிழ் கீதை வகுப்பில் பதிவு செய்ததற்கு நன்றி. ';
     var kv = Object.keys(d).filter(function(k){return d[k]!==''&&d[k]!=null&&k!=='timestamp'&&k!=='submittedAt'&&k!=='hasScreenshot'}).map(function(k){return '<dt>'+esc(LABELS[k]||k)+'</dt><dd>'+esc(d[k])+'</dd>'}).join('');
     var due = r.followup_date && r.followup_date<=today() && r.status!=='joined' && r.status!=='not_interested';
     return '<article class="card" data-id="'+r.id+'">'+
